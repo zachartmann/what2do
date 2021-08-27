@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import CreatePollPage from './components/CreatePollPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Topic = ({ title }) => {
+  return <h1>{title}</h1>
+}
+
+const App = () => {
+  const pollId = 'AH32N4'
+  if (pollId === '000000') {
+    return <CreatePollPage />
+  } else {
+    return (
+      <div className="App">
+        <Topic title={pollId} />
+        <p>Poll deadline</p>
+        <p style={{color: "red"}}>Buy me a coffee! &gt;:(</p>
+      </div>
+    )
+  }
 }
 
 export default App;
