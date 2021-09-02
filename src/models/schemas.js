@@ -16,7 +16,7 @@ Poll.add({
   ideaIds: [Idea],
 });
 
-const Idea = new Schema();
+// const Idea = new Schema(); new idea should be in a seperate module
 
 /**
  * Accessing a specific schema type by key
