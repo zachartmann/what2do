@@ -8,7 +8,7 @@ const Topic = ({ title }) => {
   return <h1>{title}</h1>;
 };
 
-//const App = () => {
+const App = () => {
   //const url = process.env.MONGODB_URI;
   //mongoose.connect(url).then(
     //() => {
@@ -32,6 +32,6 @@ const Topic = ({ title }) => {
       </div>
     );
   }
-//};
+};
 
-//export default App;
+export default App;
