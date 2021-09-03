@@ -1,6 +1,6 @@
 require("dotenv").config();
 import React from "react";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import "./App.css";
 import CreatePollPage from "./components/CreatePollPage";
 
