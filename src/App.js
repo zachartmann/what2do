@@ -8,16 +8,16 @@ const Topic = ({ title }) => {
   return <h1>{title}</h1>;
 };
 
-const App = () => {
-  const url = process.env.MONGODB_URI;
-  mongoose.connect(url).then(
-    () => {
-      console.log("Connection successful");
-    },
-    err => {
-      console.log(`Connection error ${err}`);
-    }
-  ); // may need to use createConnection
+//const App = () => {
+  //const url = process.env.MONGODB_URI;
+  //mongoose.connect(url).then(
+    //() => {
+      //console.log("Connection successful");
+    //},
+    //err => {
+      //console.log(`Connection error ${err}`);
+    //}
+  //); // may need to use createConnection
 
 
   const pollId = "AH32N4";
@@ -32,6 +32,6 @@ const App = () => {
       </div>
     );
   }
-};
+//};
 
-export default App;
+//export default App;
