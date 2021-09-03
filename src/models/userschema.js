@@ -8,7 +8,6 @@ import { Schema } from "mongoose";
 const User = new Schema();
 
 User.add({
-    _id: Number,
     name: String,
     password: String,
 });
