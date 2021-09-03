@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 const Template = ({ title }) => {
-  return <button className="template-selection">{title}</button>
-}
+  return <button className="template-selection">{title}</button>;
+};
 
 const CreatePollPage = () => {
   return (
@@ -25,7 +25,7 @@ const CreatePollPage = () => {
         <br />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CreatePollPage
+export default CreatePollPage;
