@@ -1,6 +1,6 @@
 import app from "./Server";
-import env from "./Environment";
-import db from "./DBInstance.js";
+import env from "./environment";
+import db from "./database.js";
 
 // Start the server
 const port = Number(env.port);
