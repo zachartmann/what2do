@@ -1,6 +1,8 @@
 import React from "react";
+// import mongoose from "mongoose";
 import "./App.css";
 import CreatePollPage from "./components/CreatePollPage";
+// import in body of module reader to top error 
 require("dotenv").config();
 
 const Topic = ({ title }) => {
@@ -8,15 +10,15 @@ const Topic = ({ title }) => {
 };
 
 const App = () => {
-  // const url = process.env.MONGODB_URI;
-  // mongoose.connect(url).then(
-  //   () => {
-  //     console.log("Connection successful");
-  //   },
-  //   err => {
-  //     console.log(`Connection error ${err}`);
-  //   }
-  // ); // may need to use createConnection
+  //const url = process.env.MONGODB_URI;
+  //mongoose.connect(url).then(
+    //() => {
+      //console.log("Connection successful");
+    //},
+    //err => {
+      //console.log(`Connection error ${err}`);
+    //}
+  //); // may need to use createConnection
 
   const pollId = "AH32N4";
   if (pollId === "000000") {
