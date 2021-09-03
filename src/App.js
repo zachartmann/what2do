@@ -1,8 +1,9 @@
-require("dotenv").config();
 import React from "react";
 // import mongoose from "mongoose";
 import "./App.css";
 import CreatePollPage from "./components/CreatePollPage";
+// import in body of module reader to top error 
+require("dotenv").config();
 
 const Topic = ({ title }) => {
   return <h1>{title}</h1>;
