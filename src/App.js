@@ -20,7 +20,6 @@ const App = () => {
     //}
   //); // may need to use createConnection
 
-
   const pollId = "AH32N4";
   if (pollId === "000000") {
     return <CreatePollPage />;

@@ -1,3 +1,4 @@
+// assigned to Juanita who is working on this on another branch
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
@@ -26,7 +27,3 @@ Comment.add({
  */
 
 mongoose.model("Comment", comment);
-
-
-
-
