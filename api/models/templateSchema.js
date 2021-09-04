@@ -1,15 +1,17 @@
+import mongoose from "mongoose";
+
 /**
  * Schema definition
  */
- const Template = new Schema();
+const Template = new mongoose.Schema();
 
- Template.add({
-   title: String,
-   category: String,
-   theme: String,
-   timeLimit: Number,
-   ideaIds: [Number],
- });
+Template.add({
+  title: String,
+  category: String,
+  theme: String,
+  timeLimit: Number,
+  ideaIds: [Number],
+});
  
  
  /**
@@ -23,6 +25,6 @@
  /**
   * Define model.
   */
+const TemplateModel = mongoose.model("Template", Template)
  
- export default Template;
- 
+export default TemplateModel;
