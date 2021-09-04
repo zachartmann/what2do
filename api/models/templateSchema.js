@@ -25,6 +25,6 @@ Template.add({
  /**
   * Define model.
   */
-const TemplateModel = mongoose.model("Template", Template)
+const TemplateModel = mongoose.model("Template", Template);
  
 export default TemplateModel;
