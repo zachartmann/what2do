@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
-import { Schema } from "mongoose";
 
 /**
  * Schema definition
  */
-const Poll = new Schema();
+const Poll = new mongoose.Schema();
 
 Poll.add({
   pollId: Number,
@@ -25,6 +24,6 @@ Poll.add({
 /**
  * Define model.
  */
-mongoose.model("Poll", Poll);
+const PollModel = mongoose.model("Poll", Poll);
 
-export default Poll;
+export default PollModel;
