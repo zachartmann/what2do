@@ -7,11 +7,11 @@ import { Schema } from "mongoose";
 const Poll = new Schema();
 
 Poll.add({
-pollId: Number,
-title: String,
-endDate: Date,
-timeLimit: Number,
-ideaIds: [Number],
+  pollId: Number,
+  title: String,
+  endDate: Date,
+  timeLimit: Number,
+  ideaIds: [Number],
 });
 
 /**
@@ -26,5 +26,5 @@ ideaIds: [Number],
  * Define model.
  */
 mongoose.model("Poll", Poll);
- 
+
 export default Poll;
