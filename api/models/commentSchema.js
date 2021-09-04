@@ -1,17 +1,15 @@
-// assigned to Juanita who is working on this on another branch
 import mongoose from "mongoose";
-import { Schema } from "mongoose";
 
 /**
  * Schema definition
  */
 
-const Comment = new Schema();
+const Comment = new mongoose.Schema();
 
 Comment.add({
-  _id: Number,
-  Comment: String,
-  User: String,
+  commentId: Number,
+  comment: String,
+  user: String,
 });
 
 /**
@@ -26,4 +24,6 @@ Comment.add({
  * Define model.
  */
 
-mongoose.model("Comment", comment);
+const CommentModel = mongoose.model("Comment", Comment);
+
+export default CommentModel;
