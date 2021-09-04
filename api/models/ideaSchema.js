@@ -27,4 +27,5 @@ const Idea = new Schema({
  * Define model.
  */
 
-export default Idea;
+const IdeaModel = mongoose.model("Idea", Idea);
+export default IdeaModel;
