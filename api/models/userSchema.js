@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
-import { Schema } from "mongoose";
 
 
 /**
  * Schema definition
  */
-const User = new Schema();
+const User = new mongoose.Schema();
 
 User.add({
     name: String,
@@ -23,6 +22,6 @@ User.add({
 /**
  * Define model.
  */
-mongoose.model("User", User);
+const UserModel = mongoose.model("User", User);
 
-export default User;
+export default UserModel;
