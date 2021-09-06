@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { StatusCodes } from "http-status-codes";
 
 import CommentRouter from "./Comment";
 import PollRouter from "./Poll";
@@ -17,11 +18,11 @@ router.use(IdeaRouter);
 router.use(UserRouter);
 
 router.get("/hi", async (req, res) => {
-    return res.status(StatusCodes.OK).json("Hello friend!");
+  return res.status(StatusCodes.OK).json("Hello friend!");
 });
 
 router.get("/", async (req, res) => {
-    return res.status(StatusCodes.OK).json("This is the home page lmao");
+  return res.status(StatusCodes.OK).json("This is the home page lmao");
 });
 
 export default router;
