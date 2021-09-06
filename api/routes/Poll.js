@@ -1,45 +1,76 @@
 import { Router } from "express";
-import { OK, StatusCodes } from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 import PollModel from "../models/pollSchema";
 
 const router = Router();
 
 /**
- * GET: /items
+ * GET
  */
 
-router.get("/user", async (req, res) => {
-  const items = await getItems();
-  return res.status(OK).json(items).end();
+router.get("/polls", async (req, res) => {
+  const polls = await PollModel.find({});
+
+  return res.status(StatusCodes.OK).json(polls);
+});
+
+router.get("/poll/:id", async (req, res) => {
+  const pollId = Number(req.params.id);
+  if (!pollId) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json("Poll id is not a valid number");
+  }
+
+  const poll = await PollModel.findOne({ pollId });
+
+  if (poll) {
+    return res.status(StatusCodes.OK).json(poll);
+  }
+
+  return res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .json("Something bad happened");
 });
 
 /**
- * POST: /item (DEVELOPMENT BUILD ONLY)
+ * POST
  */
-router.post("/..", async (req, res) => {});
 
-// // Add sub-routes
-// router.get("/hi", async (req, res) => {
-//   return res.status(StatusCodes.OK).json("Hello friend!");
-// });
+router.post("/poll", async (req, res) => {
+  const { pollId, title, endDate, timeLimit, ideaIds } = req.query;
+  let pollToCreate;
 
-// Add sub-routes
-router.get("/poll", async (req, res) => {
-  const pollToCreate = new PollModel({
-    pollId: 1,
-    title: "Test",
-    endDate: new Date(),
-    timeLimit: 10,
-    ideaIds: [1],
-  });
+  if (req.query) {
+    pollToCreate = new PollModel({
+      pollId,
+      title,
+      endDate,
+      timeLimit,
+      ideaIds,
+    });
+  } else {
+    pollToCreate = new PollModel({
+      pollId: 1,
+      title: "Test",
+      endDate: new Date(),
+      timeLimit: 10,
+      ideaIds: [1],
+    });
+  }
+
   pollToCreate.save((err) => {
     if (err) {
       console.log("Something didn't work");
+      return res.status(StatusCodes.OK).json(pollToCreate);
     } else {
       console.log("Something worked!");
     }
   });
-  return res.status(StatusCodes.OK).json("Hello friend! I saved your dummy");
+
+  return res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .json("Problem saving the record");
 });
 
 export default router;
