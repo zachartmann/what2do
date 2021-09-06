@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
-import PollModel from "../models/pollSchema";
 
+import CommentRouter from "./Comment";
 import PollRouter from "./Poll";
 import SuggestionRouter from "./Suggestion";
 import TemplateRouter from "./Template";
@@ -11,10 +11,9 @@ import UserRouter from "./User";
 const router = Router();
 
 router.use(PollRouter);
-router.use(ModelBRouter);
-router.use(ModelCRouter);
-router.use(PollRouter);
-router.use(PollRouter);
-
+router.use(SuggestionRouter);
+router.use(TemplateRouter);
+router.use(IdeaRouter);
+router.use(UserRouter);
 
 export default router;

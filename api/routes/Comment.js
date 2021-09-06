@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { OK } from "http-status-codes";
+import IdeaModel from "../models/ideaSchema";
 
 const router = Router();
 
@@ -7,8 +8,9 @@ const router = Router();
  * GET: /items
  */
 
-router.post("/suggestion", async (req, res) => {
-  const suggestion = await suggestionModel({});
+router.get("/idea", async (req, res) => {
+  const ideaToCreate = new IdeaModel({});
+  ideaT;
   return res.status(OK).json(items).end();
 });
 

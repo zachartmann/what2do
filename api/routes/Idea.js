@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { OK } from "http-status-codes";
-import { getItems } from "../daos/Items";
+import IdeaModel from '../models/ideaSchema';
 
 const router = Router();
 
@@ -8,9 +8,18 @@ const router = Router();
  * GET: /items
  */
 
-router.get("/user", async (req, res) => {
-  const items = await getItems();
-  return res.status(OK).json(items).end();
+router.post("/idea", async (req, res) => {
+  const ideaToCreate = new IdeaModel({
+    
+  });
+  ideaToCreate.save((err) => {
+      if (err) {
+          console.log("issue with the idea endpoint");
+      } else {
+          console.log("This idea endpoint worked");
+      }
+  });
+  return res.status(StatusCodes.OK).json("IT WORKED");
 });
 
 /**

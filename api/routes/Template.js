@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { OK } from "http-status-codes";
-import { getItems } from "../daos/Items";
 
 const router = Router();
 
