@@ -10,7 +10,10 @@ const router = Router();
 
 router.post("/idea", async (req, res) => {
   const ideaToCreate = new IdeaModel({
-    
+    content: "IdeaContent",
+    upVotes: 9,
+    downVotes: 3,
+    pinned: false
   });
   ideaToCreate.save((err) => {
       if (err) {

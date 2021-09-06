@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { StatusCodes } from "http-status-codes";
 
 import CommentRouter from "./Comment";
 import PollRouter from "./Poll";
@@ -10,6 +9,7 @@ import UserRouter from "./User";
 
 const router = Router();
 
+router.use(CommentRouter);
 router.use(PollRouter);
 router.use(SuggestionRouter);
 router.use(TemplateRouter);
