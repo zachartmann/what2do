@@ -3,12 +3,13 @@ import {
   useParams
 } from "react-router-dom";
 
-const Topic = ({ title }) => {
-  return <h1>{title}</h1>;
-};
+import Header from "../components/Header";
+import IdeaSubmission from "../components/IdeaSubmission";
+import Ideas from "../components/Ideas";
 
 const PollPage = () => {
 
+  // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
   let { pollId } = useParams();
 
   if (pollId.length !== 6) {
@@ -17,10 +18,18 @@ const PollPage = () => {
 
   return (
     <div className="App">
-      <Topic title={pollId} />
-      <p>Poll deadline</p>
-      <p style={{ color: "red" }}>Buy me a coffee! &gt;:(</p>
-    </div>
+      <Header />
+      <div className="content">
+        <IdeaSubmission />
+      </div>
+      <div className="content">
+        {/* Sorting */}
+        <Ideas />
+      </div>
+      <div className="content">
+        <p style={{ color: "red" }}>Buy me a coffee! &gt;:(</p>
+      </div>
+      </div>
   );
 };
 
