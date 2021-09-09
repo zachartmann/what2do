@@ -4,9 +4,7 @@ import mongoose from "mongoose";
  * Schema definition
  */
 
-const Comment = new mongoose.Schema();
-
-Comment.add({
+const Comment = new mongoose.Schema({
   commentId: Number,
   comment: String,
   user: String,
@@ -27,4 +25,3 @@ Comment.add({
 const CommentModel = mongoose.model("Comment", Comment);
 
 export default CommentModel;
-
