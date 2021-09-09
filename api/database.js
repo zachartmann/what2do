@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
 import env from "./environment";
 
-export default function () {
-  const url = env.MONGODB_URI;
-  mongoose.connect(url).then(
-    () => {
-      console.log("Connection successful");
-    },
-    (err) => {
-      console.log(`Connection error ${err}`);
-    }
-  ); // may need to use createConnection
+export default async function () {
+  const url = env.dbUri;
+  try {
+    await mongoose.connect(url);
+    console.log("Connection successful");
+  } catch (err) {
+    console.log(`Connection error ${err}`);
+  }
 }
