@@ -4,9 +4,7 @@ import mongoose from "mongoose";
  * Schema definition
  */
 
-const Comment = new mongoose.Schema();
-
-Comment.add({
+const Comment = new mongoose.Schema({
   commentId: Number,
   comment: String,
   user: String,

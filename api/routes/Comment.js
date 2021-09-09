@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { OK } from "http-status-codes";
-import IdeaModel from "../models/ideaSchema";
+import CommentModel from "../models/commentSchema";
 
 const router = Router();
 
@@ -8,10 +8,20 @@ const router = Router();
  * GET: /items
  */
 
-router.get("/idea", async (req, res) => {
-  const ideaToCreate = new IdeaModel({});
-  ideaT;
-  return res.status(OK).json(items).end();
+router.post("/comment", async (req, res) => {
+  const commentToCreate = new CommentModel({
+    commentId: 123,
+    comment: Testing,
+    user: Test,
+  });
+  commentToCreate.save((err) => {
+    if (err) {
+        console.log("issue with the idea endpoint");
+    } else {
+        console.log("This idea endpoint worked");
+    }
+  });
+  return res.status(StatusCodes.OK).json("IT WORKED");
 });
 
 /**
