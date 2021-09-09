@@ -69,13 +69,13 @@ const Idea = ({ idea }) => {
               </div>
           </div>
         </div> 
-        <div className="content-container flex-container">
+        {/*<div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
               <div className="flex-compoment flex-70">
                 <input placeholder={idea.personComment}></input>
               </div>
           </div>
-        </div>   
+      </div>*/}   
       </div>
     </div>
   )
