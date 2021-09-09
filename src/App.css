@@ -24,6 +24,10 @@ input {
   width: 90%;
 }
 
+p.big {
+  font-size: large;
+}
+
 select {
   background-color: rgb(225, 225, 225);
   border: none;
@@ -32,8 +36,16 @@ select {
   padding-right: 20px;
 }
 
-svg.icon {
+svg.blue-icon {
   stroke: rgb(80, 80, 255);
+}
+
+.centered {
+  margin: auto;
+}
+
+.comment-icon {
+  margin-top: -12px;
 }
 
 .content {
@@ -71,6 +83,10 @@ svg.icon {
 
 .flex-70 {
   flex: 70%;
+}
+
+.flex-between {
+  justify-content: space-between;
 }
 
 .flex-end {
@@ -111,4 +127,9 @@ svg.icon {
 
 .info {
   padding-top: 3px;
+}
+
+.top {
+  padding-top: 0px;
+  margin-top: 0px;
 }
