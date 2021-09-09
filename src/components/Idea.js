@@ -20,7 +20,7 @@ const Idea = ({ idea }) => {
 
   return (
     <div className="content">
-      <div className="content-container">
+      <div className="content-container idea">
         <div className="content-container flex-container" style={{ paddingBottom: "0px" }}>
           <div className="flex-component flex-70">
             <h3>{idea.content}</h3>

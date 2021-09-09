@@ -129,6 +129,13 @@ svg.blue-icon {
   margin-left: 10px;
 }
 
+.idea {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .info {
   padding-top: 3px;
 }
