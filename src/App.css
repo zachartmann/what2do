@@ -84,6 +84,7 @@ svg.small {
 .footer {
   background-color: white;
   bottom: 0;
+  height: 80px;
   left: -15px;
   position: fixed;
   text-align: center;
