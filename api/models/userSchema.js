@@ -1,12 +1,9 @@
 import mongoose from "mongoose";
 
-
 /**
  * Schema definition
  */
-const User = new mongoose.Schema();
-
-User.add({
+export const User = new mongoose.Schema({
     name: String,
     password: String,
 });

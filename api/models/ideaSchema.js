@@ -1,18 +1,17 @@
 import mongoose from "mongoose";
-import { Schema } from "mongoose";
-import User from "./userSchema";
+import { User } from "./userSchema";
 /**
  * Schema definition
  */
- 
-const Idea = new Schema({
-    content: String,
-    upVotes: Number, 
-    downVotes: Number, 
-    upVoters: [User],
-    downVoters: [User],
-    pinned: Boolean,
-    user: String
+
+const Idea = new mongoose.Schema({
+  content: String,
+  upVotes: Number,
+  downVotes: Number,
+  upVoters: [User],
+  downVoters: [User],
+  pinned: Boolean,
+  user: String
 });
 
 /**
@@ -28,4 +27,5 @@ const Idea = new Schema({
  */
 
 const IdeaModel = mongoose.model("Idea", Idea);
+
 export default IdeaModel;
