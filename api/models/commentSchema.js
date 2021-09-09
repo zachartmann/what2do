@@ -27,4 +27,3 @@ Comment.add({
 const CommentModel = mongoose.model("Comment", Comment);
 
 export default CommentModel;
-

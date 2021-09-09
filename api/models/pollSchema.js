@@ -3,9 +3,7 @@ import mongoose from "mongoose";
 /**
  * Schema definition
  */
-const Poll = new mongoose.Schema();
-
-Poll.add({
+const Poll = new mongoose.Schema({
   pollId: Number,
   title: String,
   endDate: Date,
