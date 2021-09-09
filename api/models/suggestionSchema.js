@@ -4,7 +4,7 @@ import mongoose from "mongoose";
  * Schema definition
  */
 const Suggestion = new mongoose.Schema({
-  suggestionId: Number,
+  _id: Number,
   suggestion: String,
   category: String
 });
