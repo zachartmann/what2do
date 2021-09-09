@@ -9,19 +9,25 @@ const router = Router();
  */
 
 router.post("/createSuggestion", async (req, res) => {
-  //const suggestion = await suggestionModel({});
-  let sug = new SuggestionModel({
-    Suggestion: answer,
-    Category: cat,
+
+  let suggestionToCreate = new SuggestionModel({
+    suggestionId: 1,
+    suggestion: var1, //To be defined
+    category: var2, //To be defined
   });
-  sug.save((err) => {
+  
+  suggestionToCreate.save((err) => {
     if (err) {
-      console.log("SUGGESTIONS NOT WORKING BOI");
+      console.log("Suggestion was not able to be created");
     } else {
-      console.log("SUGGESTIONS WORKING BOI");
+      console.log("Sample suggestion succesfully created");
     }
   });
-  return res.status(OK).json("SUGGESTIONS BOI");
+  return res.status(OK).json("SUGGESTIONS WORKING BOI");
+});
+
+router.post("/getSuggestion", async (req, res) => {
+  //Endpoint which will be used to fetch relevant suggestions from database
 });
 
 /**
