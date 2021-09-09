@@ -18,18 +18,11 @@ const PollPage = () => {
 
   return (
     <div className="App">
-      <Header />
-      <div className="content">
-        <IdeaSubmission />
-      </div>
-      <div className="content">
-        {/* Sorting */}
-        <Ideas />
-      </div>
-      <div className="content">
-        <p style={{ color: "red" }}>Buy me a coffee! &gt;:(</p>
-      </div>
-      </div>
+      <Header pollId={pollId} />
+      <IdeaSubmission />
+      {/* Sorting */}
+      <Ideas />
+    </div>
   );
 };
 
