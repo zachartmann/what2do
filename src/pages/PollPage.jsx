@@ -26,10 +26,7 @@ const PollPage = () => {
         {/* Sorting */}
         <Ideas />
       </div>
-      <div className="content">
-        <p style={{ color: "red" }}>Buy me a coffee! &gt;:(</p>
-      </div>
-      </div>
+    </div>
   );
 };
 
