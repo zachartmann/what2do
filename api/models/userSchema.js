@@ -5,7 +5,7 @@ import mongoose from "mongoose";
  */
 export const User = new mongoose.Schema({
     name: String,
-    password: String,
+    password: String
 });
 
 /**

@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 const Comment = new mongoose.Schema({
   commentId: Number,
   comment: String,
-  user: String,
+  user: String
 });
 
 /**

@@ -8,7 +8,7 @@ const Template = new mongoose.Schema({
   category: String,
   theme: String,
   timeLimit: Number,
-  ideaIds: [Number],
+  ideaIds: [Number]
 });
 
 /**
