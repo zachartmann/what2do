@@ -42,7 +42,7 @@ const Idea = ({ idea }) => {
           </div>
         </div>
         <div className="content-container flex-container">
-        <div className="flex-component flex-30 flex-between">
+        <div className="flex-component flex-80 flex-between">
           <p className="small top idea-small-details">{idea.user || "Anon"}</p>
           <p className="small top idea-small-details">1 minute ago</p>
           </div>
@@ -61,13 +61,13 @@ const Idea = ({ idea }) => {
                   />
 
         })} */}
-      </div>
-      <div className="content-container flex-container">
-      <div className="flex-component flex-70 flex-container">
-            <div className="flex-compoment flex-70">
-              <input placeholder="Insert Comment"></input>
-            </div>
+        <div className="content-container flex-container">
+          <div className="flex-component flex-70 flex-container">
+              <div className="flex-compoment flex-70">
+                <input placeholder="Insert Comment"></input>
+              </div>
           </div>
+        </div>  
       </div>
     </div>
   )
