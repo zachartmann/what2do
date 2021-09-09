@@ -11,6 +11,7 @@ import Idea from "./Idea"
     const ideas = [
       {
       content: "Let's create an idea that has a comment box",
+      personComment: "This comment has been written by Juanita",
       upVotes: 100,
       downVotes: 2,
       upVoters: [

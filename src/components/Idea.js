@@ -1,6 +1,7 @@
-import React from "react";
+import React from "react"; 
 
 const Idea = ({ idea }) => {
+  //const comment="This is a sample comment written by Juanita"
 
   // Downvoted
   // -  Stroke red
@@ -67,7 +68,14 @@ const Idea = ({ idea }) => {
                 <input placeholder="Insert Comment"></input>
               </div>
           </div>
-        </div>  
+        </div> 
+        <div className="content-container flex-container">
+          <div className="flex-component flex-70 flex-container">
+              <div className="flex-compoment flex-70">
+                <input placeholder={idea.personComment}></input>
+              </div>
+          </div>
+        </div>   
       </div>
     </div>
   )
