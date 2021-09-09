@@ -6,6 +6,7 @@ import {
 import Header from "../components/Header";
 import IdeaSubmission from "../components/IdeaSubmission";
 import Ideas from "../components/Ideas";
+import Comment from "../components/Comment";
 
 const PollPage = () => {
 
@@ -22,6 +23,8 @@ const PollPage = () => {
       <IdeaSubmission />
       {/* Sorting */}
       <Ideas />
+      {/* Display config in Comment.js for Comment section */}
+      <Comment />
     </div>
   );
 };
