@@ -1,7 +1,7 @@
 import React from "react";
 
 const Ideas = () => {
-  const ideas = []
+  // const ideas = []
   return (
     <>
       {/* {ideas.map(idea => {
