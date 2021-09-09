@@ -28,6 +28,10 @@ p.big {
   font-size: large;
 }
 
+p.small {
+  font-size: small;
+}
+
 select {
   background-color: rgb(225, 225, 225);
   border: none;
@@ -132,4 +136,8 @@ svg.blue-icon {
 .top {
   padding-top: 0px;
   margin-top: 0px;
+}
+
+.idea-small-details {
+  margin-top: -40px;
 }

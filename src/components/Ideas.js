@@ -33,8 +33,24 @@ const Ideas = () => {
           password: ""
         }
       ],
-      pinned: true,
+      pinned: false,
       user: "Zac"
+    },
+    {
+      content: "Let's go to the zoo",
+      upVotes: 90,
+      downVotes: 23,
+      upVoters: [
+        // All anonymous
+      ],
+      downVoters: [
+        {
+          name: "Zoo-hater",
+          password: ""
+        }
+      ],
+      pinned: true,
+      user: ""
     }
   ]
   return (

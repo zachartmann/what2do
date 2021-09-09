@@ -19,13 +19,9 @@ const PollPage = () => {
   return (
     <div className="App">
       <Header pollId={pollId} />
-      <div className="content">
-        <IdeaSubmission />
-      </div>
-      <div className="content">
-        {/* Sorting */}
-        <Ideas />
-      </div>
+      <IdeaSubmission />
+      {/* Sorting */}
+      <Ideas />
     </div>
   );
 };
