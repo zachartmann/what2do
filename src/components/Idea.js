@@ -43,7 +43,7 @@ const Idea = ({ idea }) => {
           </div>
         </div>
         <div className="content-container flex-container">
-        <div className="flex-component flex-80 flex-between">
+        <div className="flex-component flex-70 flex-between">
           <p className="small top idea-small-details">{idea.user || "Anon"}</p>
           <p className="small top idea-small-details">1 minute ago</p>
           </div>
