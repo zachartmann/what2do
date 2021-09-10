@@ -11,7 +11,6 @@ const router = Router();
 router.post("/createSuggestion", async (req, res) => {
 
   let suggestionToCreate = new SuggestionModel({
-    suggestionId: 1,
     suggestion: var1, //To be defined
     category: var2, //To be defined
   });
