@@ -23,7 +23,7 @@ const CreatePollPage = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header pollId="" />
       <div className="content">
         <div className="content-container">
           <div className="content-container">

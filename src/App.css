@@ -6,6 +6,7 @@ button {
   border-radius: 5px;
   border: none;
   color: white;
+  font-weight: bold;
   height: 40px;
   transition-duration: 0.2s;
   width: 100px;
@@ -23,6 +24,14 @@ input {
   width: 90%;
 }
 
+p.big {
+  font-size: large;
+}
+
+p.small {
+  font-size: small;
+}
+
 select {
   background-color: rgb(225, 225, 225);
   border: none;
@@ -31,11 +40,23 @@ select {
   padding-right: 20px;
 }
 
+svg.blue-icon {
+  stroke: rgb(80, 80, 255);
+}
+
+.centered {
+  margin: auto;
+}
+
+.comment-icon {
+  margin-top: -12px;
+}
+
 .content {
   background-color: rgb(240, 240, 240);
   border-radius: 10px;
   margin: auto;
-  width: 30%;
+  width: 25%;
 }
 
 .content-container {
@@ -68,25 +89,62 @@ select {
   flex: 70%;
 }
 
+.flex-between {
+  justify-content: space-between;
+}
+
 .flex-end {
   justify-content: flex-end;
 }
 
+.flex-start {
+  justify-content: flex-start;
+}
+
 .header {
-  background-color: rgb(0, 150, 255);
-  color: white;
-  padding: 10px;
+  align-items: center;
+  background-color: rgb(75, 180, 255);
+  color: black;
+  display: grid;
+  place-items: center;
   margin-bottom: 30px;
-  text-align: center;
+  padding: 10px;
   width: 100%;
 }
 
+.header > p > * {
+  margin-left: 15px;
+}
+
+.header-icon {
+  background-color: rgb(255, 255, 200);
+  border-radius: 100%;
+  padding: 2px;
+  vertical-align: middle;
+}
+
 .icon {
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   margin-left: 10px;
+}
+
+.idea {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .info {
   padding-top: 3px;
+}
+
+.top {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.idea-small-details {
+  margin-top: -40px;
 }
