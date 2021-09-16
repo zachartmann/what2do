@@ -25,7 +25,6 @@ const PollPage = () => {
       <IdeaSubmission />
       {/* Sorting */}
       <Ideas />
-      {/* Display config in Comment.js for Comment section */}
       <CommentSubmission />
       <div className="content">
         <Footer />

@@ -1,7 +1,5 @@
 import React from "react";
 
-// import Comments from "./Comment"
-
 const Idea = ({ idea }) => {
 
   // Downvoted
@@ -70,7 +68,6 @@ const Idea = ({ idea }) => {
                   />
 
         })} */}
-        {/*<Comments/>*/}
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
             <div className="flex-compoment flex-70">

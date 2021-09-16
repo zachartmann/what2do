@@ -2,6 +2,10 @@ import React from "react";
 
 const Comment = ({ comment }) => {
 
+    function sayHello() {
+        alert('You clicked me!');
+    }
+
     return (
         <div className="content-container idea">
         <div className="content-container flex-container">
@@ -17,6 +21,12 @@ const Comment = ({ comment }) => {
                 <input placeholder={comment.commentInput}></input>
             </div>
             </div>
+        </div>
+        <div class="buttontest">
+            <button onclick="create()">Add</button>
+        </div>
+        <div class="clickbuttonpopuphappens">
+                <button onClick={sayHello}>Default</button>
         </div>
         </div>
     )  
