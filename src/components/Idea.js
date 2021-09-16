@@ -1,7 +1,6 @@
 import React from "react";
 
 const Idea = ({ idea }) => {
-  //const comment="This is a sample comment written by Juanita"
 
   // Downvoted
   // -  Stroke red
