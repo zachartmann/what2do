@@ -181,3 +181,7 @@ svg.small {
 .idea-small-details {
   margin-top: -40px;
 }
+
+.itembox {
+  border: 1px solid black;
+}

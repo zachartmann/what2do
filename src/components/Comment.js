@@ -1,9 +1,11 @@
 import React from "react";
+//import CommentBox from "../components/CommentBox";
+
 
 const Comment = ({ comment }) => {
 
-    function sayHello() {
-        alert('You clicked me!');
+    function buttonPopup() {
+        alert('You clicked this button!');
     }
 
     return (
@@ -22,12 +24,11 @@ const Comment = ({ comment }) => {
             </div>
             </div>
         </div>
-        <div class="buttontest">
-            <button onclick="create()">Add</button>
-        </div>
         <div class="clickbuttonpopuphappens">
-                <button onClick={sayHello}>Default</button>
+                <button onClick={buttonPopup}>ButtonClick</button>
         </div>
+        {/*}
+        < CommentBox />*/}
         </div>
     )  
 }
