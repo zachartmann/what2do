@@ -10,7 +10,7 @@ import Comment from "./Comment"
 
     const comments = [
       {
-      comment: "This is a persons comments",
+      commentInput: "This is a persons comments",
       user: "Juanita",
     }
   ]

@@ -1,5 +1,7 @@
 import React from "react";
 
+// import Comments from "./Comment"
+
 const Idea = ({ idea }) => {
 
   // Downvoted
@@ -68,6 +70,7 @@ const Idea = ({ idea }) => {
                   />
 
         })} */}
+        {/*<Comments/>*/}
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
             <div className="flex-compoment flex-70">
@@ -75,13 +78,6 @@ const Idea = ({ idea }) => {
             </div>
           </div>
         </div>
-        {/*<div className="content-container flex-container">
-          <div className="flex-component flex-70 flex-container">
-              <div className="flex-compoment flex-70">
-                <input placeholder={idea.personComment}></input>
-              </div>
-          </div>
-      </div>*/}
       </div>
     </div>
   )
