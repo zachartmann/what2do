@@ -1,32 +1,52 @@
 import { Router } from "express";
-import { OK } from "http-status-codes";
+import { StausCodes } from "http-status-codes";
 import CommentModel from "../models/commentSchema";
 
 const router = Router();
 
 /**
- * GET: /items
+ * GET: /comments
+ */
+
+router.get("/comment", async (req, res) => {
+  
+}
+
+
+/**
+ * POST: /comments
  */
 
 router.post("/comment", async (req, res) => {
-  const commentToCreate = new CommentModel({
-    commentId: 123,
-    comment: Testing,
-    user: Test,
-  });
+  const { commentId, comment, user } = req.query;
+  let commentToCreate;
+
+  if (req.query) {
+    commentToCreate = new CommentModel({
+      commentId,
+      comment,
+      user,
+    });
+  } else {
+    commentToCreate = new CommentModel({
+      commentId: 1,
+      comment: Testing,
+      user: Test,
+    });
+  }
+
   commentToCreate.save((err) => {
     if (err) {
       console.log("issue with the comment endpoint");
+      return res.status(StausCodes.OK).json(commentToCreate);
     } else {
       console.log("This comment endpoint worked");
     }
   });
-  return res.status(StatusCodes.OK).json("The comment posted succesfully");
-});
 
-/**
- * POST: /item (DEVELOPMENT BUILD ONLY)
- */
-router.post("/..", async (req, res) => {});
+  return res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .json("Unable to save comment record");
+});
 
 export default router;
