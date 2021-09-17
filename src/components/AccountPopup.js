@@ -1,8 +1,14 @@
 import React from "react";
 
-const AccountPopup = () => {
+const AccountPopup = ({ hidden }) => {
+
+  let topClasses = "content popup account-popup";
+  if (hidden) {
+    topClasses += " hidden";
+  }
+
   return (
-    <div className="content popup account-popup hidden">
+    <div className={topClasses}>
       <div className="content-container">
         <div className="content-container">
           <h3 className="centered">Signed in as '<em>Zacaz</em>'</h3>

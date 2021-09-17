@@ -52,7 +52,7 @@ const CreatePollPage = () => {
           <div className="content-container flex-container">
             <div className="flex-component flex-70">
               <IncludeName />
-              <Info text="Give us your details." />
+              <Info />
             </div>
             <div className="flex-component flex-30 flex-end">
               <button>Send</button>

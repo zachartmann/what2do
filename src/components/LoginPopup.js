@@ -1,8 +1,14 @@
 import React from "react";
 
-const LoginPopup = () => {
+const LoginPopup = ({ hidden }) => {
+
+  let topClasses = "content popup login-popup";
+  if (hidden) {
+    topClasses += " hidden";
+  }
+
   return (
-    <div className="content popup login-popup hidden">
+    <div className={topClasses}>
       <div className="content-container">
         <div className="content-container">
           <h3>Login (optional)</h3>
