@@ -16,11 +16,19 @@ steps:
     displayName: "Install Node.js"
 
   - script: |
-      yarn
-      yarn test --if-present
-      yarn build --if-present
+    yarn
+    cd api
+    yarn
+  displayName: "Install dependencies for React & API"
+
+  - script: |
+      yarn test
       cd api
-      yarn
-      yarn test --if-present
-      yarn build --if-present
-    displayName: "yarn install and build for react & api"
+      yarn test
+    displayName: "Run unit tests"
+
+  - script: |
+    yarn build
+    cd api
+    yarn build
+  displayName: "Build React & API"
