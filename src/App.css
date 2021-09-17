@@ -46,6 +46,7 @@ svg.blue-icon {
 
 .centered {
   margin: auto;
+  text-align: center;
 }
 
 .comment-icon {
@@ -79,6 +80,10 @@ svg.blue-icon {
   display: flex;
   flex: auto;
   justify-content: flex-start;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .flex-30 {
@@ -123,6 +128,10 @@ svg.blue-icon {
   vertical-align: middle;
 }
 
+.hidden {
+  display: none;
+}
+
 .icon {
   height: 30px;
   width: 30px;
@@ -147,4 +156,27 @@ svg.blue-icon {
 
 .idea-small-details {
   margin-top: -40px;
+}
+
+.inverted-button {
+  background-color: white;
+  color: rgb(0, 150, 255);
+}
+
+.popup {
+  position: absolute;
+  border: 1px solid black;
+}
+
+.account-popup {
+  left: 44%;
+}
+
+.login-popup {
+  left: 20px;
+}
+
+.info-popup {
+  font-size: small;
+  transform: translate(35%, 0%);
 }
