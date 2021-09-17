@@ -5,28 +5,49 @@ import CommentModel from "../models/commentSchema";
 const router = Router();
 
 /**
- * GET: /items
+ * GET: /comments
  */
 
-router.post("/comment", async (req, res) => {
-  const commentToCreate = new CommentModel({
-    commentId: 123,
-    comment: Testing,
-    user: Test,
-  });
-  commentToCreate.save((err) => {
-    if (err) {
-        console.log("issue with the idea endpoint");
-    } else {
-        console.log("This idea endpoint worked");
-    }
-  });
-  return res.status(StatusCodes.OK).json("IT WORKED");
+router.get("/comments", async (req, res) => {
+  const comments = await CommentModel.find({});
+
+  return res.status(StatusCodes.OK).json(comments);
 });
 
 /**
- * POST: /item (DEVELOPMENT BUILD ONLY)
+ * POST: /comments
  */
-router.post("/..", async (req, res) => {});
+
+router.post("/comments", async (req, res) => {
+  const { commentId, comment, user } = req.query;
+  let commentToCreate;
+
+  if (req.query) {
+    commentToCreate = new CommentModel({
+      commentId,
+      comment,
+      user,
+    });
+  } else {
+    commentToCreate = new CommentModel({
+      commentId: 1,
+      comment: "Testing this as a comment this as a comment",
+      user: "Testuser",
+    });
+  }
+
+  commentToCreate.save((err) => {
+    if (err) {
+      console.log("issue with the comment endpoint");
+      return res.status(StausCodes.OK).json(commentToCreate);
+    } else {
+      console.log("This comment endpoint worked");
+    }
+  });
+
+  return res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .json("Unable to save comment record");
+});
 
 export default router;

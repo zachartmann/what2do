@@ -197,4 +197,9 @@ svg.small {
   margin-right: 0;
 }
 
+.hidden {
+  overflow: hidden;
+  opacity: 0;
+}
+
 

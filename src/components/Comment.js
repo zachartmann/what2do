@@ -1,6 +1,5 @@
 import React from "react";
 //import CommentBox from "../components/CommentBox";
-
 const Comment = ({ comment }) => {
 
     function buttonPopup() {
