@@ -182,7 +182,19 @@ svg.small {
   margin-top: -40px;
 }
 
-.itembox {
-  border: 1px solid black;
+.commentbox {
+  width: 600px;
+  border: 2px solid rgb(240, 240, 240);
+  padding: auto;
+  margin: 10px;
 }
+
+.comment {
+  /* make the border colour red so can see where the box padding is when testing */
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 
