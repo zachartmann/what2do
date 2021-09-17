@@ -14,18 +14,16 @@ router.post("/suggestion", async (req, res) => {
 
   if (req.body) {
     suggestionToCreate;
- new SuggestionModel({
+    new SuggestionModel({
       suggestion,
       category,
-    });  }
-  / else {
-    suggestionToCreate = new SuggestionModel({
-
     });
+  } else {
+    suggestionToCreate = new SuggestionModel({});
   }
 
   try {
-    console.log(suggestionToCreate)
+    console.log(suggestionToCreate);
     suggestionToCreate.save((err) => {
       if (err) {
         console.log("Suggestion was not able to be created");
@@ -34,22 +32,11 @@ router.post("/suggestion", async (req, res) => {
         console.log("Suggestion created succesfully");
       }
     });
+  } catch (errResponse) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
   }
-
-
-    Suggestion: answer,
-    Category: cat,
-  });
-  sug.save((err) => {
-    if (err) {
-      console.log("SUGGESTIONS NOT WORKING BOI");
-    } else {
-      console.log("SUGGESTIONS WORKING BOI");
-    }
-  });
-  return res.status(OK).json("SUGGESTIONS BOI");
+  return res.status(StatusCodes.CREATED).json(suggestionToCreate);
 });
-
 /**
  * POST: /item (DEVELOPMENT BUILD ONLY)
  */

@@ -4,6 +4,7 @@ import Info from "../components/Info";
 
 const PollSubmission = (props) => {
   const [question, setQuestion] = useState("");
+  const [selectedTemplate, setSelectedTemplate] = useState("what2do");
   const templates = ["what2do", "what2play", "where2go"];
   const times = [
     "10 min",
@@ -27,10 +28,13 @@ const PollSubmission = (props) => {
     where2go: "Where should we go?",
   };
 
-  const [selectedTemplate, setSelectedTemplate] = useState("what2do");
-
   const changeTemplate = (event) => {
     setSelectedTemplate(event.target.value);
+  };
+
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    alert(`Submitting Question ${question}`);
   };
 
   return (
@@ -39,8 +43,8 @@ const PollSubmission = (props) => {
         <div className="content-container">
           <h3>What do you wantasdfasdf to ask?</h3>
         </div>
+        <form onSubmit={this.onSubmit}>
         <div className="content-container">
-          <form onSubmit={this.onSubmit}>
             <select
               name="template"
               id="template"
@@ -55,13 +59,15 @@ const PollSubmission = (props) => {
                 );
               })}
             </select>
-          </form>
         </div>
         <div className="content-container">
           <p>Question</p>
         </div>
         <div className="content-container">
-          <input placeholder={placeholders[selectedTemplate]} />
+          <input
+            placeholder={placeholders[selectedTemplate]}
+            onChange={e => setQuestion(e.target.value)}
+        />
         </div>
         <div className="content-container">
           <select name="template" id="template" defaultValue="1 day">
@@ -83,6 +89,8 @@ const PollSubmission = (props) => {
             <button>Send</button>
           </div>
         </div>
+        </form>
+
       </div>
     </div>
   );

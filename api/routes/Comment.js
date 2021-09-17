@@ -16,12 +16,12 @@ router.post("/comment", async (req, res) => {
   });
   commentToCreate.save((err) => {
     if (err) {
-        console.log("issue with the idea endpoint");
+      console.log("issue with the comment endpoint");
     } else {
-        console.log("This idea endpoint worked");
+      console.log("This comment endpoint worked");
     }
   });
-  return res.status(StatusCodes.OK).json("IT WORKED");
+  return res.status(StatusCodes.OK).json("The comment posted succesfully");
 });
 
 /**
