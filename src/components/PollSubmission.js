@@ -46,7 +46,6 @@ const PollSubmission = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // const pollId = Math.random().toString(36).substr(2, 5);
     const pollId = generatePollId();
     alert(
       `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
@@ -58,9 +57,8 @@ const PollSubmission = (props) => {
       question,
       new Date().getTime() + selectedDuration * 60000,
       selectedDuration,
-      "ideaId" /**/
+      "ideaId" /*TODO: initial ideas from template*/
     );
-    // requests.axios.post("yep"); // see requests file oo nice
   };
 
   return (

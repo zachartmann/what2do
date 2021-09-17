@@ -37,7 +37,7 @@ router.get("/comments/:id", async (req, res) => {
  * POST: /comments
  */
 
-router.post("/comments", async (req, res) => {
+router.post("/comment", async (req, res) => {
   const { commentId, comment, user } = req.query;
   let commentToCreate;
 

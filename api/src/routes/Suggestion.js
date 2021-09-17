@@ -12,11 +12,10 @@ router.get("/suggestions", async (req, res) => {
   let suggestions;
   if (!category) {
     suggestions = await SuggestionModel.find({});
-    return res.status(StatusCodes.OK).json(suggestions);
   } else {
     suggestions = await SuggestionModel.find({ Category: category }).exec();
-    return res.status(StatusCodes.OK).json(suggestions);
   }
+  return res.status(StatusCodes.OK).json(suggestions);
 });
 
 /**
