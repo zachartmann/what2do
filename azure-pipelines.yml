@@ -17,7 +17,10 @@ steps:
 
   - script: |
       yarn
+      yarn test --if-present
       yarn build --if-present
       cd api
       yarn
+      yarn test --if-present
+      yarn build --if-present
     displayName: "yarn install and build for react & api"

@@ -1,5 +1,5 @@
 import supertest from "supertest";
-import server from "../../server";
+import server from "../server";
 
 describe("Users endpoint", () => {
   it("Should return all polls", () => {
