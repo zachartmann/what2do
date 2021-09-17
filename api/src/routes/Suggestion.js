@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { OK } from "http-status-codes";
 import SuggestionModel from "../models/suggestionSchema";
-import { useLocation } from "react-router-dom";
 
 const router = Router();
 
@@ -9,25 +8,15 @@ const router = Router();
  * GET:
  */
 router.get("/suggestions", async (req, res) => {
-  const suggestions = await SuggestionModel.find({});
-
-  return res.status(StatusCodes.OK).json(suggestions);
-});
-
-// I think this should be query param (since it is filtering by category)
-// https://stackoverflow.com/questions/30967822/when-do-i-use-path-params-vs-query-params-in-a-restful-api
-// https://stackoverflow.com/questions/17007997/how-to-access-the-get-parameters-after-in-express
-router.get("/suggestions/:category", async (req, res) => {
-  const category = String(req.params.category);
+  const category = req.query.category;
+  let suggestions;
   if (!category) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json("Not a valid suggestion category");
+    suggestions = await SuggestionModel.find({});
+    return res.status(StatusCodes.OK).json(suggestions);
+  } else {
+    suggestions = await SuggestionModel.find({ Category: category }).exec();
+    return res.status(StatusCodes.OK).json(suggestions);
   }
-
-  const suggestions = await SuggestionModel.find({ Category: category });
-
-  return res.status(StatusCodes.OK).json(suggestions);
 });
 
 /**

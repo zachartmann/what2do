@@ -6,7 +6,7 @@ import { postPoll } from "../common/requests";
 const PollSubmission = (props) => {
   const [question, setQuestion] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState("what2do");
-  const [selectedDuration, setSelectedDuration] = useState("what2do");
+  const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
   const templates = ["what2do", "what2play", "where2go"];
   const times = [
     "10 min",
@@ -24,6 +24,7 @@ const PollSubmission = (props) => {
     "1 week",
     "2 weeks",
   ];
+  const timesTemp = ["10", "30", "60"];
   const placeholders = {
     what2do: "What should we do?",
     what2play: "What should we play?",
@@ -34,13 +35,31 @@ const PollSubmission = (props) => {
     setSelectedTemplate(event.target.value);
   };
 
+  function generatePollId() {
+    let pollId = "";
+    for (let i = 0; i < 4; i++) {
+      pollId += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    }
+    // TODO: check if poll ID already exists
+    return pollId;
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const pollId = Math.random().toString(36).substr(2, 5);
+    // const pollId = Math.random().toString(36).substr(2, 5);
+    const pollId = generatePollId();
     alert(
-      `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}`
+      `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
+        new Date().getTime() + selectedDuration * 60000
+      )}`
     );
-    postPoll(/* insert poll params here */);
+    postPoll(
+      pollId,
+      question,
+      new Date().getTime() + selectedDuration * 60000,
+      selectedDuration,
+      "ideaId" /**/
+    );
     // requests.axios.post("yep"); // see requests file oo nice
   };
 
@@ -84,7 +103,7 @@ const PollSubmission = (props) => {
               value={selectedDuration}
               onChange={(e) => setSelectedDuration(e.target.value)}
             >
-              {times.map((time) => {
+              {timesTemp.map((time) => {
                 return (
                   <option key={time} value={time}>
                     {time}
