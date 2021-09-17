@@ -12,7 +12,7 @@ button {
   width: 100px;
 }
 
-button:hover {
+button:hover, svg.button-icon:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
@@ -129,7 +129,8 @@ svg.blue-icon {
 }
 
 .hidden {
-  display: none;
+  overflow: hidden;
+  opacity: 0;
 }
 
 .icon {
@@ -170,6 +171,7 @@ svg.blue-icon {
 .popup {
   position: absolute;
   border: 1px solid black;
+  transition: all 150ms linear;
 }
 
 .account-popup {
@@ -177,7 +179,7 @@ svg.blue-icon {
 }
 
 .login-popup {
-  left: 20px;
+  left: 12%;
 }
 
 .info-popup {
