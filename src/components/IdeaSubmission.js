@@ -1,5 +1,8 @@
 import React from "react";
 
+import IncludeName from "./IncludeName";
+import Info from "./Info";
+
 const IdeaSubmission = () => {
   
   const timeLeft="9:58"
@@ -27,10 +30,10 @@ const IdeaSubmission = () => {
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-30 flex-container">
-              <button>Include Name</button>
-              <svg className="h-6 w-6 icon blue-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+            <div className="flex-component flex-70">
+              <IncludeName />
+              <Info />
+            </div>
           </div>
           <div className="flex-component flex-70 flex-end">
             <p><b>Time left:</b> {timeLeft}</p>
