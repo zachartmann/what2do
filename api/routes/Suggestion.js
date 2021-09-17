@@ -8,9 +8,35 @@ const router = Router();
  * GET: /items
  */
 
-router.post("/createSuggestion", async (req, res) => {
-  //const suggestion = await suggestionModel({});
-  let sug = new SuggestionModel({
+router.post("/suggestion", async (req, res) => {
+  const { suggestion, category } = req.body;
+  let suggestionToCreate;
+
+  if (req.body) {
+    suggestionToCreate;
+ new SuggestionModel({
+      suggestion,
+      category,
+    });  }
+  / else {
+    suggestionToCreate = new SuggestionModel({
+
+    });
+  }
+
+  try {
+    console.log(suggestionToCreate)
+    suggestionToCreate.save((err) => {
+      if (err) {
+        console.log("Suggestion was not able to be created");
+        throw err;
+      } else {
+        console.log("Suggestion created succesfully");
+      }
+    });
+  }
+
+
     Suggestion: answer,
     Category: cat,
   });
