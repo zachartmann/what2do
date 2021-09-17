@@ -22,10 +22,10 @@ steps:
   displayName: "Install dependencies for React & API"
 
   - script: |
-      yarn test
-      cd api
-      yarn test
-    displayName: "Run unit tests"
+    yarn test
+    cd api
+    yarn test
+  displayName: "Run unit tests"
 
   - script: |
     yarn build
