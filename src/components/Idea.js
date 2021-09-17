@@ -1,5 +1,7 @@
 import React from "react";
 
+import CommentSubmission from "../components/CommentSubmission";
+
 const Idea = ({ idea }) => {
 
   // Downvoted
@@ -74,6 +76,9 @@ const Idea = ({ idea }) => {
               <input placeholder="Insert Comment"></input>
             </div>
           </div>
+        </div>
+        <div className="content-container flex-container">
+          < CommentSubmission />
         </div>
       </div>
     </div>
