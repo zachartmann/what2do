@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IncludeName from "../components/IncludeName";
 import Info from "../components/Info";
-import { postPoll } from "../common/requests";
+import { postPoll } from "../common/requests/Poll";
 
 const PollSubmission = (props) => {
   const [question, setQuestion] = useState("");
