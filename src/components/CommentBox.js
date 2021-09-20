@@ -4,8 +4,6 @@ function Card(props) {
   return (
     <div className="Card">
       <div className="Cardstyling">
-      Name: {props.name}
-      <br />
       Comment: {props.comment}
       </div>
       <div className="makinganewclass">
@@ -27,12 +25,11 @@ export default function App() {
     const temp = [
       ...sim,
       {
-        comment: components.comment,
-        name: components.name
+        comment: components.comment
       }
     ];
     setSim(temp);
-    setComponents({ comment: "", name: "" });
+    setComponents({ comment: "" });
   };
 
   const del = (comment) => {
@@ -45,21 +42,6 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="name">
-        {" "}
-        Name:
-        <input
-          type="text"
-          value={components.name}
-          onChange={(event) => {
-            const temp = {
-              ...components,
-              name: event.target.value
-            };
-            setComponents(temp);
-          }}
-        />
-      </div>
       <br />
 
       <br />
@@ -90,7 +72,6 @@ export default function App() {
         return (
           <Card
             comment={element.comment}
-            name={element.name}
             delete={del}
           />
         );
