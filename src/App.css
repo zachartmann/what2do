@@ -202,4 +202,12 @@ svg.small {
   opacity: 0;
 }
 
-
+.Card {
+  background-color: maroon;
+  color: yellow;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5rem;
+  margin: 1rem;
+  /* text-align: center; */
+}

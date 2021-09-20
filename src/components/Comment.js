@@ -1,5 +1,6 @@
 import React from "react";
-//import CommentBox from "../components/CommentBox";
+import CommentBox from "../components/CommentBox";
+
 const Comment = ({ comment }) => {
 
     function buttonPopup() {
@@ -29,8 +30,7 @@ const Comment = ({ comment }) => {
             <div class="clickbuttonpopuphappens">
                     <button onClick={buttonPopup}>ButtonClick</button>
             </div>
-            {/*}
-            < CommentBox />*/}
+            < CommentBox />
             </div>
         </div>
     )  
