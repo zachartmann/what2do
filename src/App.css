@@ -224,3 +224,13 @@ svg.small {
   border: 1px solid black;
   border-radius: 10px;
 }
+
+.makinganewclass {
+  padding: auto;
+  margin: 10px;
+  margin-left: 5;
+}
+
+.Cardstyling {
+  margin: 5px;
+}
