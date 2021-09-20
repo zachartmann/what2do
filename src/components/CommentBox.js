@@ -14,7 +14,7 @@ function Card(props) {
   );
 }
 
-export default function App() {
+export default function Appp() {
   const [sim, setSim] = useState([]);
   const [components, setComponents] = useState({
     comment: "",
@@ -74,11 +74,13 @@ export default function App() {
         }}
       />
       <br />
-      Write your comments here:
+
       <br />
-      <textarea
-        rows="15"
-        cols="25"
+      <textarea id="stylecomment"
+        rows="4"
+        cols="52"
+        input placeholder="Enter your comment for the idea"
+        maxlength="150"
         value={components.comment}
         onChange={(event) => {
           const temp = {

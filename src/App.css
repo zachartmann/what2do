@@ -217,3 +217,10 @@ svg.small {
   width: auto;
   padding: auto;
 }
+
+#stylecomment {
+  resize: none;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid black;
+  border-radius: 10px;
+}
