@@ -7,7 +7,7 @@ function Card(props) {
       Comment: {props.comment}
       </div>
       <div className="makinganewclass">
-      <button onClick={() => props.delete(props.comment)}>Delete</button>
+      <button id="buttonid" onClick={() => props.delete(props.comment)}>Delete</button>
       </div>
       <br />
     </div>

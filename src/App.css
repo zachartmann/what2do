@@ -203,34 +203,46 @@ svg.small {
 }
 
 .Card {
-  background-color: rgb(240, 240, 240);
-  border: 1px solid black;
+  background-color: rgb(225, 225, 225);
+  border: none;
   color: black;
   height: fit-content;
-  /*width: fit-content;
-  /*padding: 0.5rem;
-  margin: 1rem;*/
-  border-radius: 10px;
+  border-radius: 5px;
   margin-left: 0;
   margin-right: 0;
+  padding: 10px;
   margin: 10px;
   width: auto;
-  padding: auto;
+  margin-bottom: 5px;
 }
 
 #stylecomment {
   resize: none;
-  background-color: rgb(240, 240, 240);
-  border: 1px solid black;
-  border-radius: 10px;
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .makinganewclass {
   padding: auto;
   margin: 10px;
   margin-left: 5;
+  margin-bottom: -5px;
 }
 
 .Cardstyling {
   margin: 5px;
+}
+
+#buttonid {
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: green;
+  font-weight: bold;
+  transition-duration: 0.2s;
+  width: 100px;
+  margin-bottom: -5px;
 }
