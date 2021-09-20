@@ -5,8 +5,6 @@ function Card(props) {
     <div className="Card">
       Name: {props.name}
       <br />
-      Address: {props.address}
-      <br />
       Comment: {props.comment}
       <button onClick={() => props.delete(props.comment)}>Delete</button>
       <br />
@@ -14,12 +12,12 @@ function Card(props) {
   );
 }
 
-export default function Appp() {
+export default function App() {
   const [sim, setSim] = useState([]);
   const [components, setComponents] = useState({
     comment: "",
     name: "",
-    address: ""
+    //address: ""
   });
 
   const handleComment = () => {
@@ -27,12 +25,11 @@ export default function Appp() {
       ...sim,
       {
         comment: components.comment,
-        name: components.name,
-        address: components.address
+        name: components.name
       }
     ];
     setSim(temp);
-    setComponents({ comment: "", name: "", address: "" });
+    setComponents({ comment: "", name: "" });
   };
 
   const del = (comment) => {
@@ -60,19 +57,6 @@ export default function Appp() {
           }}
         />
       </div>
-      <br />
-      Address:
-      <input
-        type="text"
-        value={components.address}
-        onChange={(event) => {
-          const temp = {
-            ...components,
-            address: event.target.value
-          };
-          setComponents(temp);
-        }}
-      />
       <br />
 
       <br />
@@ -104,7 +88,6 @@ export default function Appp() {
           <Card
             comment={element.comment}
             name={element.name}
-            address={element.address}
             delete={del}
           />
         );
