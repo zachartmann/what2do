@@ -203,11 +203,17 @@ svg.small {
 }
 
 .Card {
-  background-color: maroon;
-  color: yellow;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid black;
+  color: black;
   height: fit-content;
-  width: fit-content;
-  padding: 0.5rem;
-  margin: 1rem;
-  /* text-align: center; */
+  /*width: fit-content;
+  /*padding: 0.5rem;
+  margin: 1rem;*/
+  border-radius: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  margin: 10px;
+  width: auto;
+  padding: auto;
 }
