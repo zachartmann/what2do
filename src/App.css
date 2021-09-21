@@ -225,6 +225,7 @@ svg.small {
   border: none;
   border-radius: 5px;
   padding: 10px;
+  margin: 10px;
 }
 
 .makinganewclass {
@@ -248,4 +249,9 @@ svg.small {
   transition-duration: 0.2s;
   width: 100px;
   margin-bottom: -5px;
+}
+
+.Commentoverall {
+  /* red outline is so can see where the div is for testing */
+  border: 1px solid red;
 }
