@@ -7,7 +7,7 @@ function Card(props) {
       Comment: {props.comment}
       <br>
       </br>
-      User Account: Juanita
+      User Account: Juanita 
       </div>
       <div className="makinganewclass">
       <button id="buttonid" onClick={() => props.delete(props.comment)}>Delete</button>
