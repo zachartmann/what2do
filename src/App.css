@@ -252,6 +252,6 @@ svg.small {
 }
 
 .Commentoverall {
-  /* red outline is so can see where the div is for testing */
-  border: 1px solid red;
+  width: 450px;
 }
+

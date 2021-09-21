@@ -45,6 +45,7 @@ export default function App() {
       <br />
 
       <br />
+      <div className="flex-component flex-70 flex-container">
       <textarea id="stylecomment"
         rows="3"
         cols="52"
@@ -59,8 +60,6 @@ export default function App() {
           setComponents(temp);
         }}
       />
-      <br />
-      <br />
       <button
         onClick={() => {
           handleComment();
@@ -68,6 +67,7 @@ export default function App() {
       >
         Add comment
       </button>
+      </div>
       {sim.map((element) => {
         return (
           <Card
