@@ -5,6 +5,9 @@ function Card(props) {
     <div className="Card">
       <div className="Cardstyling">
       Comment: {props.comment}
+      <br>
+      </br>
+      User Account: Juanita
       </div>
       <div className="makinganewclass">
       <button id="buttonid" onClick={() => props.delete(props.comment)}>Delete</button>
@@ -14,11 +17,10 @@ function Card(props) {
   );
 }
 
-export default function App() {
+export default function Commentbox() {
   const [sim, setSim] = useState([]);
   const [components, setComponents] = useState({
     comment: "",
-    name: "",
   });
 
   const handleComment = () => {
