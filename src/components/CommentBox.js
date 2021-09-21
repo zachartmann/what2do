@@ -19,6 +19,8 @@ function Card(props) {
 
 export default function Commentbox() {
   const [sim, setSim] = useState([]);
+  const [count, setCount] = useState(0);
+  const increment = () => setCount(count + 1);
   const [components, setComponents] = useState({
     comment: "",
   });
@@ -70,6 +72,8 @@ export default function Commentbox() {
         Add comment
       </button>
       </div>
+      <div>Counter: {count}</div>
+      <button onClick={increment}>Increment</button>
       {sim.map((element) => {
         return (
           <Card
