@@ -46,10 +46,10 @@ export default function App() {
 
       <br />
       <textarea id="stylecomment"
-        rows="4"
+        rows="3"
         cols="52"
         input placeholder="Enter your comment for the idea"
-        maxlength="150"
+        maxlength="145"
         value={components.comment}
         onChange={(event) => {
           const temp = {

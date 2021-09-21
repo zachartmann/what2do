@@ -187,6 +187,9 @@ svg.small {
   border: 2px solid rgb(240, 240, 240);
   padding: auto;
   margin: 10px;
+  /*trying to make the comments not exceed the width*/
+  inline-size: min-content;
+  overflow-wrap: break-word;
 }
 
 .comment {
