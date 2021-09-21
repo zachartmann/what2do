@@ -13,13 +13,6 @@ const Comment = ({ comment }) => {
             <div className="content-container flex-container">
                 <div className="flex-component flex-70 flex-container">
                 <div className="flex-compoment flex-30">
-                    <input placeholder="Enter your comment"></input>
-                </div>
-                </div>
-            </div>
-            <div className="content-container flex-container">
-                <div className="flex-component flex-70 flex-container">
-                <div className="flex-compoment flex-30">
                     <input placeholder={comment.commentInput}></input>
                 </div>
                 <svg className="h-6 w-6 icon" xmlns="http://www.w3.org/2000/svg" fill="lightblue" viewBox="0 0 24 24" stroke="currentColor">
