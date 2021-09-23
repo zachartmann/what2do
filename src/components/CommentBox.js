@@ -7,7 +7,7 @@ function Card(props) {
       Comment: {props.comment}
       <br>
       </br>
-      User Account: Juanita 
+      User Account: Juanita
       </div>
       <div className="makinganewclass">
       <button id="buttonid" onClick={() => props.delete(props.comment)}>Delete</button>
@@ -72,7 +72,7 @@ export default function Commentbox() {
         Add comment
       </button>
       </div>
-      <div>Counter: {count}</div>
+      <div>Counter: {count} </div>
       <button onClick={increment}>Increment</button>
       {sim.map((element) => {
         return (
