@@ -2,6 +2,7 @@ import React from "react";
 
 import Comment from "./Comment"
 
+
 /* const Comment = ({ text, downvotes, upvotes }) => { */
   const Comments = () => {
 

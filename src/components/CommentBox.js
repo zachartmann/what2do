@@ -4,6 +4,7 @@ const CommentBox = ({ }) => {
   const [sim, setSim] = useState([]);
   const [count, setCount] = useState(0);
   const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
   const [components, setComponents] = useState({
     comment: "",
   });
@@ -27,6 +28,13 @@ const CommentBox = ({ }) => {
       setSim(newArr);
     };
 
+    /*if (document.getElementbyId('button').clicked == true)
+    {
+      return (
+      <button onClick={increment}>Comment counter</button>
+    )
+  }*/
+
   function Card(props) {
       return (
         <div className="Card">
@@ -43,6 +51,20 @@ const CommentBox = ({ }) => {
         </div>
       );
     }
+
+  /*function Number2() {
+    console.log('calling the second function trying to make this function do what button{increment} does')
+    const [count, setCount] = useState(0);
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+          Click me
+        </button>
+      </div>
+    );
+  }*/
 
     return (
       <div className="Commentoverall">
@@ -67,13 +89,16 @@ const CommentBox = ({ }) => {
         <button
           onClick={() => {
             handleComment();
+            /*Number2();*/
           }}
         >
-          Add comment
+          Add comment 
         </button>
         </div>
         <div>Counter: {count} </div>
-        <button onClick={increment}>Increment</button>
+        {/* is there a way to get these two functions in the same handleComments onClick}*/}
+        <button onClick={increment}>Comment Count</button>
+        <button onClick={decrement}>Comment Decrease</button>
         {sim.map((element) => {
           return (
             <Card
@@ -87,3 +112,4 @@ const CommentBox = ({ }) => {
 }   
 
 export default CommentBox;
+
