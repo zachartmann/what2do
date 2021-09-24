@@ -30,13 +30,6 @@ const CommentBox = ({ }) => {
       decrement();
     };
 
-    /*if (document.getElementbyId('button').clicked == true)
-    {
-      return (
-      <button onClick={increment}>Comment counter</button>
-    )
-  }*/
-
   function Card(props) {
       return (
         <div className="Card">
@@ -53,21 +46,7 @@ const CommentBox = ({ }) => {
         </div>
       );
     }
-
-  /*function Number2() {
-    console.log('calling the second function trying to make this function do what button{increment} does')
-    const [count, setCount] = useState(0);
-
-    return (
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>
-          Click me
-        </button>
-      </div>
-    );
-  }*/
-
+    
     return (
       <div className="Commentoverall">
         <br />
@@ -91,8 +70,6 @@ const CommentBox = ({ }) => {
         <button
           onClick={() => {
             handleComment();
-            /*increment();*/
-            /*Number2();*/
           }}
         >
           Add comment 
