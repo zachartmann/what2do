@@ -3230,6 +3230,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
 clean-css@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/clean-css/-/clean-css-4.2.3.tgz"
@@ -5397,6 +5402,11 @@ he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
+heroicons@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-1.0.4.tgz#58a9c5fafae7185fca79f8b47251484903e4dc0a"
+  integrity sha512-dn1OvwZruCNEmNDr+TRvG5MejL9kW4VtVQO2Y1yfp7rz0+yWqpkjwwFRTQ8VHBF26oNMMUofQYA+Jl363Y7JdA==
 
 hex-color-regex@^1.1.0:
   version "1.1.0"

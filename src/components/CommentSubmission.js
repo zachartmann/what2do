@@ -1,27 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
-import Comment from "./Comment"
+const CommentSubmission = ({ handleComment }) => {
 
-/* const Comment = ({ text, downvotes, upvotes }) => { */
-  const Comments = () => {
-
-    // Comment: String
-    // User: String 
-
-    const comments = [
-      {
-      comment: "This is a persons comments",
-      user: "Juanita",
-    }
-  ]
+  const [commentText, setCommentText] = useState("");
+  
+  const handleChange = (event) => {
+    setCommentText(event.target.value);
+  }
 
   return (
-    <>
-      {comments.map(comment => {
-        return <Comment comment={comment} />;
-      })}
-    </>
+    <div className="Commentoverall">
+      <br />
+
+      <br />
+      <div className="content-component">
+        <textarea id="stylecomment"
+          rows="3"
+          cols="52"
+          placeholder="Enter your comment for the idea"
+          maxlength="145"
+          value={commentText}
+          onChange={handleChange}
+        />
+        <button
+          onClick={() => handleComment(commentText)}
+        >
+          Add comment 
+        </button>
+      </div>
+    </div>
   )
 }     
    
-export default Comments;
+export default CommentSubmission;

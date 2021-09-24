@@ -1,16 +1,20 @@
 import React from "react";
 
-const Comment = ({ comment }) => {
-
-    return (
-        <div className="content-container flex-container">
-        <div className="flex-component flex-70 flex-container">
-          <div className="flex-compoment flex-70">
-            <input placeholder="Insert Comment"></input>
-          </div>
-        </div>
+const Comment = ({ commentInput, deleteComment }) => {
+  return (
+    <div className="Card">
+      <div className="Cardstyling">
+      Comment: {commentInput}
+      <br>
+      </br>
+      User Account: Juanita
       </div>
-    )  
+      <div className="makinganewclass">
+      <button id="buttonid" onClick={() => deleteComment(commentInput)}>Delete</button>
+      </div>
+      <br />
+    </div>
+  )
 }
 
 export default Comment;
