@@ -75,7 +75,7 @@ const CommentBox = ({ }) => {
           Add comment 
         </button>
         </div>
-        <div>Counter: {count} </div>
+        <div>Comment Counter: {count} </div>
         {sim.map((element) => {
           return (
             <Card
