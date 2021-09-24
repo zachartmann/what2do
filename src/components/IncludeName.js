@@ -16,7 +16,7 @@ const IncludeName = () => {
 
   return (
     <>
-      <button onClick={handleClick}>Include Name</button>
+      <button type="button" onClick={handleClick}>Include Name</button>
       <LoginPopup hidden={hidden}/>
     </>
   )

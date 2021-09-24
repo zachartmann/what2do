@@ -131,6 +131,7 @@ svg.blue-icon {
 .hidden {
   overflow: hidden;
   opacity: 0;
+  pointer-events: none;
 }
 
 .icon {

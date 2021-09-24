@@ -21,11 +21,11 @@ const LoginPopup = ({ hidden }) => {
         </div>
         <div className="flex-container">
           <div className="flex-component flex-70 flex-end">
-            <button>Confirm</button>
+            <button type="button">Confirm</button>
           </div>
           <div style={{ width: "10px" }}></div>
           <div className="flex-component flex-30">
-            <button className="inverted-button">Cancel</button>
+            <button type="button" className="inverted-button">Cancel</button>
           </div>
         </div>
       </div>
