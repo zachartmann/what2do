@@ -46,7 +46,7 @@ const CommentBox = ({ }) => {
         </div>
       );
     }
-    
+
     return (
       <div className="Commentoverall">
         <br />
@@ -76,9 +76,6 @@ const CommentBox = ({ }) => {
         </button>
         </div>
         <div>Counter: {count} </div>
-        {/* is there a way to get these two functions in the same handleComments onClick}*/}
-        <button onClick={increment}>Comment Count</button>
-        <button onClick={decrement}>Comment Decrease</button>
         {sim.map((element) => {
           return (
             <Card
