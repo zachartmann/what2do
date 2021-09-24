@@ -22,10 +22,15 @@ const CommentSubmission = ({ handleComment }) => {
           value={commentText}
           onChange={handleChange}
         />
-        <button
-          onClick={() => handleComment(commentText)}
+        <button 
+          onClick={() => {
+            if (commentText !== "") {
+              handleComment(commentText);
+              setCommentText("")
+            }
+          }}
         >
-          Add comment 
+        Add comment
         </button>
       </div>
     </div>
