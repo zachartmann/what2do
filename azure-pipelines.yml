@@ -17,7 +17,18 @@ steps:
 
   - script: |
       yarn
-      yarn build --if-present
       cd api
       yarn
-    displayName: "yarn install and build for react & api"
+    displayName: "Install dependencies for React & API"
+
+  - script: |
+      yarn test:ci
+      cd api
+      yarn test
+    displayName: "Run unit tests"
+
+  - script: |
+      yarn build
+      cd api
+      yarn build
+    displayName: "Build React & API"

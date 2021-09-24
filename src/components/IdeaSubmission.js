@@ -4,8 +4,7 @@ import IncludeName from "./IncludeName";
 import Info from "./Info";
 
 const IdeaSubmission = () => {
-  
-  const timeLeft="9:58"
+  const timeLeft = "9:58";
 
   return (
     <div className="content">
@@ -36,12 +35,14 @@ const IdeaSubmission = () => {
             </div>
           </div>
           <div className="flex-component flex-70 flex-end">
-            <p><b>Time left:</b> {timeLeft}</p>
+            <p>
+              <b>Time left:</b> {timeLeft}
+            </p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default IdeaSubmission;

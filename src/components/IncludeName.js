@@ -2,8 +2,12 @@ import React, { useState } from "react";
 
 import LoginPopup from "./LoginPopup";
 
-const IncludeName = () => {
+const handleClick = (evt) => {
+  evt.preventDefault();
+  alert(`Clicked Include Name`);
+};
 
+const IncludeName = () => {
   const [hidden, setHidden] = useState(true);
 
   const handleClick = () => {
