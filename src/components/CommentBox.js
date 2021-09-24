@@ -18,6 +18,7 @@ const CommentBox = ({ }) => {
       ];
       setSim(temp);
       setComponents({ comment: "" });
+      increment();
     };
   
     const del = (comment) => {
@@ -26,6 +27,7 @@ const CommentBox = ({ }) => {
         return element.comment !== comment;
       });
       setSim(newArr);
+      decrement();
     };
 
     /*if (document.getElementbyId('button').clicked == true)
@@ -89,6 +91,7 @@ const CommentBox = ({ }) => {
         <button
           onClick={() => {
             handleComment();
+            /*increment();*/
             /*Number2();*/
           }}
         >
