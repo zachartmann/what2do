@@ -1,91 +1,42 @@
 import React, { useState } from "react";
 
-const CommentBox = ({ }) => {
-  const [sim, setSim] = useState([]);
-  const [count, setCount] = useState(0);
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
-  const [components, setComponents] = useState({
-    comment: "",
-  });
+import CommentSubmission from "../components/CommentSubmission";
+import Comments from "../components/Comments.js";
 
-  const handleComment = () => {
-      const temp = [
-        ...sim,
-        {
-          comment: components.comment
-        }
-      ];
-      setSim(temp);
-      setComponents({ comment: "" });
+const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
+  // const [count, setCount] = useState(0);
+  const [comments, setComments] = useState([]);
+
+  const handleComment = (commentInput) => {
+      const tmpComment = {
+        commentInput: commentInput,
+        user: "Juanitaa",
+      }
+
+      setComments(comments.concat(tmpComment))
       increment();
     };
   
-    const del = (comment) => {
-      console.log(comment, "deleted");
-      const newArr = sim.filter((element) => {
-        return element.comment !== comment;
-      });
-      setSim(newArr);
-      decrement();
-    };
+  const deleteComment = (commentText) => {
+    const newComments = comments.filter(comment => {
+      return comment.commentInput !== commentText;
+    });
 
-  function Card(props) {
-      return (
-        <div className="Card">
-          <div className="Cardstyling">
-          Comment: {props.comment}
-          <br>
-          </br>
-          User Account: Juanita
-          </div>
-          <div className="makinganewclass">
-          <button id="buttonid" onClick={() => props.delete(props.comment)}>Delete</button>
-          </div>
-          <br />
-        </div>
-      );
-    }
+    setComments(newComments);
+    decrement();
+  };
 
-    return (
-      <div className="Commentoverall">
-        <br />
-  
-        <br />
-        <div className="flex-component flex-70 flex-container">
-        <textarea id="stylecomment"
-          rows="3"
-          cols="52"
-          input placeholder="Enter your comment for the idea"
-          maxlength="145"
-          value={components.comment}
-          onChange={(event) => {
-            const temp = {
-              ...components,
-              comment: event.target.value
-            };
-            setComponents(temp);
-          }}
-        />
-        <button
-          onClick={() => {
-            handleComment();
-          }}
-        >
-          Add comment 
-        </button>
-        </div>
-        <div>Comment Counter: {count} </div>
-        {sim.map((element) => {
-          return (
-            <Card
-              comment={element.comment}
-              delete={del}
-            />
-          );
-        })}
-      </div>
-    );
+  let classes="content-component"
+  if (hidden) {
+    classes += " hidden"
+  }
+
+  return (
+    <div className={classes}>
+      <CommentSubmission handleComment={handleComment} />
+      <Comments comments={comments} deleteComment={deleteComment} />
+    </div>
+  )
 }   
 
 export default CommentBox;

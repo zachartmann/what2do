@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import CommentSubmission from "../components/CommentSubmission";
+import CommentBox from "./CommentBox";
 
 const Idea = ({ idea }) => {
 
@@ -14,11 +14,28 @@ const Idea = ({ idea }) => {
 
   // Comment
   // -  Stroke .blue-icon
-  // -  Fill lightskyblue
+  // -  Fill white if not showing comments, otherwise lightskyblue
 
   // if (loggedInName in upVoters) {
   //   make it lime filled
   // }
+
+  const [hidden, setHidden] = useState(true);
+  const [commentCount, setCommentCount] = useState(0);
+
+  const incrementCommentCount = () => {
+    setCommentCount(commentCount + 1);
+  }
+
+  const decrementCommentCount = () => {
+    setCommentCount(commentCount - 1);
+  }
+
+  const toggleComments = () => {
+    setHidden(!hidden);
+  }
+
+  const commentFill = hidden ? "white" : "lightskyblue";
 
   return (
     <div className="content">
@@ -50,27 +67,23 @@ const Idea = ({ idea }) => {
           </div>
           <div className="flex-component flex-70 flex-end">
             {idea.pinned
-              ? <svg class="h-6 w-6 icon blue-icon comment-icon" xmlns="http://www.w3.org/2000/svg" fill="lightskyblue" viewBox="0 0 24 24">
+              ? <svg class="h-6 w-6 icon blue-icon" xmlns="http://www.w3.org/2000/svg" fill="lightskyblue" viewBox="0 0 24 24">
                 <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
               : null
             }
-            <svg class="h-6 w-6 icon blue-icon comment-icon" xmlns="http://www.w3.org/2000/svg" fill="lightskyblue" viewBox="0 0 24 24">
+            <svg onClick={toggleComments} class="h-6 w-6 icon blue-icon comment-icon" xmlns="http://www.w3.org/2000/svg" fill={commentFill} viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
             </svg>
-            <p className="top" style={{ paddingLeft: "7px" }}>0</p>
+            <p className="top" style={{ paddingLeft: "7px" }}>{commentCount}</p>
           </div>
         </div>
-        {/* {comments.map(comment => {
-          return <Comment
-                    text={comment.text}
-                    downvotes={comment.downvotes}
-                    upvotes={comment.upvotes}
-                  />
-
-        })} */}
-        <div className="content-container flex-container">
-          < CommentSubmission />
+        <div className="content-container">
+          <CommentBox
+            hidden={hidden}
+            commentCount={commentCount}
+            increment={incrementCommentCount}
+            decrement={decrementCommentCount} />
         </div>
       </div>
     </div>
