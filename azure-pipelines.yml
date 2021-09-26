@@ -21,9 +21,9 @@ steps:
       yarn
     displayName: "Install dependencies for React & API"
 
-  # - script: |
-  #     yarn prettier:ci
-  #   displayName: "Run Prettier check"
+  - script: |
+      yarn prettier:ci
+    displayName: "Run Prettier check"
 
   - script: |
       yarn test:ci
