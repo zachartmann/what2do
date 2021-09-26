@@ -8,7 +8,7 @@ const Suggestion = new mongoose.Schema();
 Suggestion.add({
   _id: Number,
   Suggestion: String,
-  Category: String
+  Category: String,
 });
 
 /**

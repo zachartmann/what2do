@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 const CommentSubmission = ({ handleComment }) => {
-
   const [commentText, setCommentText] = useState("");
-  
+
   const handleChange = (event) => {
     setCommentText(event.target.value);
-  }
+  };
 
   return (
     <div className="Commentoverall">
@@ -14,7 +13,8 @@ const CommentSubmission = ({ handleComment }) => {
 
       <br />
       <div className="content-component">
-        <textarea id="stylecomment"
+        <textarea
+          id="stylecomment"
           rows="3"
           cols="52"
           placeholder="Enter your comment for the idea"
@@ -22,19 +22,19 @@ const CommentSubmission = ({ handleComment }) => {
           value={commentText}
           onChange={handleChange}
         />
-        <button 
+        <button
           onClick={() => {
             if (commentText !== "") {
               handleComment(commentText);
-              setCommentText("")
+              setCommentText("");
             }
           }}
         >
-        Add comment
+          Add comment
         </button>
       </div>
     </div>
-  )
-}     
-   
+  );
+};
+
 export default CommentSubmission;
