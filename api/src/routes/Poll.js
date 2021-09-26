@@ -38,10 +38,10 @@ router.get("/poll/:id", async (req, res) => {
  */
 
 router.post("/poll", async (req, res) => {
-  const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
   let pollToCreate;
 
   if (req.body) {
+    const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
     pollToCreate = new PollModel({
       pollId,
       title,
