@@ -33,7 +33,7 @@ const Ideas = () => {
           password: ""
         }
       ],
-      pinned: false,
+      pinned: true,
       user: "Zac"
     },
     {
@@ -49,7 +49,7 @@ const Ideas = () => {
           password: ""
         }
       ],
-      pinned: true,
+      pinned: false,
       user: ""
     }
   ]
