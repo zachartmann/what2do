@@ -9,7 +9,7 @@ const router = Router();
  */
 
 router.get("/ideas", async (req, res) => {
-  const ideas = await IdeaModel.find({});
+  const ideas = await IdeaModel.find({}).exec();
 
   return res.status(StatusCodes.OK).json(ideas);
 });
@@ -45,17 +45,13 @@ router.post("/idea", async (req, res) => {
       };
 
       try {
-        IdeaModel.findOneAndUpdate({ _id }, updatedModel, (err, obj) => {
-          if (err) {
-            console.log("Something didn't work");
-            throw err;
-          } else {
-            console.log("Something worked!");
-            return res.status(StatusCodes.OK);
-          }
-        });
-      } catch (errResponse) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
+        await IdeaModel.findOneAndUpdate({ _id }, updatedModel).exec();
+
+        console.log("Something worked!");
+        return res.status(StatusCodes.OK);
+      } catch (err) {
+        console.log("Something didn't work");
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
       }
     }
 
@@ -70,17 +66,13 @@ router.post("/idea", async (req, res) => {
     });
 
     try {
-      ideaToCreate.save((err) => {
-        if (err) {
-          console.log("Something didn't work");
-          throw err;
-        } else {
-          console.log("Something worked!");
-          return res.status(StatusCodes.CREATED).json(ideaToCreate);
-        }
-      });
-    } catch (errResponse) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
+      ideaToCreate.save();
+
+      console.log("Something worked!");
+      return res.status(StatusCodes.CREATED).json(ideaToCreate);
+    } catch (err) {
+      console.log("Something didn't work");
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
     return res.status(StatusCodes.BAD_REQUEST);
@@ -88,26 +80,20 @@ router.post("/idea", async (req, res) => {
 });
 
 /**
- * POST: /idea
+ * DELETE: /idea
  */
 
-router.delete("/idea", async (req, res) => {
-  if (req.body) {
-    const { _id } = req.body;
-
+router.delete("/idea/:id", async (req, res) => {
+  const _id = req.params.id;
+  if (_id) {
     try {
-      IdeaModel.deleteOne({ _id }, (err) => {
-        if (err) {
-          console.log("Something didn't work");
-          throw err;
-        } else {
-          console.log("Something worked!");
-        }
-      });
+      await IdeaModel.deleteOne({ _id }).exec();
 
+      console.log("Something worked!");
       return res.status(StatusCodes.OK);
-    } catch (errResponse) {
-      return res.status(StatusCodes.NOT_FOUND).json(errResponse);
+    } catch (err) {
+      console.log("Something didn't work");
+      return res.status(StatusCodes.NOT_FOUND).json(err);
     }
   } else {
     return res.status(StatusCodes.BAD_REQUEST);

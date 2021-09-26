@@ -9,7 +9,7 @@ const router = Router();
  */
 
 router.get("/polls", async (req, res) => {
-  const polls = await PollModel.find({});
+  const polls = await PollModel.find({}).exec();
 
   return res.status(StatusCodes.OK).json(polls);
 });
@@ -20,7 +20,7 @@ router.get("/poll/:id", async (req, res) => {
     return res.status(StatusCodes.BAD_REQUEST).json("Poll id is not valid");
   }
 
-  const poll = await PollModel.findOne({ pollId });
+  const poll = await PollModel.findOne({ pollId }).exec();
 
   if (poll) {
     return res.status(StatusCodes.OK).json(poll);
@@ -47,18 +47,13 @@ router.post("/poll", async (req, res) => {
     });
 
     try {
-      pollToCreate.save((err) => {
-        if (err) {
-          console.log("Something didn't work");
-          throw err;
-        } else {
-          console.log("Something worked!");
-        }
-      });
+      await pollToCreate.save();
 
+      console.log("Something worked!");
       return res.status(StatusCodes.CREATED).json(pollToCreate);
-    } catch (errResponse) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
+    } catch (err) {
+      console.log("Something didn't work");
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
     return res.status(StatusCodes.BAD_REQUEST);
