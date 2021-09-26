@@ -38,39 +38,35 @@ router.get("/poll/:id", async (req, res) => {
  */
 
 router.post("/poll", async (req, res) => {
-  const { pollId, title, endDate, timeLimit, ideaIds } = req.query;
+  const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
   let pollToCreate;
 
-  if (req.query) {
+  if (req.body) {
     pollToCreate = new PollModel({
       pollId,
       title,
-      endDate,
+      endDate: new Date(endDate),
       timeLimit,
-      ideaIds,
+      ideaIds: ideaIds.map((ideaId) => Number(ideaId)),
     });
   } else {
-    pollToCreate = new PollModel({
-      pollId: 1,
-      title: "Test",
-      endDate: new Date(),
-      timeLimit: 10,
-      ideaIds: [1],
-    });
+    return res.status(StatusCodes.BAD_REQUEST);
   }
 
-  pollToCreate.save((err) => {
-    if (err) {
-      console.log("Something didn't work");
-      return res.status(StatusCodes.OK).json(pollToCreate);
-    } else {
-      console.log("Something worked!");
-    }
-  });
+  try {
+    pollToCreate.save((err) => {
+      if (err) {
+        console.log("Something didn't work");
+        throw err;
+      } else {
+        console.log("Something worked!");
+      }
+    });
+  } catch (errResponse) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
+  }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json("Problem saving the record");
+  return res.status(StatusCodes.CREATED).json(pollToCreate);
 });
 
 export default router;

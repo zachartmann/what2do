@@ -4,7 +4,7 @@ import mongoose from "mongoose";
  * Schema definition
  */
 const Poll = new mongoose.Schema({
-  pollId: Number,
+  pollId: String,
   title: String,
   endDate: Date,
   timeLimit: Number,

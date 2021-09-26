@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+console.log(`Running on ${env.node_env} environment`);
+
 // Development only settings
 if (env.node_env === "development") {
   app.use(morgan("dev"));
