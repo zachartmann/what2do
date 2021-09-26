@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { OK } from "http-status-codes";
+import { StausCodes } from "http-status-codes";
 import CommentModel from "../models/commentSchema";
 
 const router = Router();
@@ -14,11 +14,30 @@ router.get("/comments", async (req, res) => {
   return res.status(StatusCodes.OK).json(comments);
 });
 
+router.get("/comments/:id", async (req, res) => {
+  const commentId = Number(req.params.id);
+  if (!commentId) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json("Comment id is a valid number reference");
+  }
+
+  const comments = await CommentModel.findOne({ commentId });
+
+  if (comments) {
+    return res.status(StatusCodes.OK).json(comments);
+  }
+
+  return res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .json("There is an internal issue with the code");
+});
+
 /**
  * POST: /comments
  */
 
-router.post("/comments", async (req, res) => {
+router.post("/comment", async (req, res) => {
   const { commentId, comment, user } = req.query;
   let commentToCreate;
 

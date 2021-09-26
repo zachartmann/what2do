@@ -44,7 +44,7 @@ app.use("/api", BaseRouter);
  *                              Serve front-end content
  ***********************************************************************************/
 
-const staticDir = path.join(fileURLToPath(import.meta.url), "../../build/");
+const staticDir = path.join(__dirname, "../../build/");
 app.use(express.static(staticDir));
 app.get("*", (req, res) => {
   if (req.url.startsWith("/api")) {
