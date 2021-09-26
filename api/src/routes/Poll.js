@@ -50,17 +50,10 @@ router.post("/poll", async (req, res) => {
       ideaIds: ideaIds.map((ideaId) => Number(ideaId)),
     });
   } else {
-    pollToCreate = new PollModel({
-      pollId: 1,
-      title: "Test",
-      endDate: new Date(),
-      timeLimit: 10,
-      ideaIds: [1],
-    });
+    return res.status(StatusCodes.BAD_REQUEST);
   }
 
   try {
-    console.log(pollToCreate);
     pollToCreate.save((err) => {
       if (err) {
         console.log("Something didn't work");
