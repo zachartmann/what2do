@@ -55,8 +55,8 @@ const Ideas = () => {
   ]
   return (
     <>
-      {ideas.map(idea => {
-        return <Idea idea={idea} />
+      {ideas.map((idea, index) => {
+        return <Idea key={index} idea={idea} />
       })}
     </>
   )

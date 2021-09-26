@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+
+import LoginPopup from "./LoginPopup";
 
 const handleClick = (evt) => {
   evt.preventDefault();
@@ -6,7 +8,18 @@ const handleClick = (evt) => {
 };
 
 const IncludeName = () => {
-  return <button onClick={handleClick}>Include Name</button>;
+  const [hidden, setHidden] = useState(true);
+
+  const handleClick = () => {
+    setHidden(!hidden);
+  }
+
+  return (
+    <>
+      <button type="button" onClick={handleClick}>Include Name</button>
+      <LoginPopup hidden={hidden}/>
+    </>
+  )
 };
 
 export default IncludeName;

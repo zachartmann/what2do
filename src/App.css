@@ -12,7 +12,7 @@ button {
   width: 100px;
 }
 
-button:hover {
+button:hover, svg.button-icon:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
@@ -110,6 +110,10 @@ svg.small {
   justify-content: flex-start;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .flex-30 {
   flex: 30%;
 }
@@ -152,6 +156,12 @@ svg.small {
   vertical-align: middle;
 }
 
+.hidden {
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .icon {
   height: 30px;
   width: 30px;
@@ -169,6 +179,10 @@ svg.small {
   padding-top: 3px;
 }
 
+.inline {
+  display: inline;
+}
+
 .love-icon {
   margin-top: -6px;
 }
@@ -180,6 +194,30 @@ svg.small {
 
 .idea-small-details {
   margin-top: -40px;
+}
+
+.inverted-button {
+  background-color: white;
+  color: rgb(0, 150, 255);
+}
+
+.popup {
+  position: absolute;
+  border: 1px solid black;
+  transition: all 150ms linear;
+}
+
+.account-popup {
+  left: 44%;
+}
+
+.login-popup {
+  left: 12%;
+}
+
+.info-popup {
+  font-size: small;
+  transform: translate(35%, 0%);
 }
 
 .commentbox {
@@ -254,4 +292,3 @@ svg.small {
 .Commentoverall {
   width: 450px;
 }
-

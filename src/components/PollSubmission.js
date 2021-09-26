@@ -65,7 +65,7 @@ const PollSubmission = (props) => {
     <div className="content">
       <div className="content-container">
         <div className="content-container">
-          <h3>What do you wantasdfasdf to ask?</h3>
+          <h3>What do you want to ask?</h3>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="content-container">
@@ -97,7 +97,6 @@ const PollSubmission = (props) => {
             <select
               name="template"
               id="template"
-              defaultValue="1 day"
               value={selectedDuration}
               onChange={(e) => setSelectedDuration(e.target.value)}
             >
