@@ -8,17 +8,17 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
   const [comments, setComments] = useState([]);
 
   const handleComment = (commentInput) => {
-      const tmpComment = {
-        commentInput: commentInput,
-        user: "Juanitaa",
-      }
-
-      setComments(comments.concat(tmpComment))
-      increment();
+    const tmpComment = {
+      commentInput: commentInput,
+      user: "Juanitaa",
     };
-  
+
+    setComments(comments.concat(tmpComment));
+    increment();
+  };
+
   const deleteComment = (commentText) => {
-    const newComments = comments.filter(comment => {
+    const newComments = comments.filter((comment) => {
       return comment.commentInput !== commentText;
     });
 
@@ -26,9 +26,9 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
     decrement();
   };
 
-  let classes="content-component"
+  let classes = "content-component";
   if (hidden) {
-    classes += " hidden"
+    classes += " hidden";
   }
 
   return (
@@ -36,8 +36,7 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
       <CommentSubmission handleComment={handleComment} />
       <Comments comments={comments} deleteComment={deleteComment} />
     </div>
-  )
-}   
+  );
+};
 
 export default CommentBox;
-

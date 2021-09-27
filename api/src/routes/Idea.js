@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { OK } from "http-status-codes";
-import IdeaModel from '../models/ideaSchema';
+import IdeaModel from "../models/ideaSchema";
 
 const router = Router();
 
@@ -13,14 +13,14 @@ router.post("/idea", async (req, res) => {
     content: "IdeaContent",
     upVotes: 9,
     downVotes: 3,
-    pinned: false
+    pinned: false,
   });
   ideaToCreate.save((err) => {
-      if (err) {
-          console.log("issue with the idea endpoint");
-      } else {
-          console.log("This idea endpoint worked");
-      }
+    if (err) {
+      console.log("issue with the idea endpoint");
+    } else {
+      console.log("This idea endpoint worked");
+    }
   });
   return res.status(StatusCodes.OK).json("IT WORKED");
 });
