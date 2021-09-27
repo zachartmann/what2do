@@ -65,7 +65,7 @@ const Ideas = () => {
     });
     return pinnedIdeas.concat(unpinnedIdeas);
   };
-  
+
   return (
     <>
       {sortIdeas(ideas).map((idea, index) => {

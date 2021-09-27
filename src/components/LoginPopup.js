@@ -1,7 +1,6 @@
 import React from "react";
 
 const LoginPopup = ({ hidden }) => {
-
   let topClasses = "content popup login-popup";
   if (hidden) {
     topClasses += " hidden";
@@ -25,12 +24,14 @@ const LoginPopup = ({ hidden }) => {
           </div>
           <div style={{ width: "10px" }}></div>
           <div className="flex-component flex-30">
-            <button type="button" className="inverted-button">Cancel</button>
+            <button type="button" className="inverted-button">
+              Cancel
+            </button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default LoginPopup;
