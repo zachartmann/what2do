@@ -73,25 +73,39 @@ describe("/idea endpoint", () => {
     expect(res.body).toMatchObject(dummy);
   });
 
-  // it("POSTing invalid data creates an idea with 500", async () => {
-  //   mockingoose(Idea).toReturn(new Validation("No good"), "save");
+  it("POSTing invalid data returns 500", async () => {
+    mockingoose(Idea).toReturn(() => {
+      throw "No good";
+    }, "save");
 
-  //   const dummy = {
-  //     content: "Content",
-  //     upVotes: 1,
-  //   };
-  //   const res = await request(server).post("/api/idea").send(dummy);
+    const dummy = {
+      content: "Content",
+      upVotes: 1,
+    };
+    const res = await request(server).post("/api/idea").send(dummy);
 
-  //   expect(res.status).toEqual(500);
-  // });
+    expect(res.status).toEqual(500);
+  });
 
-  // it("DELETEing valid id deletes an idea with 200", async () => {
-  //   mockingoose(Idea).toReturn(true, "deleteOne");
+  it("POSTing no data returns 400", async () => {
+    const res = await request(server).post("/api/idea").send();
 
-  //   const res = await request(server)
-  //     .delete("/api/idea")
-  //     .query({ id: dummyIdeas[0]._id });
+    expect(res.status).toEqual(400);
+  });
 
-  //   expect(res.status).toEqual(200);
-  // });
+  it("DELETEing valid id deletes an idea with 200", async () => {
+    mockingoose(Idea).toReturn(true, "deleteOne");
+
+    const res = await request(server).delete(`/api/idea/${dummyIdeas[0]._id}`);
+    expect(res.status).toEqual(200);
+  });
+
+  it("DELETEing invalid id returns 404", async () => {
+    mockingoose(Idea).toReturn(() => {
+      throw "No good";
+    }, "deleteOne");
+
+    const res = await request(server).delete(`/api/idea/${dummyIdeas[0]._id}`);
+    expect(res.status).toEqual(404);
+  });
 });

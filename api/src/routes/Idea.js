@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import IdeaModel from "../models/ideaSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
 
@@ -19,7 +20,7 @@ router.get("/ideas", async (req, res) => {
  */
 
 router.post("/idea", async (req, res) => {
-  if (req.body) {
+  if (!isEmpty(req.body)) {
     const {
       _id,
       content,
@@ -66,7 +67,7 @@ router.post("/idea", async (req, res) => {
     });
 
     try {
-      ideaToCreate.save();
+      await ideaToCreate.save();
 
       console.log("Something worked!");
       return res.status(StatusCodes.CREATED).json(ideaToCreate);
@@ -75,7 +76,7 @@ router.post("/idea", async (req, res) => {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
-    return res.status(StatusCodes.BAD_REQUEST);
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 });
 
@@ -85,18 +86,19 @@ router.post("/idea", async (req, res) => {
 
 router.delete("/idea/:id", async (req, res) => {
   const _id = req.params.id;
+
   if (_id) {
     try {
       await IdeaModel.deleteOne({ _id }).exec();
 
       console.log("Something worked!");
-      return res.status(StatusCodes.OK);
+      return res.sendStatus(StatusCodes.OK);
     } catch (err) {
       console.log("Something didn't work");
       return res.status(StatusCodes.NOT_FOUND).json(err);
     }
   } else {
-    return res.status(StatusCodes.BAD_REQUEST);
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 });
 

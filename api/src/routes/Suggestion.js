@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { OK } from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 import SuggestionModel from "../models/suggestionSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
 
@@ -10,8 +11,9 @@ const router = Router();
 router.get("/suggestions", async (req, res) => {
   const category = req.query.category;
   let suggestions;
+
   if (!category) {
-    suggestions = await SuggestionModel.find({});
+    suggestions = await SuggestionModel.find({}).exec();
   } else {
     suggestions = await SuggestionModel.find({ Category: category }).exec();
   }
@@ -26,7 +28,7 @@ router.post("/suggestion", async (req, res) => {
   const { suggestion, category } = req.body;
   let suggestionToCreate;
 
-  if (req.body) {
+  if (!isEmpty(req.body)) {
     suggestionToCreate;
     new SuggestionModel({
       suggestion,
@@ -37,19 +39,14 @@ router.post("/suggestion", async (req, res) => {
   }
 
   try {
-    console.log(suggestionToCreate);
-    suggestionToCreate.save((err) => {
-      if (err) {
-        console.log("Suggestion was not able to be created");
-        throw err;
-      } else {
-        console.log("Suggestion created succesfully");
-      }
-    });
+    await suggestionToCreate.save();
+
+    console.log("Suggestion created succesfully");
+    return res.status(StatusCodes.CREATED).json(suggestionToCreate);
   } catch (errResponse) {
+    console.log("Suggestion was not able to be created");
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
   }
-  return res.status(StatusCodes.CREATED).json(suggestionToCreate);
 });
 
 export default router;

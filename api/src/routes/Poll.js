@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import PollModel from "../models/pollSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.get("/polls", async (req, res) => {
 
 router.get("/poll/:id", async (req, res) => {
   const pollId = req.params.id;
+
   if (!pollId) {
     return res.status(StatusCodes.BAD_REQUEST).json("Poll id is not valid");
   }
@@ -26,9 +28,7 @@ router.get("/poll/:id", async (req, res) => {
     return res.status(StatusCodes.OK).json(poll);
   }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json("Something bad happened");
+  return res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
 });
 
 /**
@@ -36,7 +36,7 @@ router.get("/poll/:id", async (req, res) => {
  */
 
 router.post("/poll", async (req, res) => {
-  if (req.body) {
+  if (!isEmpty(req.body)) {
     const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
     const pollToCreate = new PollModel({
       pollId,
@@ -56,7 +56,7 @@ router.post("/poll", async (req, res) => {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
-    return res.status(StatusCodes.BAD_REQUEST);
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 });
 
