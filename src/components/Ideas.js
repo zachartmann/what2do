@@ -1,12 +1,11 @@
 import React from "react";
 
-import Idea from "./Idea"
+import Idea from "./Idea";
 
 const Ideas = () => {
-
   // content: String,
-  // upVotes: Number, 
-  // downVotes: Number, 
+  // upVotes: Number,
+  // downVotes: Number,
   // upVoters: [User],
   // downVoters: [User],
   // pinned: Boolean,
@@ -20,21 +19,21 @@ const Ideas = () => {
       upVoters: [
         {
           name: "Zac",
-          password: ""
-        }
+          password: "",
+        },
       ],
       downVoters: [
         {
           name: "Sean",
-          password: "1234"
+          password: "1234",
         },
         {
           name: "Mikael",
-          password: ""
-        }
+          password: "",
+        },
       ],
-      pinned: true,
-      user: "Zac"
+      pinned: false,
+      user: "Zac",
     },
     {
       content: "Let's go to the zoo",
@@ -46,20 +45,34 @@ const Ideas = () => {
       downVoters: [
         {
           name: "Zoo-hater",
-          password: ""
-        }
+          password: "",
+        },
       ],
-      pinned: false,
-      user: ""
-    }
-  ]
+      pinned: true,
+      user: "",
+    },
+  ];
+
+  let sortIdeas = (ideas) => {
+    var pinnedIdeas = [];
+    var unpinnedIdeas = [];
+    ideas.forEach((idea) => {
+      if (idea.pinned) {
+        pinnedIdeas.push(idea);
+      } else {
+        unpinnedIdeas.push(idea);
+      }
+    });
+    return pinnedIdeas.concat(unpinnedIdeas);
+  };
+
   return (
     <>
-      {ideas.map((idea, index) => {
-        return <Idea key={index} idea={idea} />
+      {sortIdeas(ideas).map((idea, index) => {
+        return <Idea key={index} idea={idea} />;
       })}
     </>
-  )
-}
+  );
+};
 
 export default Ideas;

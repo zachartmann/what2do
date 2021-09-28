@@ -12,14 +12,16 @@ const IncludeName = () => {
 
   const handleClick = () => {
     setHidden(!hidden);
-  }
+  };
 
   return (
     <>
-      <button type="button" onClick={handleClick}>Include Name</button>
-      <LoginPopup hidden={hidden}/>
+      <button type="button" onClick={handleClick}>
+        Include Name
+      </button>
+      <LoginPopup hidden={hidden} />
     </>
-  )
+  );
 };
 
 export default IncludeName;
