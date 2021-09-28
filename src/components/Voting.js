@@ -19,23 +19,27 @@ const getCurrentUserVote = (idea, currentUser) => {
     return 0;
 }
 
-const VotingMechanism = (props) => {
-    const [userVote, setUserVote] = useState(getCurrentUserVote(props.idea, props.user))
-    const [upVotes, setUpVotes] = useState(props.idea.upVotes);
-    const [downVotes, setDownVotes] = useState(props.idea.downVotes);
+const VotingMechanism = ({idea, user}) => {
+    const [userVote, setUserVote] = useState(getCurrentUserVote(idea, user.name));
+    const [upVotes, setUpVotes] = useState(idea.upVotes);
+    const [downVotes, setDownVotes] = useState(idea.downVotes);
+
+    const handleVoteChange = (vote) => {
+        setUserVote(vote);
+    }
 
     const incrementUpVotes = () => {
         if(userVote===-1) {
-            setUpVotes(upVotes + 1)
-            setDownVotes(downVotes - 1)
-            setUserVote(1)
+            setUpVotes(upVotes + 1);
+            setDownVotes(downVotes - 1);
+            handleVoteChange(1);
         }
         else if (userVote === 0){
-            setUpVotes(upVotes + 1)
-            setUserVote(1)
+            setUpVotes(upVotes + 1);
+            handleVoteChange(1);
         } else {
-            setUpVotes(upVotes - 1)
-            setUserVote(0)
+            setUpVotes(upVotes - 1);
+            handleVoteChange(0);
         }
     }
 
@@ -43,16 +47,17 @@ const VotingMechanism = (props) => {
         if (userVote===1) {
             setDownVotes(downVotes + 1)
             setUpVotes(upVotes - 1)
-            setUserVote(-1)
+            handleVoteChange(-1)
         } else if (userVote === 0) {
             setDownVotes(downVotes + 1)
-            setUserVote(-1)
+            handleVoteChange(-1)
         }
         else {
             setDownVotes(downVotes - 1)
-            setUserVote(0)
+            handleVoteChange(0)
         }
     }
+
     const upVoteButtonColor = (userVote) == 1 ? "lime" : "none";
     const downVoteButtonColor = (userVote) == -1 ? "orangered" : "none";
     

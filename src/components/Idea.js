@@ -4,22 +4,15 @@ import CommentBox from "./CommentBox";
 import VotingMechanism from "./Voting.js";
 
 const Idea = ({ idea }) => {
-  // Downvoted
-  // -  Stroke red
-  // -  Fill orangered? otherwise none
-
-  // Upvoted
-  // -  Stroke green
-  // -  Fill lime otherwise none
-
   // Comment
   // -  Stroke .blue-icon
   // -  Fill white if not showing comments, otherwise lightskyblue
 
-  // if (loggedInName in upVoters) {
-  //   make it lime filled
-  // }
-  const [dummyUser, setDummyUser] = useState("Zac");
+  const dummyUser = { //Dummy user for testing voting mechanism
+    name: "Zac",
+    password: null
+  }
+
   const [hidden, setHidden] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
 
