@@ -3,11 +3,21 @@ import { useState } from "react";
 
 import IncludeName from "./IncludeName";
 import Info from "./Info";
-import QuestionInput from "./QuestionInput";
+import IdeaInput from "./IdeaInput";
 
 const IdeaSubmission = () => {
   const timeLeft = "9:58";
-  const [question, setQuestion] = useState("");
+  const [idea, setIdea] = useState("");
+  const [placeholder, setPlaceholder] = useState("");
+
+  const handleSendIdea = () => {
+    if (idea){
+      alert(idea)
+    }
+    else {
+      alert(placeholder)
+    }
+  }
 
   return (
     <div className="content">
@@ -17,10 +27,10 @@ const IdeaSubmission = () => {
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
-            <QuestionInput setQuestion={setQuestion} question={question}/>
+            <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder}/>
           </div>
           <div className="flex-component flex-30 flex-end">
-            <button onClick={() => alert(question)}>Send</button>
+            <button onClick={handleSendIdea}>Send</button>
           </div>
         </div>
         <div className="content-container flex-container">
