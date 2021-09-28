@@ -1,4 +1,3 @@
-
 const Suggestions = [
   {
     suggestion: "Lets go to the zoo",

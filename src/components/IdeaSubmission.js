@@ -11,13 +11,12 @@ const IdeaSubmission = () => {
   const [placeholder, setPlaceholder] = useState("");
 
   const handleSendIdea = () => {
-    if (idea){
-      alert(idea)
+    if (idea) {
+      alert(idea);
+    } else {
+      alert(placeholder);
     }
-    else {
-      alert(placeholder)
-    }
-  }
+  };
 
   return (
     <div className="content">
@@ -27,7 +26,7 @@ const IdeaSubmission = () => {
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
-            <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder}/>
+            <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder} />
           </div>
           <div className="flex-component flex-30 flex-end">
             <button onClick={handleSendIdea}>Send</button>
