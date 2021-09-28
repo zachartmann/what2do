@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import PollModel from "../models/pollSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
 
@@ -9,28 +10,25 @@ const router = Router();
  */
 
 router.get("/polls", async (req, res) => {
-  const polls = await PollModel.find({});
+  const polls = await PollModel.find({}).exec();
 
   return res.status(StatusCodes.OK).json(polls);
 });
 
 router.get("/poll/:id", async (req, res) => {
-  const pollId = Number(req.params.id);
+  const pollId = req.params.id;
+
   if (!pollId) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json("Poll id is not a valid number");
+    return res.status(StatusCodes.BAD_REQUEST).json("Poll id is not valid");
   }
 
-  const poll = await PollModel.findOne({ pollId });
+  const poll = await PollModel.findOne({ pollId }).exec();
 
   if (poll) {
     return res.status(StatusCodes.OK).json(poll);
   }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json("Something bad happened");
+  return res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
 });
 
 /**
@@ -38,35 +36,28 @@ router.get("/poll/:id", async (req, res) => {
  */
 
 router.post("/poll", async (req, res) => {
-  const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
-  let pollToCreate;
-
-  if (req.body) {
-    pollToCreate = new PollModel({
+  if (!isEmpty(req.body)) {
+    const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
+    const pollToCreate = new PollModel({
       pollId,
       title,
       endDate: new Date(endDate),
       timeLimit,
       ideaIds: ideaIds.map((ideaId) => Number(ideaId)),
     });
+
+    try {
+      await pollToCreate.save();
+
+      console.log("Something worked!");
+      return res.status(StatusCodes.CREATED).json(pollToCreate);
+    } catch (err) {
+      console.log("Something didn't work");
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    }
   } else {
-    return res.status(StatusCodes.BAD_REQUEST);
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
-
-  try {
-    pollToCreate.save((err) => {
-      if (err) {
-        console.log("Something didn't work");
-        throw err;
-      } else {
-        console.log("Something worked!");
-      }
-    });
-  } catch (errResponse) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
-  }
-
-  return res.status(StatusCodes.CREATED).json(pollToCreate);
 });
 
 export default router;

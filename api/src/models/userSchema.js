@@ -4,8 +4,8 @@ import mongoose from "mongoose";
  * Schema definition
  */
 export const User = new mongoose.Schema({
-    name: String,
-    password: String,
+  name: String,
+  password: String,
 });
 
 /**

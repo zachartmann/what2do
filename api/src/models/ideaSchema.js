@@ -11,7 +11,7 @@ const Idea = new mongoose.Schema({
   upVoters: [User],
   downVoters: [User],
   pinned: Boolean,
-  user: String
+  user: String,
 });
 
 /**
