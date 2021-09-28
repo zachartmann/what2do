@@ -5,7 +5,6 @@ import helmet from "helmet";
 import express from "express";
 import env from "./environment";
 import BaseRouter from "./routes/index";
-import { fileURLToPath } from "url";
 
 // Init express
 const app = express();

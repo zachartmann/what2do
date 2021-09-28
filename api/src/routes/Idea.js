@@ -1,33 +1,105 @@
 import { Router } from "express";
-import { OK } from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 import IdeaModel from "../models/ideaSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
 
 /**
- * GET: /items
+ * GET: /idea
  */
 
-router.post("/idea", async (req, res) => {
-  const ideaToCreate = new IdeaModel({
-    content: "IdeaContent",
-    upVotes: 9,
-    downVotes: 3,
-    pinned: false,
-  });
-  ideaToCreate.save((err) => {
-    if (err) {
-      console.log("issue with the idea endpoint");
-    } else {
-      console.log("This idea endpoint worked");
-    }
-  });
-  return res.status(StatusCodes.OK).json("IT WORKED");
+router.get("/ideas", async (req, res) => {
+  const ideas = await IdeaModel.find({}).exec();
+
+  return res.status(StatusCodes.OK).json(ideas);
 });
 
 /**
- * POST: /item (DEVELOPMENT BUILD ONLY)
+ * POST: /idea
  */
-router.post("/..", async (req, res) => {});
+
+router.post("/idea", async (req, res) => {
+  if (!isEmpty(req.body)) {
+    const {
+      _id,
+      content,
+      upVotes,
+      downVotes,
+      upVoters,
+      downVoters,
+      pinned,
+      user,
+    } = req.body;
+
+    if (_id) {
+      // Edit idea if record exists instead
+      const updatedModel = {
+        _id,
+        content,
+        upVotes,
+        downVotes,
+        upVoters,
+        downVoters,
+        pinned,
+        user,
+      };
+
+      try {
+        await IdeaModel.findOneAndUpdate({ _id }, updatedModel).exec();
+
+        console.log("Something worked!");
+        return res.status(StatusCodes.OK);
+      } catch (err) {
+        console.log("Something didn't work");
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+      }
+    }
+
+    const ideaToCreate = new IdeaModel({
+      content,
+      upVotes,
+      downVotes,
+      upVoters,
+      downVoters,
+      pinned,
+      user,
+    });
+
+    try {
+      await ideaToCreate.save();
+
+      console.log("Something worked!");
+      return res.status(StatusCodes.CREATED).json(ideaToCreate);
+    } catch (err) {
+      console.log("Something didn't work");
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    }
+  } else {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
+
+/**
+ * DELETE: /idea
+ */
+
+router.delete("/idea/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  if (_id) {
+    try {
+      await IdeaModel.deleteOne({ _id }).exec();
+
+      console.log("Something worked!");
+      return res.sendStatus(StatusCodes.OK);
+    } catch (err) {
+      console.log("Something didn't work");
+      return res.status(StatusCodes.NOT_FOUND).json(err);
+    }
+  } else {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
 
 export default router;
