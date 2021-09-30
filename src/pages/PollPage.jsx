@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import IdeaSubmission from "../components/IdeaSubmission";
 import Ideas from "../components/Ideas";
 import Footer from "../components/Footer";
+import PopularitySort from "../components/PopularitySort";
 
 const PollPage = () => {
   // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
@@ -19,6 +20,7 @@ const PollPage = () => {
     <div className="App">
       <Header pollId={pollId} />
       <IdeaSubmission />
+      <PopularitySort />
       {/* Sorting */}
       <Ideas />
       <div className="content">
