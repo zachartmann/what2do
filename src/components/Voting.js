@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { postIdea } from "../common/requests/Idea"
 
 const getCurrentUserVote = (idea, currentUser) => {
     if (idea.upVoters.length === 0 | idea.downVoters.length === 0) {
