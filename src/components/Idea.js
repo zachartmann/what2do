@@ -110,7 +110,7 @@ const Idea = ({ idea }) => {
             ) : null}
             <svg
               onClick={toggleComments}
-              className="h-6 w-6 icon blue-icon comment-icon"
+              className="h-6 w-6 icon blue-icon comment-icon button-icon"
               xmlns="http://www.w3.org/2000/svg"
               fill={commentFill}
               viewBox="0 0 24 24"

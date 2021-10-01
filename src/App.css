@@ -22,6 +22,10 @@ div.trimmed {
   padding-bottom: 0px;
 }
 
+.button-icon {
+  border-radius: 100%;
+}
+
 .centered {
   margin-left: auto;
   margin-right: auto;
