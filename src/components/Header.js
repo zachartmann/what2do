@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Header.css";
 
 import Account from "../components/Account";
 
-const switchTheme = () => {
-  var current = document.documentElement.getAttribute("data-theme");
-  var newTheme = current == "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", newTheme);
-}
 
 const Header = ({ pollId }) => {
+  
+  const [theme, setTheme] = useState("light");
+  
+  const iconFill = theme === "dark" ? "mediumslateblue" : "none";
+  
+  const switchTheme = () => {
+    var current = document.documentElement.getAttribute("data-theme");
+    var newTheme = current == "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    setTheme(newTheme)
+  }
+
   if (pollId === "") {
     // Show the create-poll UI since there's no ID
     return (
@@ -44,7 +51,7 @@ const Header = ({ pollId }) => {
           <svg
             className="h-6 w-6 icon blue-icon header-icon button-icon"
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill={iconFill}
             viewBox="0 0 24 24"
             onClick={switchTheme}
           >

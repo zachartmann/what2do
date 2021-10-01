@@ -6,7 +6,7 @@
   --content-background: rgb(240, 240, 240);
   --input-background: rgb(225, 225, 225);
   --text-color: #000000;
-  --dark-transition-duration: 0.3s;
+  --dark-transition-duration: 0.5s;
 }
 
 [data-theme="dark"] {
@@ -40,6 +40,7 @@ button {
 button:hover,
 svg.button-icon:hover {
   box-shadow: var(--box-shadow);
+  transition: box-shadow var(--dark-transition-duration);
 }
 
 div.trimmed {
