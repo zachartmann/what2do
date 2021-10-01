@@ -4,9 +4,9 @@ const Comment = ({ commentInput, deleteComment }) => {
   return (
     <div className="content-container comment">
       <div className="content-container">
-          Comment: {commentInput}
-          <br />
-          User Account: Juanita
+        Comment: {commentInput}
+        <br />
+        User Account: Juanita
       </div>
       <div className="content-container trimmed">
         <button
