@@ -6,6 +6,7 @@ import IdeaSubmission from "../components/IdeaSubmission";
 import Ideas from "../components/Ideas";
 import Footer from "../components/Footer";
 import { getPoll } from "../common/requests/Poll";
+import { getIdeas } from "../common/requests/Idea";
 
 const PollPage = () => {
   // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
@@ -17,6 +18,7 @@ const PollPage = () => {
   useEffect(() => {
     if (validPoll) {
       setPoll(getPoll(pollId));
+      getIdeas(poll.ideaIds);
       // setTimeLeft(getPoll(pollId));
     }
   });

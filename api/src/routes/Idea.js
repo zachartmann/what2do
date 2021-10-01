@@ -2,6 +2,7 @@ import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import IdeaModel from "../models/ideaSchema";
 import { isEmpty } from "lodash";
+import mongoose from "mongoose";
 
 const router = Router();
 
@@ -10,7 +11,21 @@ const router = Router();
  */
 
 router.get("/ideas", async (req, res) => {
-  const ideas = await IdeaModel.find({}).exec();
+  let ideas;
+
+  // /ideas?ids=id1,id2,id3 allows for a single query for multiple IDs
+  if (!isEmpty(req.query) && !isEmpty(req.query.ids)) {
+    const _ids = req.query.ids.split(",");
+    const ids = _ids.map((id) => mongoose.Types.ObjectId(id));
+
+    ideas = await IdeaModel.find({
+      _id: {
+        $in: ids,
+      },
+    }).exec();
+  } else {
+    ideas = await IdeaModel.find({}).exec();
+  }
 
   return res.status(StatusCodes.OK).json(ideas);
 });

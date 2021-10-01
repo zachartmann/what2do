@@ -10,7 +10,7 @@ const dummyPolls = [
     title: "Title1",
     endDate: new Date(),
     timeLimit: 10,
-    ideaIds: [0, 1],
+    ideaIds: ["0", "1"],
   },
   {
     _id: "507f191e810c19729de860eb",
@@ -18,7 +18,7 @@ const dummyPolls = [
     title: "Title2",
     endDate: new Date(),
     timeLimit: 20,
-    ideaIds: [2, 3],
+    ideaIds: ["2", "3"],
   },
 ];
 
