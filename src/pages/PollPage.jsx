@@ -44,6 +44,14 @@ const PollPage = () => {
       {poll && <IdeaSubmission poll={poll} />}
       {/* Sorting */}
       {ideas && <Ideas ideas={ideas} />}
+      {!poll && !ideas && (
+        <div className="content-container">
+          <p className="centered">Unfortunately there's no poll here</p>
+          <a href="/" className="content-container centered">
+            Click here to head back
+          </a>
+        </div>
+      )}
       <div className="content">
         <Footer />
       </div>

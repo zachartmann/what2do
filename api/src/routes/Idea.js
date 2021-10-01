@@ -63,7 +63,7 @@ router.post("/idea", async (req, res) => {
       try {
         await IdeaModel.findOneAndUpdate({ _id }, updatedModel).exec();
 
-        return res.status(StatusCodes.OK);
+        return res.sendStatus(StatusCodes.OK);
       } catch (err) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
       }
