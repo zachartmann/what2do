@@ -64,7 +64,11 @@ div.trimmed {
   background-color: var(--content-background);
   border-radius: 10px;
   margin: auto;
-  width: 30%;
+  margin-top: 25px;
+  width: 25%;
+  width: 40vw;
+  min-width: 300px;
+  max-width: 450px;
   transition: background-color var(--dark-transition-duration);
 }
 
