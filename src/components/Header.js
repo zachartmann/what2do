@@ -4,6 +4,12 @@ import "./Header.css";
 
 import Account from "../components/Account";
 
+const switchTheme = () => {
+  var current = document.documentElement.getAttribute("data-theme");
+  var newTheme = current == "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", newTheme);
+}
+
 const Header = ({ pollId }) => {
   if (pollId === "") {
     // Show the create-poll UI since there's no ID
@@ -40,6 +46,7 @@ const Header = ({ pollId }) => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
+            onClick={switchTheme}
           >
             <path
               strokeLinecap="round"

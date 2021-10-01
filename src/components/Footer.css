@@ -6,6 +6,7 @@
   margin-bottom: 0px;
   position: fixed;
   text-align: center;
+  transition: background-color var(--dark-transition-duration);
   width: 100%;
 }
 
@@ -20,4 +21,5 @@
 .footer-buffer {
   background-color: var(--background-color);
   height: 100px;
+  transition: background-color var(--dark-transition-duration);
 }

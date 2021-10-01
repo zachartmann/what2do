@@ -12,15 +12,18 @@
   border-radius: 5px;
   resize: none;
   padding: 10px;
+  transition: background-color var(--dark-transition-duration);
 }
 
 .comment {
   background-color: var(--input-background);
-  color: var(--comment-text-color);
+  color: #000000;
   border-radius: 5px;
   margin: 10px;
   margin-bottom: 0px;
   padding: 10px;
+  transition: background-color var(--dark-transition-duration),
+              color var(--dark-transition-duration);
 }  
 
 .delete-button {

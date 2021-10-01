@@ -14,6 +14,8 @@
   place-items: center;
   margin-bottom: 30px;
   padding: 10px;
+  transition: background-color var(--dark-transition-duration),
+              color var(--dark-transition-duration);
   width: 100%;
 }
 
