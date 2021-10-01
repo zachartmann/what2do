@@ -1,0 +1,18 @@
+.popup {
+  position: absolute;
+  border: 1px solid black;
+  transition: all 150ms linear;
+}
+
+.account-popup {
+  left: 44%;
+}
+
+.info-popup {
+  font-size: small;
+  transform: translate(35%, 0%);
+}
+
+.login-popup {
+  left: 12%;
+}

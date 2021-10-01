@@ -62,10 +62,6 @@ svg.small {
   text-align: center;
 }
 
-.comment-icon {
-  margin-top: -12px;
-}
-
 .content {
   background-color: rgb(240, 240, 240);
   border-radius: 10px;
@@ -131,10 +127,6 @@ svg.small {
   margin-left: 10px;
 }
 
-.info {
-  padding-top: 3px;
-}
-
 .inline {
   display: inline;
 }
@@ -147,23 +139,4 @@ svg.small {
 .inverted-button {
   background-color: white;
   color: rgb(0, 150, 255);
-}
-
-.popup {
-  position: absolute;
-  border: 1px solid black;
-  transition: all 150ms linear;
-}
-
-.account-popup {
-  left: 44%;
-}
-
-.login-popup {
-  left: 12%;
-}
-
-.info-popup {
-  font-size: small;
-  transform: translate(35%, 0%);
 }

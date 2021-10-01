@@ -8,7 +8,7 @@ const Comment = ({ commentInput, deleteComment }) => {
           <br />
           User Account: Juanita
       </div>
-      <div className="content-container">
+      <div className="content-container trimmed">
         <button
           className="delete-button"
           onClick={() => deleteComment(commentInput)}
