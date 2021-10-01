@@ -12,13 +12,13 @@ const PollPage = () => {
   // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
   let { pollId } = useParams();
   const [poll, setPoll] = useState(null);
-  const [timeLeft, setTimeLeft] = useState("");
+  const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
 
   useEffect(() => {
     if (validPoll) {
       setPoll(getPoll(pollId));
-      getIdeas(poll.ideaIds);
+      setIdeas(getIdeas(poll.ideaIds));
       // setTimeLeft(getPoll(pollId));
     }
   });
@@ -32,9 +32,9 @@ const PollPage = () => {
   return (
     <div className="App">
       <Header pollId={pollId} />
-      <IdeaSubmission timeLeft={timeLeft} />
+      {poll && <IdeaSubmission poll={poll} />}
       {/* Sorting */}
-      <Ideas />
+      {ideas && <Ideas ideas={ideas} />}
       <div className="content">
         <Footer />
       </div>
