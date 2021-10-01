@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Header.css";
+
 import Account from "../components/Account";
 
 const Header = ({ pollId }) => {

@@ -1,0 +1,21 @@
+.header {
+  align-items: center;
+  background-color: rgb(75, 180, 255);
+  color: black;
+  display: grid;
+  place-items: center;
+  margin-bottom: 30px;
+  padding: 10px;
+  width: 100%;
+}
+
+.header > p > * {
+  margin-left: 15px;
+}
+
+.header-icon {
+  background-color: rgb(255, 255, 200);
+  border-radius: 100%;
+  padding: 2px;
+  vertical-align: middle;
+}

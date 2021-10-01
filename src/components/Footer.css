@@ -1,0 +1,18 @@
+.footer {
+  background-color: white;
+  bottom: 0;
+  height: 80px;
+  left: -15px;
+  margin-bottom: 0px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-icon {
+  vertical-align: middle;
+}
+
+.love-icon {
+  margin-top: -6px;
+}
