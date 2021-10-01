@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./Idea.css";
+
 import CommentBox from "./CommentBox";
 
 const Idea = ({ idea }) => {

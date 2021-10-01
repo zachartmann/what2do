@@ -1,0 +1,10 @@
+.idea {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.idea-small-details {
+  margin-top: -40px;
+}

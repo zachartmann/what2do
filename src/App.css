@@ -167,13 +167,6 @@ svg.small {
   margin-left: 10px;
 }
 
-.idea {
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .info {
   padding-top: 3px;
 }
@@ -189,10 +182,6 @@ svg.small {
 .top {
   padding-top: 0px;
   margin-top: 0px;
-}
-
-.idea-small-details {
-  margin-top: -40px;
 }
 
 .inverted-button {
@@ -217,9 +206,4 @@ svg.small {
 .info-popup {
   font-size: small;
   transform: translate(35%, 0%);
-}
-
-.hidden {
-  overflow: hidden;
-  opacity: 0;
 }
