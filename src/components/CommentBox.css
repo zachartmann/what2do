@@ -1,0 +1,20 @@
+.comment-textarea {
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  resize: none;
+  padding: 10px;
+}
+
+.comment {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding: 10px;
+}  
+
+.delete-button {
+  background-color: green;
+  margin-bottom: -10px;
+}

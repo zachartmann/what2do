@@ -2,14 +2,17 @@ import React from "react";
 
 const Comment = ({ commentInput, deleteComment }) => {
   return (
-    <div className="Card">
-      <div className="Cardstyling">
-        Comment: {commentInput}
-        <br></br>
-        User Account: Juanita
+    <div className="content-container comment">
+      <div className="content-container">
+          Comment: {commentInput}
+          <br />
+          User Account: Juanita
       </div>
-      <div className="makinganewclass">
-        <button id="buttonid" onClick={() => deleteComment(commentInput)}>
+      <div className="content-container">
+        <button
+          className="delete-button"
+          onClick={() => deleteComment(commentInput)}
+        >
           Delete
         </button>
       </div>
