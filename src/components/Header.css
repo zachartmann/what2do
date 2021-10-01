@@ -1,7 +1,15 @@
+:root {
+  --header-background-color: rgb(75, 180, 255)
+}
+
+[data-theme="dark"] {
+  --header-background-color: rgb(0, 150, 255)
+}
+
 .header {
   align-items: center;
-  background-color: rgb(75, 180, 255);
-  color: black;
+  background-color: var(--header-background-color);
+  color: var(--text-color);
   display: grid;
   place-items: center;
   margin-bottom: 30px;

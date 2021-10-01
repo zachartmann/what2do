@@ -1,5 +1,13 @@
+:root {
+  --comment-text-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --comment-text-color: #000000;
+}
+
 .comment-textarea {
-  background-color: rgb(225, 225, 225);
+  background-color: var(--input-background);
   border: none;
   border-radius: 5px;
   resize: none;
@@ -7,7 +15,8 @@
 }
 
 .comment {
-  background-color: rgb(225, 225, 225);
+  background-color: var(--input-background);
+  color: var(--comment-text-color);
   border-radius: 5px;
   margin: 10px;
   margin-bottom: 0px;

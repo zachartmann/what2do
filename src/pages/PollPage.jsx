@@ -21,10 +21,7 @@ const PollPage = () => {
       <IdeaSubmission />
       {/* Sorting */}
       <Ideas />
-      <div className="content">
-        <Footer />
-      </div>
-      <div style={{ backgroundColor: "white", height: "100px" }}></div>
+      <Footer />
     </div>
   );
 };
