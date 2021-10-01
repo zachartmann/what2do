@@ -23,8 +23,8 @@
   margin-bottom: 0px;
   padding: 10px;
   transition: background-color var(--dark-transition-duration),
-              color var(--dark-transition-duration);
-}  
+    color var(--dark-transition-duration);
+}
 
 .delete-button {
   background-color: green;

@@ -12,24 +12,20 @@ const CommentSubmission = ({ handleComment }) => {
       handleComment(commentText);
       setCommentText("");
     }
-  }
+  };
 
   return (
     <div className="content-container">
-        <textarea
-          class="comment-textarea"
-          rows="3"
-          cols="50"
-          placeholder="Enter your comment for the idea"
-          maxlength="145"
-          value={commentText}
-          onChange={handleChange}
-        />
-        <button
-          onClick={handleClick}
-        >
-          Add comment
-        </button>
+      <textarea
+        class="comment-textarea"
+        rows="3"
+        cols="50"
+        placeholder="Enter your comment for the idea"
+        maxlength="145"
+        value={commentText}
+        onChange={handleChange}
+      />
+      <button onClick={handleClick}>Add comment</button>
     </div>
   );
 };

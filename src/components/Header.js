@@ -3,7 +3,6 @@ import "./Header.css";
 import Account from "../components/Account";
 
 const Header = ({ pollId }) => {
-  
   const [theme, setTheme] = useState("light");
   const iconFill = theme === "dark" ? "mediumslateblue" : "none";
 
@@ -11,8 +10,8 @@ const Header = ({ pollId }) => {
     var current = document.documentElement.getAttribute("data-theme");
     var newTheme = current == "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", newTheme);
-    setTheme(newTheme)
-  }
+    setTheme(newTheme);
+  };
 
   if (pollId === "") {
     // Show the create-poll UI since there's no ID
