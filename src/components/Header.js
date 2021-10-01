@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-
 import "./Header.css";
-
 import Account from "../components/Account";
-
 
 const Header = ({ pollId }) => {
   
   const [theme, setTheme] = useState("light");
-  
   const iconFill = theme === "dark" ? "mediumslateblue" : "none";
-  
+
   const switchTheme = () => {
     var current = document.documentElement.getAttribute("data-theme");
     var newTheme = current == "dark" ? "light" : "dark";
@@ -27,8 +23,9 @@ const Header = ({ pollId }) => {
           <svg
             className="h-6 w-6 icon blue-icon header-icon button-icon"
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill={iconFill}
             viewBox="0 0 24 24"
+            onClick={switchTheme}
           >
             <path
               strokeLinecap="round"
