@@ -8,7 +8,7 @@ const Header = ({ pollId }) => {
 
   const switchTheme = () => {
     var current = document.documentElement.getAttribute("data-theme");
-    var newTheme = current == "dark" ? "light" : "dark";
+    var newTheme = current === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", newTheme);
     setTheme(newTheme);
   };
