@@ -22,40 +22,6 @@ div.trimmed {
   padding-bottom: 0px;
 }
 
-input {
-  background-color: rgb(225, 225, 225);
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 90%;
-}
-
-p.big {
-  font-size: large;
-}
-
-p.small {
-  font-size: small;
-}
-
-select {
-  background-color: rgb(225, 225, 225);
-  border: none;
-  border-radius: 5px;
-  padding: 7px;
-  padding-right: 20px;
-}
-
-svg.blue-icon {
-  stroke: rgb(80, 80, 255);
-}
-
-svg.small {
-  height: 25px;
-  width: 25px;
-  margin-left: 5px;
-}
-
 .centered {
   margin-left: auto;
   margin-right: auto;
@@ -131,12 +97,46 @@ svg.small {
   display: inline;
 }
 
-.top {
-  padding-top: 0px;
-  margin-top: 0px;
+input {
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 90%;
 }
 
 .inverted-button {
   background-color: white;
   color: rgb(0, 150, 255);
+}
+
+p.big {
+  font-size: large;
+}
+
+p.small {
+  font-size: small;
+}
+
+select {
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  padding-right: 20px;
+}
+
+svg.blue-icon {
+  stroke: rgb(80, 80, 255);
+}
+
+svg.small {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}
+
+.top {
+  padding-top: 0px;
+  margin-top: 0px;
 }
