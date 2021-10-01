@@ -48,10 +48,8 @@ router.post("/idea", async (req, res) => {
       try {
         await IdeaModel.findOneAndUpdate({ _id }, updatedModel).exec();
 
-        console.log("Something worked!");
         return res.status(StatusCodes.OK);
       } catch (err) {
-        console.log("Something didn't work");
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
       }
     }
@@ -69,10 +67,8 @@ router.post("/idea", async (req, res) => {
     try {
       await ideaToCreate.save();
 
-      console.log("Something worked!");
       return res.status(StatusCodes.CREATED).json(ideaToCreate);
     } catch (err) {
-      console.log("Something didn't work");
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
@@ -81,24 +77,18 @@ router.post("/idea", async (req, res) => {
 });
 
 /**
- * DELETE: /idea
+ * DELETE: /idea/:id
  */
 
 router.delete("/idea/:id", async (req, res) => {
   const _id = req.params.id;
 
-  if (_id) {
-    try {
-      await IdeaModel.deleteOne({ _id }).exec();
+  try {
+    await IdeaModel.deleteOne({ _id }).exec();
 
-      console.log("Something worked!");
-      return res.sendStatus(StatusCodes.OK);
-    } catch (err) {
-      console.log("Something didn't work");
-      return res.status(StatusCodes.NOT_FOUND).json(err);
-    }
-  } else {
-    return res.sendStatus(StatusCodes.BAD_REQUEST);
+    return res.sendStatus(StatusCodes.OK);
+  } catch (err) {
+    return res.status(StatusCodes.NOT_FOUND).json(err);
   }
 });
 
