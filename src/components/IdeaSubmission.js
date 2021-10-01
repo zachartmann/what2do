@@ -5,8 +5,7 @@ import IncludeName from "./IncludeName";
 import Info from "./Info";
 import IdeaInput from "./IdeaInput";
 
-const IdeaSubmission = () => {
-  const timeLeft = "9:58";
+const IdeaSubmission = ({ timeLeft }) => {
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
 

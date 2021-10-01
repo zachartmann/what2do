@@ -5,7 +5,7 @@ import { ideasEndpoint, ideaEndpoint } from "./Endpoints";
  * Ideas
  */
 
-export async function fetchIdeas() {
+export async function getIdeas() {
   try {
     const response = await axios.get(ideasEndpoint);
     return response;
