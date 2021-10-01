@@ -19,9 +19,11 @@ const PollPage = () => {
     const poll = await getPoll(pollId);
     console.log(poll.data); // Chrome/FF inspector to see console
     setPoll(poll.data);
-    const ideas = await getIdeas(poll.ideaIds);
-    console.log(ideas.data); // Chrome/FF inspector to see console
-    setIdeas(ideas.data);
+    if (poll.data) {
+      const ideas = await getIdeas(poll.data.ideaIds);
+      console.log(ideas.data); // Chrome/FF inspector to see console
+      setIdeas(ideas.data);
+    }
   }
 
   useEffect(() => {
