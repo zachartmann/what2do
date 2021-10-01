@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Header from "../components/Header";
@@ -15,13 +15,20 @@ const PollPage = () => {
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
 
+  async function fetchData(pollId) {
+    const poll = await getPoll(pollId);
+    console.log(poll.data); // Chrome/FF inspector to see console
+    setPoll(poll.data);
+    const ideas = await getIdeas(poll.ideaIds);
+    console.log(ideas.data); // Chrome/FF inspector to see console
+    setIdeas(ideas.data);
+  }
+
   useEffect(() => {
     if (validPoll) {
-      setPoll(getPoll(pollId));
-      setIdeas(getIdeas(poll.ideaIds));
-      // setTimeLeft(getPoll(pollId));
+      fetchData(pollId);
     }
-  });
+  }, []);
 
   // Current stub
 

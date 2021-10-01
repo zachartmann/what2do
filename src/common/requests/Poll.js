@@ -16,7 +16,7 @@ export async function getPolls() {
 
 export async function getPoll(pollId) {
   try {
-    const response = await axios.get(`${pollsEndpoint}/${pollId}`);
+    const response = await axios.get(`${pollEndpoint}/${pollId}`);
     return response;
   } catch (err) {
     throw err;
