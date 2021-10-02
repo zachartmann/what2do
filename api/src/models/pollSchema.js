@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 /**
  * Schema definition
  */
+
 const Poll = new mongoose.Schema({
   pollId: { required: true, type: String },
   title: { required: true, type: String },

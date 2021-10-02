@@ -5,8 +5,8 @@ import mongoose from "mongoose";
  */
 
 const Suggestion = new mongoose.Schema({
-  Suggestion: { required: true, type: String },
-  Category: { required: true, type: String },
+  suggestion: { required: true, type: String },
+  category: { required: true, type: String },
 });
 
 /**
