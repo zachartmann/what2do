@@ -6,7 +6,7 @@ import { isEmpty } from "lodash";
 const router = Router();
 
 /**
- * GET
+ * GET /polls
  */
 
 router.get("/polls", async (req, res) => {
@@ -18,21 +18,17 @@ router.get("/polls", async (req, res) => {
 router.get("/poll/:id", async (req, res) => {
   const pollId = req.params.id;
 
-  if (!pollId) {
-    return res.status(StatusCodes.BAD_REQUEST).json("Poll id is not valid");
-  }
+  try {
+    const poll = await PollModel.findOne({ pollId }).exec();
 
-  const poll = await PollModel.findOne({ pollId }).exec();
-
-  if (poll) {
     return res.status(StatusCodes.OK).json(poll);
+  } catch (err) {
+    return res.sendStatus(StatusCodes.NOT_FOUND);
   }
-
-  return res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
 });
 
 /**
- * POST
+ * POST /poll
  */
 
 router.post("/poll", async (req, res) => {
@@ -43,20 +39,34 @@ router.post("/poll", async (req, res) => {
       title,
       endDate: new Date(endDate),
       timeLimit,
-      ideaIds: ideaIds.map((ideaId) => Number(ideaId)),
+      ideaIds,
     });
 
     try {
       await pollToCreate.save();
 
-      console.log("Something worked!");
       return res.status(StatusCodes.CREATED).json(pollToCreate);
     } catch (err) {
-      console.log("Something didn't work");
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
     return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
+
+/**
+ * DELETE: /poll/:id
+ */
+
+router.delete("/poll/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  try {
+    await PollModel.deleteOne({ _id }).exec();
+
+    return res.sendStatus(StatusCodes.OK);
+  } catch (err) {
+    return res.status(StatusCodes.NOT_FOUND).json(err);
   }
 });
 

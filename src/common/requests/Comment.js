@@ -5,7 +5,7 @@ import { commentsEndpoint, commentEndpoint } from "./Endpoints";
  * Comments
  */
 
-export async function fetchComments() {
+export async function getComments() {
   try {
     const response = await axios.get(commentsEndpoint);
     return response;

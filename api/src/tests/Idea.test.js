@@ -59,6 +59,17 @@ describe("/ideas endpoint", () => {
     expect(res.status).toEqual(200);
     expect(res.body).toEqual(dummyIdeas);
   });
+
+  it("GET with query should return query ideas with 200", async () => {
+    mockingoose(Idea).toReturn(dummyIdeas, "find");
+
+    const res = await request(server).get("/api/ideas").query({
+      ids: "507f191e810c19729de860ea,507f191e810c19729de860ed",
+    });
+
+    expect(res.status).toEqual(200);
+    expect(res.body).toEqual(dummyIdeas);
+  });
 });
 
 describe("/idea endpoint", () => {

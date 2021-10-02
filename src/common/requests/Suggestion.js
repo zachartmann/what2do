@@ -5,7 +5,7 @@ import { suggestionsEndpoint, suggestionEndpoint } from "./Endpoints";
  * Suggestions
  */
 
-export async function fetchSuggestions() {
+export async function getSuggestions() {
   try {
     const response = await axios.get(suggestionsEndpoint);
     return response;
