@@ -19,9 +19,7 @@ router.get("/comments/:id", async (req, res) => {
   const _id = Number(req.params.id);
 
   if (!_id) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json("Comment id is an invalid number reference");
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
   try {
