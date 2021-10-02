@@ -6,8 +6,8 @@ import mongoose from "mongoose";
 
 const Comment = new mongoose.Schema({
   commentId: Number,
-  comment: String,
-  user: String,
+  comment: { required: true, type: String },
+  user: { required: true, type: String },
 });
 
 /**

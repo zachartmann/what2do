@@ -5,13 +5,15 @@ import { User } from "./userSchema";
  */
 
 const Idea = new mongoose.Schema({
-  content: String,
-  upVotes: Number,
-  downVotes: Number,
-  upVoters: [User],
-  downVoters: [User],
-  pinned: Boolean,
-  user: String,
+  content: { required: true, type: String },
+  upVotes: { required: true, type: Number },
+  downVotes: { required: true, type: Number },
+  upVoters: { required: true, type: [User] },
+  downVoters: { required: true, type: [User] },
+  pinned: { required: true, type: Boolean },
+  user: { required: true, type: String },
+  lastModified: Date,
+  createdAt: { required: true, type: Date },
 });
 
 /**
