@@ -82,6 +82,16 @@ describe("/idea endpoint", () => {
 
     expect(res.status).toEqual(201);
     expect(res.body).toMatchObject(dummy);
+    expect(res.body.createdAt).toBeTruthy();
+  });
+
+  it("POSTing valid data updates an idea with 200", async () => {
+    mockingoose(Idea).toReturn(dummyIdeas[0], "save");
+
+    const dummy = JSON.parse(JSON.stringify(dummyIdeas[0])); // Clone
+    const res = await request(server).post("/api/idea").send(dummy);
+
+    expect(res.status).toEqual(200);
   });
 
   it("POSTing invalid data returns 500", async () => {
