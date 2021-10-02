@@ -8,7 +8,7 @@ const Poll = new mongoose.Schema({
   title: String,
   endDate: Date,
   timeLimit: Number,
-  ideaIds: [Number],
+  ideaIds: [String],
 });
 
 /**

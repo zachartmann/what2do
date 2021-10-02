@@ -5,9 +5,18 @@ import { pollsEndpoint, pollEndpoint } from "./Endpoints";
  * Polls
  */
 
-export async function fetchPolls() {
+export async function getPolls() {
   try {
     const response = await axios.get(pollsEndpoint);
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getPoll(pollId) {
+  try {
+    const response = await axios.get(`${pollEndpoint}/${pollId}`);
     return response;
   } catch (err) {
     throw err;

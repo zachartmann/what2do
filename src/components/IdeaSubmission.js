@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import IncludeName from "./IncludeName";
 import Info from "./Info";
 import IdeaInput from "./IdeaInput";
+import {
+  differenceInSeconds,
+  differenceInHours,
+  differenceInMinutes,
+} from "date-fns";
 
-const IdeaSubmission = () => {
-  const timeLeft = "9:58";
+function getTimeLeft(endDate, currentDate) {
+  let timeLeft;
+  const hours = differenceInHours(endDate, currentDate, {
+    roundingMethod: "floor",
+  });
+  const longerThanHour = hours >= 1;
+  const minutesModulus = differenceInMinutes(endDate, currentDate) % 60;
+  const secondsModulus = differenceInSeconds(endDate, currentDate) % 60;
+
+  if (longerThanHour) {
+    timeLeft = `${hours}: ${minutesModulus}`;
+  } else {
+    timeLeft = `${minutesModulus}:${secondsModulus}`;
+  }
+
+  return timeLeft;
+}
+
+const IdeaSubmission = ({ poll }) => {
+  const endDate = new Date(poll.endDate);
+  const currentDate = new Date();
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setTimeLeft(getTimeLeft(endDate, new Date()));
+    }, 1000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [timeLeft]);
 
   const handleSendIdea = () => {
     if (idea) {

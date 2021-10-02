@@ -268,6 +268,11 @@ svg.small {
   margin: 10px;
 }
 
+#returnToHome {
+  color: #4bb4ff;
+  font-size: medium;
+}
+
 .makinganewclass {
   padding: auto;
   margin: 10px;

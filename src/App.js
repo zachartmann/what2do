@@ -13,7 +13,6 @@ const App = () => {
         <Route exact path="/">
           <CreatePollPage />
         </Route>
-        {/* Not sure how this will work with the API atm */}
         <Route path="/:pollId">
           <PollPage />
         </Route>
