@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Header from "../components/Header";
 import IdeaSubmission from "../components/IdeaSubmission";
@@ -19,7 +19,7 @@ const PollPage = () => {
     const poll = await getPoll(pollId);
     console.log(poll.data); // Chrome/FF inspector to see console
     setPoll(poll.data);
-    if (poll.data) {
+    if (poll.data && poll.data.ideaIds && poll.data.ideaIds.length > 0) {
       const ideas = await getIdeas(poll.data.ideaIds);
       console.log(ideas.data); // Chrome/FF inspector to see console
       setIdeas(ideas.data);
@@ -47,9 +47,9 @@ const PollPage = () => {
       {!poll && !ideas && (
         <div className="content-container">
           <p className="centered">Unfortunately there's no poll here</p>
-          <a href="/" className="content-container centered">
+          <Link to="/" className="content-container centered">
             Click here to head back
-          </a>
+          </Link>
         </div>
       )}
       <div className="content">
