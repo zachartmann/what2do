@@ -12,17 +12,26 @@ import {
 
 function getTimeLeft(endDate, currentDate) {
   let timeLeft;
-  const hours = differenceInHours(endDate, currentDate, {
-    roundingMethod: "floor",
-  });
+  const seconds = differenceInSeconds(endDate, currentDate);
+  if (seconds <= 0) {
+    return "Expired";
+  }
+
   const longerThanHour = hours >= 1;
-  const minutesModulus = differenceInMinutes(endDate, currentDate) % 60;
-  const secondsModulus = differenceInSeconds(endDate, currentDate) % 60;
+  const hours = `${Math.abs(
+    differenceInHours(endDate, currentDate, {
+      roundingMethod: "floor",
+    })
+  )}`.padStart(2, "0");
+  const minutesLeft = `${Math.abs(
+    differenceInMinutes(endDate, currentDate) % 60
+  )}`.padStart(2, "0");
+  const secondsLeft = `${Math.abs(seconds % 60)}`.padStart(2, "0");
 
   if (longerThanHour) {
-    timeLeft = `${hours}: ${minutesModulus}`;
+    timeLeft = `${hours}:${minutesLeft} HR`;
   } else {
-    timeLeft = `${minutesModulus}:${secondsModulus}`;
+    timeLeft = `${minutesLeft}:${secondsLeft} MIN`;
   }
 
   return timeLeft;
@@ -75,7 +84,9 @@ const IdeaSubmission = ({ poll }) => {
           </div>
           <div className="flex-component flex-70 flex-end">
             <p>
-              <b>Time left:</b> {timeLeft}
+              <b>Time left:</b>
+              <br />
+              {timeLeft}
             </p>
           </div>
         </div>
