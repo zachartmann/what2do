@@ -28,11 +28,27 @@ steps:
   - script: |
       yarn test:ci
       cd api
-      yarn test
+      yarn test:ci
     displayName: "Run unit tests"
+
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testRunner: JUnit
+      testResultsFiles: "**/junit.xml"
 
   - script: |
       yarn build
       cd api
       yarn build
     displayName: "Build React & API"
+
+  - task: CopyFiles@2
+    inputs:
+      Contents: "api/build/**" # Pull the API build directory
+      TargetFolder: "$(Build.ArtifactStagingDirectory)"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory) # dist or build files
+      ArtifactName: "www" # output artifact named www
