@@ -49,4 +49,3 @@ steps:
       azureSubscription: "<Azure service connections>"
       appName: "what2Do"
       package: "$(System.DefaultWorkingDirectory)"
-      customWebConfig: "-Handler iisnode -NodeStartFile api/build/index.js -appType node"
