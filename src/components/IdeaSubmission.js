@@ -82,7 +82,7 @@ const IdeaSubmission = ({ poll }) => {
               <Info />
             </div>
           </div>
-          <div className="flex-component flex-70 flex-end">
+          <div className="flex-component flex-70 centered flex-end">
             <p>
               <b>Time left:</b>
               <br />
