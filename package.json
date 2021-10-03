@@ -31,12 +31,6 @@
     "prettier:ci": "npx prettier --check .",
     "prepare": "husky install"
   },
-  "jest": {
-    "reporters": [
-      "default",
-      "jest-junit"
-    ]
-  },
   "eslintConfig": {
     "extends": [
       "react-app",

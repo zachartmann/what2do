@@ -11,12 +11,6 @@
     "test": "jest",
     "test:ci": "jest --reporters=default --reporters=jest-junit"
   },
-  "jest": {
-    "reporters": [
-      "default",
-      "jest-junit"
-    ]
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
