@@ -37,7 +37,7 @@ steps:
     condition: succeededOrFailed()
     inputs:
       testRunner: JUnit
-      testResultsFiles: "**/test-results.xml"
+      testResultsFiles: "**/junit.xml"
 
   - script: |
       yarn build
