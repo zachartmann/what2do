@@ -9,4 +9,5 @@ connect();
 
 app.listen(port, () => {
   console.info("Express server started on port: " + port);
+  console.info(`Running on ${env.node_env} environment`);
 });

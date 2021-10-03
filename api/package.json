@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx babel src --out-dir build",
-    "start": "node ./build/index.js",
-    "dev": "nodemon --exec babel-node -- src/index.js",
-    "ci": "node ./build.js",
+    "build": "cross-env npx babel src --out-dir build",
+    "start": "cross-env NODE_ENV=production node ./build/index.js",
+    "dev": "cross-env nodemon --exec babel-node -- src/index.js",
+    "ci": "cross-env node ./build.js",
     "test": "jest"
   },
   "author": "",
@@ -26,6 +26,7 @@
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
     "babel-jest": "^27.2.0",
+    "cross-env": "^7.0.3",
     "jest": "^27.2.0",
     "mockingoose": "^2.15.2",
     "nodemon": "^2.0.12"
