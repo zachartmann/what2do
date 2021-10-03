@@ -33,12 +33,6 @@ steps:
       yarn test:ci
     displayName: "Run unit tests"
 
-  - task: PublishTestResults@2
-    condition: succeededOrFailed()
-    inputs:
-      testRunner: JUnit
-      testResultsFiles: "**/junit.xml"
-
   - script: |
       yarn build
       cd api

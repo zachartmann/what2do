@@ -25,7 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "react-scripts test --ci --reporters=default --reporters=jest-junit --watchAll=false",
+    "test:ci": "react-scripts test --ci --watchAll=false",
     "eject": "react-scripts eject",
     "prettier:run": "yarn prettier --write .",
     "prettier:ci": "npx prettier --check .",
@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "husky": "^7.0.0",
-    "jest-junit": "^12.3.0",
     "prettier": "2.4.1",
     "pretty-quick": "^3.1.1"
   }
