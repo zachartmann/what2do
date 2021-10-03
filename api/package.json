@@ -8,8 +8,7 @@
     "start": "node ./build/index.js",
     "dev": "nodemon --exec babel-node -- src/index.js",
     "ci": "node ./build.js",
-    "test": "jest",
-    "test:ci": "jest --ci"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
