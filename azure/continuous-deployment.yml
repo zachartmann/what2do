@@ -4,7 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-  - main
+  branches:
+    include:
+      - master
 
 pool:
   vmImage: ubuntu-latest
@@ -43,12 +45,14 @@ steps:
       yarn build
     displayName: "Build React & API"
 
-  - task: CopyFiles@2
+  - task: ArchiveFiles@2
     inputs:
-      Contents: "api/build/**" # Pull the API build directory
-      TargetFolder: "$(Build.ArtifactStagingDirectory)"
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+      includeRootFolder: false
 
-  - task: PublishBuildArtifacts@1
+  - task: AzureWebApp@1
     inputs:
-      PathtoPublish: $(Build.ArtifactStagingDirectory) # dist or build files
-      ArtifactName: "www" # output artifact named www
+      azureSubscription: "<Azure service connections>"
+      appName: "what2Do"
+      package: "$(System.DefaultWorkingDirectory)"
+      customWebConfig: "-Handler iisnode -NodeStartFile server.js -appType node"
