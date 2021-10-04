@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import IncludeName from "../components/IncludeName";
+import SendFeedback from "../components/SendFeedback";
 import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
 

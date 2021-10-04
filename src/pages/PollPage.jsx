@@ -7,6 +7,8 @@ import Ideas from "../components/Ideas";
 import Footer from "../components/Footer";
 import { getPoll } from "../common/requests/Poll";
 import { getIdeas } from "../common/requests/Idea";
+import FeedbackPopup from "../components/FeedbackPopup";
+import SendFeedback from "../components/SendFeedback";
 
 const PollPage = () => {
   // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
@@ -52,6 +54,9 @@ const PollPage = () => {
           </Link>
         </div>
       )}
+      <div className="content">
+        <SendFeedback />
+      </div>
       <div className="content">
         <Footer />
       </div>

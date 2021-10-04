@@ -226,6 +226,9 @@ svg.small {
   left: 12%;
 }
 
+.feedback-popup {
+}
+
 .info-popup {
   font-size: small;
   transform: translate(35%, 0%);
