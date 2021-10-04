@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import PopularitySort from "./PopularitySort";
 
 const IdeaSort = ({}) => {
   const sortideas = [
