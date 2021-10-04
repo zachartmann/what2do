@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useMemo } from "react";
 
-import Articles from "../components/Articles.js";
+import PopularityReferences from "./PopularityReferences.js";
 
 const PopularitySort = ({ articles }) => {
   const [sort, setSort] = useState(1);
@@ -17,8 +17,6 @@ const PopularitySort = ({ articles }) => {
   return (
     <div className="content">
       <div classname="thisclass">
-        <button> Popularity </button>
-        <button> Recency </button>
         <button data-testid="most-upvoted-link" onClick={() => setSort(1)}>
           Most Upvoted
         </button>
@@ -27,7 +25,7 @@ const PopularitySort = ({ articles }) => {
         </button>
       </div>
       <div>
-        <Articles articles={newArticles} />
+        <PopularityReferences articles={newArticles} />
       </div>
     </div>
   );
