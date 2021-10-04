@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //import PopularitySort from "./PopularitySort";
 
-const PopularityReferences = ({}) => {
+const IdeaSort = ({}) => {
   const sortideas = [
     {
       id: 1,
@@ -54,4 +54,4 @@ const PopularityReferences = ({}) => {
   );
 };
 
-export default PopularityReferences;
+export default IdeaSort;
