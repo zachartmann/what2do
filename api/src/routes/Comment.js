@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { StausCodes } from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 import CommentModel from "../models/commentSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
 
@@ -9,28 +10,25 @@ const router = Router();
  */
 
 router.get("/comments", async (req, res) => {
-  const comments = await CommentModel.find({});
+  const comments = await CommentModel.find({}).exec();
 
   return res.status(StatusCodes.OK).json(comments);
 });
 
 router.get("/comments/:id", async (req, res) => {
-  const commentId = Number(req.params.id);
-  if (!commentId) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json("Comment id is a valid number reference");
+  const _id = Number(req.params.id);
+
+  if (!_id) {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
-  const comments = await CommentModel.findOne({ commentId });
+  try {
+    const comments = await CommentModel.findById({ _id }).exec();
 
-  if (comments) {
     return res.status(StatusCodes.OK).json(comments);
+  } catch (err) {
+    return res.sendStatus(StatusCodes.NOT_FOUND);
   }
-
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json("There is an internal issue with the code");
 });
 
 /**
@@ -38,35 +36,23 @@ router.get("/comments/:id", async (req, res) => {
  */
 
 router.post("/comment", async (req, res) => {
-  const { commentId, comment, user } = req.query;
-  let commentToCreate;
+  if (!isEmpty(req.body)) {
+    const { commentId, comment, user } = req.body;
 
-  if (req.query) {
-    commentToCreate = new CommentModel({
+    const commentToCreate = new CommentModel({
       commentId,
       comment,
       user,
     });
-  } else {
-    commentToCreate = new CommentModel({
-      commentId: 1,
-      comment: "Testing this as a comment this as a comment",
-      user: "Testuser",
-    });
-  }
 
-  commentToCreate.save((err) => {
-    if (err) {
-      console.log("issue with the comment endpoint");
-      return res.status(StausCodes.OK).json(commentToCreate);
-    } else {
-      console.log("This comment endpoint worked");
+    try {
+      await commentToCreate.save();
+
+      return res.status(StatusCodes.CREATED).json(commentToCreate);
+    } catch (err) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
-  });
-
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json("Unable to save comment record");
+  }
 });
 
 export default router;

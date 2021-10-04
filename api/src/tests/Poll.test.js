@@ -11,6 +11,7 @@ const dummyPolls = [
     endDate: new Date(),
     timeLimit: 10,
     ideaIds: ["0", "1"],
+    theme: "Pool Party",
   },
   {
     _id: "507f191e810c19729de860eb",
@@ -19,6 +20,7 @@ const dummyPolls = [
     endDate: new Date(),
     timeLimit: 20,
     ideaIds: ["2", "3"],
+    theme: "Bowling",
   },
 ];
 
