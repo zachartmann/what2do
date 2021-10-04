@@ -7,13 +7,13 @@ const PopularityReferences = ({}) => {
       id: 1,
       title: "This is a test sorting idea",
       upvotes: 12,
-      formed: 2021,
+      formed: "2021-10-02T02:55:22.220+00:00",
     },
     {
       id: 2,
       title: "Another test",
       upvotes: 13,
-      formed: 2020,
+      formed: "2020-10-02T02:55:22.220+00:00",
     },
   ];
 
