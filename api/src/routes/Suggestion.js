@@ -6,8 +6,9 @@ import { isEmpty } from "lodash";
 const router = Router();
 
 /**
- * GET:
+ * GET: /suggestions
  */
+
 router.get("/suggestions", async (req, res) => {
   const category = req.query.category;
   let suggestions;
@@ -15,37 +16,32 @@ router.get("/suggestions", async (req, res) => {
   if (!category) {
     suggestions = await SuggestionModel.find({}).exec();
   } else {
-    suggestions = await SuggestionModel.find({ Category: category }).exec();
+    suggestions = await SuggestionModel.find({ category }).exec();
   }
   return res.status(StatusCodes.OK).json(suggestions);
 });
 
 /**
- * POST:
+ * POST: /suggestions
  */
 
 router.post("/suggestion", async (req, res) => {
-  const { suggestion, category } = req.body;
-  let suggestionToCreate;
-
   if (!isEmpty(req.body)) {
-    suggestionToCreate;
-    new SuggestionModel({
+    const { suggestion, category } = req.body;
+    const suggestionToCreate = new SuggestionModel({
       suggestion,
       category,
     });
+
+    try {
+      await suggestionToCreate.save();
+
+      return res.status(StatusCodes.CREATED).json(suggestionToCreate);
+    } catch (err) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    }
   } else {
-    suggestionToCreate = new SuggestionModel({});
-  }
-
-  try {
-    await suggestionToCreate.save();
-
-    console.log("Suggestion created succesfully");
-    return res.status(StatusCodes.CREATED).json(suggestionToCreate);
-  } catch (errResponse) {
-    console.log("Suggestion was not able to be created");
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errResponse);
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 });
 

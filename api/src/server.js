@@ -5,6 +5,7 @@ import helmet from "helmet";
 import express from "express";
 import env from "./environment";
 import BaseRouter from "./routes/index";
+import { StatusCodes } from "http-status-codes";
 
 // Init express
 const app = express();
@@ -47,7 +48,7 @@ const staticDir = path.join(__dirname, "../../build/");
 app.use(express.static(staticDir));
 app.get("*", (req, res) => {
   if (req.url.startsWith("/api")) {
-    res.status(NOT_FOUND).end();
+    res.status(StatusCodes.NOT_FOUND).end();
   } else {
     res.sendFile("index.html", { root: staticDir });
   }

@@ -3,12 +3,10 @@ import mongoose from "mongoose";
 /**
  * Schema definition
  */
-const Suggestion = new mongoose.Schema();
 
-Suggestion.add({
-  _id: Number,
-  Suggestion: String,
-  Category: String,
+const Suggestion = new mongoose.Schema({
+  suggestion: { required: true, type: String },
+  category: { required: true, type: String },
 });
 
 /**
