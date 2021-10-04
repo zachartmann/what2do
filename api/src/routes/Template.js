@@ -4,17 +4,17 @@ import { OK } from "http-status-codes";
 const router = Router();
 
 /**
- * GET: /items
+ * GET: /template TODO
  */
 
-router.get("/user", async (req, res) => {
+router.get("/template", async (req, res) => {
   const items = await getItems();
   return res.status(OK).json(items).end();
 });
 
 /**
- * POST: /item (DEVELOPMENT BUILD ONLY)
+ * POST: /template TODO
  */
-router.post("/..", async (req, res) => {});
+router.post("/template", async (req, res) => {});
 
 export default router;

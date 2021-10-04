@@ -4,7 +4,7 @@ import { OK } from "http-status-codes";
 const router = Router();
 
 /**
- * GET: /items
+ * GET: /user TODO
  */
 
 router.get("/user", async (req, res) => {
@@ -13,8 +13,8 @@ router.get("/user", async (req, res) => {
 });
 
 /**
- * POST: /item (DEVELOPMENT BUILD ONLY)
+ * POST: /user TODO
  */
-router.post("/..", async (req, res) => {});
+router.post("/user", async (req, res) => {});
 
 export default router;

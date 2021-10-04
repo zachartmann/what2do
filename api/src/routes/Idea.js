@@ -58,6 +58,7 @@ router.post("/idea", async (req, res) => {
         downVoters,
         pinned,
         user,
+        lastModified: new Date(),
       };
 
       try {
@@ -77,6 +78,7 @@ router.post("/idea", async (req, res) => {
       downVoters,
       pinned,
       user,
+      createdAt: new Date(),
     });
 
     try {
