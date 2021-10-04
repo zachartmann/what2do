@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import PopularitySort from "../components/PopularitySort";
 
 const Articles = ({ articles }) => {
@@ -11,12 +11,12 @@ const Articles = ({ articles }) => {
     },
   ];
 
-  ReactDOM.render(
-    <React.StrictMode>
-      <PopularitySort articles={ARTICLES} />
-    </React.StrictMode>,
-    document.getElementById("root")
-  );
+  //ReactDOM.render(
+  //<React.StrictMode>
+  //<PopularitySort articles={ARTICLES} />
+  //</React.StrictMode>,
+  //document.getElementById("root")
+  //);
 
   return (
     <div className="pending">
@@ -29,13 +29,13 @@ const Articles = ({ articles }) => {
           </tr>
         </thead>
         <tbody>
-          {articles.map((article, index) => (
+          {/* {articles.map((article, index) => (
             <tr data-testid="article" key={`article-index-${index + 1}`}>
               <td data-testid="article-title">{article.title}</td>
               <td data-testid="article-upvotes">{article.upvotes}</td>
               <td data-testid="article-date">{article.date}</td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </table>
     </div>
