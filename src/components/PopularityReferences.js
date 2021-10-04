@@ -37,7 +37,7 @@ const PopularityReferences = ({}) => {
   }, [sortType]);
 
   return (
-    <div className="pending">
+    <div className="centered">
       <select onChange={(e) => setSortType(e.target.value)}>
         <option value="upvotes">Upvotes</option>
         <option value="formed">Formed in</option>
