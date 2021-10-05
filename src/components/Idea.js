@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
+import { updateIdea } from "../common/requests/Idea";
 
 import CommentBox from "./CommentBox";
 
@@ -23,6 +24,7 @@ const Idea = ({ idea }) => {
   const [hidden, setHidden] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
   const {
+    _id,
     content,
     upVotes,
     downVotes,
@@ -34,7 +36,7 @@ const Idea = ({ idea }) => {
     createdAt,
   } = idea;
   let metaLabel;
-  const [pinHidden, setPinHidden] = useState(true);
+  const [pinHidden, setPinHidden] = useState(!pinned);
 
   // Create the 'edited/created at' tag that shows when last edited/created
   if (lastModified) {
@@ -68,9 +70,14 @@ const Idea = ({ idea }) => {
   const handleMouseEnter = () => {
     setPinHidden(false);
   };
-  
+
   const handleMouseLeave = () => {
-    setPinHidden(true);
+    if (!pinned) setPinHidden(true);
+  };
+
+  const handlePinClick = (id) => {
+    updateIdea(id, undefined, undefined, undefined, !pinned);
+    window.location.reload()
   };
 
   const commentFill = hidden ? "white" : "lightskyblue";
@@ -83,12 +90,12 @@ const Idea = ({ idea }) => {
         onMouseLeave={handleMouseLeave}
       >
         {!pinHidden ? (
-          <div style={{ height: 0 }}>
+          <div style={{ height: 0 }} onClick={() => handlePinClick(_id)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon blue-icon header-icon button-icon"
               style={{ position: "relative", top: "-20" }}
-              fill="yellow"
+              fill= {pinned ? "yellow" : "white"}
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
@@ -157,15 +164,15 @@ const Idea = ({ idea }) => {
           <div className="flex-component flex-70 flex-end">
             {pinned ? (
               <svg
-                className="h-6 w-6 icon blue-icon"
+                class="h-6 w-6 icon blue-icon"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="lightskyblue"
                 viewBox="0 0 24 24"
               >
                 <path
-                  fillRule="evenodd"
+                  fill-rule="evenodd"
                   d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
+                  clip-rule="evenodd"
                 />
               </svg>
             ) : null}
