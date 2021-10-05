@@ -77,7 +77,7 @@ const Idea = ({ idea }) => {
 
   const handlePinClick = (id) => {
     updateIdea(id, undefined, undefined, undefined, !pinned);
-    window.location.reload()
+    window.location.reload();
   };
 
   const commentFill = hidden ? "white" : "lightskyblue";
@@ -95,7 +95,7 @@ const Idea = ({ idea }) => {
               xmlns="http://www.w3.org/2000/svg"
               className="icon blue-icon header-icon button-icon"
               style={{ position: "relative", top: "-20" }}
-              fill= {pinned ? "yellow" : "white"}
+              fill={pinned ? "yellow" : "white"}
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
