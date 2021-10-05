@@ -9,10 +9,11 @@ const Idea = ({ idea }) => {
   // -  Stroke .blue-icon
   // -  Fill white if not showing comments, otherwise lightskyblue
 
-  const dummyUser = { //Dummy user for testing voting mechanism
-    name: "Zac",
-    password: null
-  }
+  const dummyUser = {
+    //Dummy user for testing voting mechanism
+    name: "Kevin",
+    password: null,
+  };
 
   const [hidden, setHidden] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
@@ -56,7 +57,6 @@ const Idea = ({ idea }) => {
   const toggleComments = () => {
     setHidden(!hidden);
   };
-
   const commentFill = hidden ? "white" : "lightskyblue";
   return (
     <div className="content">
