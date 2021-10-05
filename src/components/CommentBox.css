@@ -1,0 +1,32 @@
+:root {
+  --comment-text-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --comment-text-color: #000000;
+}
+
+.comment-textarea {
+  background-color: var(--input-background);
+  border: none;
+  border-radius: 5px;
+  resize: none;
+  padding: 10px;
+  transition: background-color var(--dark-transition-duration);
+}
+
+.comment {
+  background-color: var(--input-background);
+  color: #000000;
+  border-radius: 5px;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding: 10px;
+  transition: background-color var(--dark-transition-duration),
+    color var(--dark-transition-duration);
+}
+
+.delete-button {
+  background-color: green;
+  margin-bottom: -10px;
+}
