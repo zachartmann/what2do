@@ -54,6 +54,15 @@ div.trimmed {
   border-radius: 100%;
 }
 
+.pin-icon {
+  border-radius: 100%;
+  position: relative;
+  top: -20px;
+  background-color: rgb(255, 255, 200);
+  padding: 2px;
+  vertical-align: middle;
+}
+
 .centered {
   margin-left: auto;
   margin-right: auto;
