@@ -12,3 +12,5 @@ export const templatesEndpoint = "/api/templates";
 export const templateEndpoint = "/api/template";
 export const suggestionsEndpoint = "/api/suggestions";
 export const suggestionEndpoint = "/api/suggestion";
+// export const feedbackEndpoint = "/api/feedback";
+// add endpoint for feedback  and create request file
