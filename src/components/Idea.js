@@ -162,20 +162,6 @@ const Idea = ({ idea }) => {
             </p>
           </div>
           <div className="flex-component flex-70 flex-end">
-            {pinned ? (
-              <svg
-                class="h-6 w-6 icon blue-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="lightskyblue"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            ) : null}
             <svg
               onClick={toggleComments}
               className="h-6 w-6 icon blue-icon comment-icon button-icon"
