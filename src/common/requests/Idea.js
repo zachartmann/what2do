@@ -28,14 +28,24 @@ export async function getIdeas(ids = null) {
   }
 }
 
-export async function postIdea(content, upVotes, downVotes, pinned) {
+export async function postIdea(
+  content,
+  upVotes,
+  downVotes,
+  pinned,
+  user = "Anonymous"
+) {
   try {
     const response = await axios.post(ideaEndpoint, {
       content,
       upVotes,
       downVotes,
+      upVoters: [],
+      downVoters: [],
       pinned,
+      user,
     });
+    console.log(`fire${response._id}`);
     return response;
   } catch (err) {
     throw err;

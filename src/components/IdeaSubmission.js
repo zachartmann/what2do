@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
+import { postIdea } from "../common/requests/Idea";
 import IncludeName from "./IncludeName";
 import Info from "./Info";
 import IdeaInput from "./IdeaInput";
@@ -56,6 +56,7 @@ const IdeaSubmission = ({ poll }) => {
   const handleSendIdea = () => {
     if (idea) {
       alert(idea);
+      postIdea(idea, 0, 0, false);
     } else {
       alert(placeholder);
     }
