@@ -5,7 +5,7 @@ import { templatesEndpoint } from "./Endpoints";
  * Templates
  */
 
-export async function fetchTemplates() {
+export async function getTemplates() {
   try {
     const response = await axios.get(templatesEndpoint);
     return response;

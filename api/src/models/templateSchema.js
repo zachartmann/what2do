@@ -3,12 +3,13 @@ import mongoose from "mongoose";
 /**
  * Schema definition
  */
+
 const Template = new mongoose.Schema({
-  title: String,
-  category: String,
+  title: { required: true, type: String },
+  category: { required: true, type: String },
   theme: String,
   timeLimit: Number,
-  ideaIds: [Number],
+  ideaIds: [String],
 });
 
 /**
@@ -22,6 +23,7 @@ const Template = new mongoose.Schema({
 /**
  * Define model.
  */
+
 const TemplateModel = mongoose.model("Template", Template);
 
 export default TemplateModel;

@@ -1,14 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import IncludeName from "./IncludeName";
 import Info from "./Info";
 import IdeaInput from "./IdeaInput";
+import {
+  differenceInSeconds,
+  differenceInHours,
+  differenceInMinutes,
+} from "date-fns";
 
-const IdeaSubmission = () => {
-  const timeLeft = "9:58";
+function getTimeLeft(endDate, currentDate) {
+  let timeLeft;
+  const seconds = differenceInSeconds(endDate, currentDate);
+  if (seconds <= 0) {
+    return "Expired";
+  }
+
+  const longerThanHour = hours >= 1;
+  const hours = `${Math.abs(
+    differenceInHours(endDate, currentDate, {
+      roundingMethod: "floor",
+    })
+  )}`.padStart(2, "0");
+  const minutesLeft = `${Math.abs(
+    differenceInMinutes(endDate, currentDate) % 60
+  )}`.padStart(2, "0");
+  const secondsLeft = `${Math.abs(seconds % 60)}`.padStart(2, "0");
+
+  if (longerThanHour) {
+    timeLeft = `${hours}:${minutesLeft} HR`;
+  } else {
+    timeLeft = `${minutesLeft}:${secondsLeft} MIN`;
+  }
+
+  return timeLeft;
+}
+
+const IdeaSubmission = ({ poll }) => {
+  const endDate = new Date(poll.endDate);
+  const currentDate = new Date();
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setTimeLeft(getTimeLeft(endDate, new Date()));
+    }, 1000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [timeLeft]);
 
   const handleSendIdea = () => {
     if (idea) {
@@ -39,9 +82,11 @@ const IdeaSubmission = () => {
               <Info />
             </div>
           </div>
-          <div className="flex-component flex-70 flex-end">
+          <div className="flex-component flex-70 centered flex-end">
             <p>
-              <b>Time left:</b> {timeLeft}
+              <b>Time left:</b>
+              <br />
+              {timeLeft}
             </p>
           </div>
         </div>

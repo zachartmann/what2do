@@ -64,7 +64,7 @@ div.trimmed {
   background-color: var(--content-background);
   border-radius: 10px;
   margin: auto;
-  width: 25%;
+  width: 30%;
   transition: background-color var(--dark-transition-duration);
 }
 
@@ -139,6 +139,11 @@ input {
   width: 90%;
 }
 
+.idea-meta-label {
+  padding-left: 2em;
+  padding-right: 1em;
+}
+
 .inverted-button {
   background-color: white;
   color: var(--button-background-color);
@@ -153,7 +158,11 @@ p.big {
 p.small {
   font-size: small;
 }
-
+  
+p.x-small {
+  font-size: x-small;
+}
+  
 select {
   background-color: var(--input-background);
   border: none;
@@ -161,6 +170,11 @@ select {
   padding: 7px;
   padding-right: 20px;
   transition: background-color var(--dark-transition-duration);
+}
+
+#returnToHome {
+  color: #4bb4ff;
+  font-size: medium;
 }
 
 svg.blue-icon {

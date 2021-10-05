@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 /**
  * Schema definition
  */
+
 export const User = new mongoose.Schema({
-  name: String,
-  password: String,
+  name: { required: true, type: String },
+  password: { required: true, type: String },
 });
 
 /**
@@ -19,6 +20,7 @@ export const User = new mongoose.Schema({
 /**
  * Define model.
  */
+
 const UserModel = mongoose.model("User", User);
 
 export default UserModel;

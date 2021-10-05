@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { formatDistanceStrict } from "date-fns";
 
 import "./Idea.css";
 
@@ -23,6 +24,34 @@ const Idea = ({ idea }) => {
 
   const [hidden, setHidden] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
+  const {
+    content,
+    upVotes,
+    downVotes,
+    upVoters,
+    downVoters,
+    pinned,
+    user,
+    lastModified,
+    createdAt,
+  } = idea;
+  let metaLabel;
+
+  if (lastModified) {
+    const lastModifiedDate = new Date(lastModified);
+    metaLabel = `Edited ${formatDistanceStrict(
+      lastModifiedDate,
+      new Date()
+    )} ago`;
+  } else if (createdAt) {
+    const createdAtDate = new Date(createdAt);
+    metaLabel = `Created ${formatDistanceStrict(
+      createdAtDate,
+      new Date()
+    )} ago`;
+  } else {
+    metaLabel = "Unknown time created";
+  }
 
   const incrementCommentCount = () => {
     setCommentCount(commentCount + 1);
@@ -46,7 +75,7 @@ const Idea = ({ idea }) => {
           style={{ paddingBottom: "0px" }}
         >
           <div className="flex-component flex-70">
-            <h3>{idea.content}</h3>
+            <h3>{content}</h3>
           </div>
           <div className="flex-component flex-30 flex-end flex-container">
             <div className="flex-component">
@@ -66,7 +95,7 @@ const Idea = ({ idea }) => {
               </svg>
             </div>
             <div className="flex-component">
-              <p className="big centered">{idea.upVotes - idea.downVotes}</p>
+              <p className="big centered">{upVotes - downVotes}</p>
             </div>
             <div className="flex-component">
               <svg
@@ -88,13 +117,13 @@ const Idea = ({ idea }) => {
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-between">
-            <p className="small top idea-small-details">
-              {idea.user || "Anon"}
+            <p className="small top idea-small-details">{user || "Anon"}</p>
+            <p className="x-small top idea-small-details idea-meta-label">
+              {metaLabel}
             </p>
-            <p className="small top idea-small-details">1 minute ago</p>
           </div>
           <div className="flex-component flex-70 flex-end">
-            {idea.pinned ? (
+            {pinned ? (
               <svg
                 className="h-6 w-6 icon blue-icon"
                 xmlns="http://www.w3.org/2000/svg"

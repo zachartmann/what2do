@@ -3,12 +3,14 @@ import mongoose from "mongoose";
 /**
  * Schema definition
  */
+
 const Poll = new mongoose.Schema({
-  pollId: String,
-  title: String,
-  endDate: Date,
+  pollId: { required: true, type: String },
+  title: { required: true, type: String },
+  theme: String,
+  endDate: { required: true, type: Date },
   timeLimit: Number,
-  ideaIds: [Number],
+  ideaIds: [String],
 });
 
 /**

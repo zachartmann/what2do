@@ -2,6 +2,7 @@ import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import IdeaModel from "../models/ideaSchema";
 import { isEmpty } from "lodash";
+import mongoose from "mongoose";
 
 const router = Router();
 
@@ -10,7 +11,21 @@ const router = Router();
  */
 
 router.get("/ideas", async (req, res) => {
-  const ideas = await IdeaModel.find({}).exec();
+  let ideas;
+
+  // /ideas?ids=id1,id2,id3 allows for a single query for multiple IDs
+  if (!isEmpty(req.query) && !isEmpty(req.query.ids)) {
+    const _ids = req.query.ids.split(",");
+    const ids = _ids.map((id) => mongoose.Types.ObjectId(id));
+
+    ideas = await IdeaModel.find({
+      _id: {
+        $in: ids,
+      },
+    }).exec();
+  } else {
+    ideas = await IdeaModel.find({}).exec();
+  }
 
   return res.status(StatusCodes.OK).json(ideas);
 });
@@ -43,15 +58,14 @@ router.post("/idea", async (req, res) => {
         downVoters,
         pinned,
         user,
+        lastModified: new Date(),
       };
 
       try {
         await IdeaModel.findOneAndUpdate({ _id }, updatedModel).exec();
 
-        console.log("Something worked!");
-        return res.status(StatusCodes.OK);
+        return res.sendStatus(StatusCodes.OK);
       } catch (err) {
-        console.log("Something didn't work");
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
       }
     }
@@ -64,15 +78,14 @@ router.post("/idea", async (req, res) => {
       downVoters,
       pinned,
       user,
+      createdAt: new Date(),
     });
 
     try {
       await ideaToCreate.save();
 
-      console.log("Something worked!");
       return res.status(StatusCodes.CREATED).json(ideaToCreate);
     } catch (err) {
-      console.log("Something didn't work");
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
   } else {
@@ -81,24 +94,18 @@ router.post("/idea", async (req, res) => {
 });
 
 /**
- * DELETE: /idea
+ * DELETE: /idea/:id
  */
 
 router.delete("/idea/:id", async (req, res) => {
   const _id = req.params.id;
 
-  if (_id) {
-    try {
-      await IdeaModel.deleteOne({ _id }).exec();
+  try {
+    await IdeaModel.deleteOne({ _id }).exec();
 
-      console.log("Something worked!");
-      return res.sendStatus(StatusCodes.OK);
-    } catch (err) {
-      console.log("Something didn't work");
-      return res.status(StatusCodes.NOT_FOUND).json(err);
-    }
-  } else {
-    return res.sendStatus(StatusCodes.BAD_REQUEST);
+    return res.sendStatus(StatusCodes.OK);
+  } catch (err) {
+    return res.status(StatusCodes.NOT_FOUND).json(err);
   }
 });
 
