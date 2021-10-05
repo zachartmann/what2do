@@ -53,13 +53,8 @@ const IdeaSubmission = ({ poll }) => {
     };
   }, [timeLeft]);
 
-  const handleSendIdea = () => {
-    if (idea) {
-      alert(idea);
-      postIdea(idea, 0, 0, false);
-    } else {
-      alert(placeholder);
-    }
+  const handleIdeaSubmission = () => {
+    if (idea) postIdea(poll._id, idea, 0, 0, false);
   };
 
   return (
@@ -73,7 +68,7 @@ const IdeaSubmission = ({ poll }) => {
             <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder} />
           </div>
           <div className="flex-component flex-30 flex-end">
-            <button onClick={handleSendIdea}>Send</button>
+            <button onClick={handleIdeaSubmission}>Send</button>
           </div>
         </div>
         <div className="content-container flex-container">

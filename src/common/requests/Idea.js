@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ideasEndpoint, ideaEndpoint } from "./Endpoints";
+import { postPollIdea } from "./Poll";
 
 /**
  * Ideas
@@ -29,6 +30,7 @@ export async function getIdeas(ids = null) {
 }
 
 export async function postIdea(
+  poll_id,
   content,
   upVotes,
   downVotes,
@@ -36,7 +38,8 @@ export async function postIdea(
   user = "Anonymous"
 ) {
   try {
-    const response = await axios.post(ideaEndpoint, {
+    // Create idea record in database
+    const ideaResponse = await axios.post(ideaEndpoint, {
       content,
       upVotes,
       downVotes,
@@ -45,8 +48,9 @@ export async function postIdea(
       pinned,
       user,
     });
-    console.log(`fire${response._id}`);
-    return response;
+    // Link created idea to poll
+    postPollIdea(poll_id, ideaResponse.data._id);
+    return ideaResponse;
   } catch (err) {
     throw err;
   }

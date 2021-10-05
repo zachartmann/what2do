@@ -33,7 +33,7 @@ router.get("/poll/:id", async (req, res) => {
 
 router.post("/poll", async (req, res) => {
   if (!isEmpty(req.body)) {
-    const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
+    const { _id, pollId, title, endDate, timeLimit, ideaIds } = req.body;
     const pollToCreate = new PollModel({
       pollId,
       title,
@@ -42,12 +42,54 @@ router.post("/poll", async (req, res) => {
       ideaIds,
     });
 
+    if (_id) {
+      // edit the poll if it already exists
+      const updatedModel = {
+        pollId,
+        title,
+        endDate,
+        timeLimit,
+        ideaIds,
+      };
+
+      try {
+        await PollModel.findOneAndUpdate({ pollId }, updatedModel).exec();
+        return res.sendStatus(StatusCodes.OK);
+      } catch (err) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+      }
+    }
+
     try {
       await pollToCreate.save();
 
       return res.status(StatusCodes.CREATED).json(pollToCreate);
     } catch (err) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    }
+  } else {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
+
+/**
+ * POST /poll/idea
+ * Appends given ideaId to existing poll ideaIds array
+ */
+
+router.post("/poll/idea", async (req, res) => {
+  if (!isEmpty(req.body)) {
+    const { pollId, ideaId } = req.body;
+    if (pollId && ideaId) {
+      try {
+        await PollModel.findOneAndUpdate(
+          { _id: pollId },
+          { $push: { ideaIds: ideaId } }
+        );
+        return res.sendStatus(StatusCodes.OK);
+      } catch (err) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+      }
     }
   } else {
     return res.sendStatus(StatusCodes.BAD_REQUEST);
