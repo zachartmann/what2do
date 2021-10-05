@@ -158,11 +158,11 @@ p.big {
 p.small {
   font-size: small;
 }
-  
+
 p.x-small {
   font-size: x-small;
 }
-  
+
 select {
   background-color: var(--input-background);
   border: none;
