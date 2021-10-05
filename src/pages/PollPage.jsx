@@ -53,7 +53,6 @@ const PollPage = () => {
         </div>
       )}
       <Footer />
-      <div style={{ backgroundColor: "white", height: "100px" }}></div>
     </div>
   );
 };
