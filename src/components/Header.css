@@ -1,0 +1,30 @@
+:root {
+  --header-background-color: rgb(75, 180, 255);
+}
+
+[data-theme="dark"] {
+  --header-background-color: rgb(0, 150, 255);
+}
+
+.header {
+  align-items: center;
+  background-color: var(--header-background-color);
+  color: var(--text-color);
+  display: grid;
+  place-items: center;
+  margin-bottom: 30px;
+  padding: 10px;
+  transition: background-color var(--dark-transition-duration),
+    color var(--dark-transition-duration);
+  width: 100%;
+}
+
+.header > p > * {
+  margin-left: 15px;
+}
+
+.header-icon {
+  background-color: rgb(255, 255, 200);
+  padding: 2px;
+  vertical-align: middle;
+}

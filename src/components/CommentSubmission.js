@@ -7,32 +7,25 @@ const CommentSubmission = ({ handleComment }) => {
     setCommentText(event.target.value);
   };
 
-  return (
-    <div className="Commentoverall">
-      <br />
+  const handleClick = () => {
+    if (commentText !== "") {
+      handleComment(commentText);
+      setCommentText("");
+    }
+  };
 
-      <br />
-      <div className="content-component">
-        <textarea
-          id="stylecomment"
-          rows="3"
-          cols="52"
-          placeholder="Enter your comment for the idea"
-          maxlength="145"
-          value={commentText}
-          onChange={handleChange}
-        />
-        <button
-          onClick={() => {
-            if (commentText !== "") {
-              handleComment(commentText);
-              setCommentText("");
-            }
-          }}
-        >
-          Add comment
-        </button>
-      </div>
+  return (
+    <div className="content-container">
+      <textarea
+        className="comment-textarea"
+        rows="3"
+        cols="50"
+        placeholder="Enter your comment for the idea"
+        maxLength="145"
+        value={commentText}
+        onChange={handleChange}
+      />
+      <button onClick={handleClick}>Add comment</button>
     </div>
   );
 };

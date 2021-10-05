@@ -4,6 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+// Set default as light theme - I think it looks better :P
+document.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.setAttribute("data-theme", "light");
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
