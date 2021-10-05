@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Popups.css";
+
 const LoginPopup = ({ hidden }) => {
   let topClasses = "content popup login-popup";
   if (hidden) {

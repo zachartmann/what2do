@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./CommentBox.css";
+
 import CommentSubmission from "../components/CommentSubmission";
 import Comments from "../components/Comments.js";
 
@@ -26,7 +28,7 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
     decrement();
   };
 
-  let classes = "content-component";
+  let classes = "content-container";
   if (hidden) {
     classes += " hidden";
   }

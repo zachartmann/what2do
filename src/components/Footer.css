@@ -1,0 +1,25 @@
+.footer {
+  background-color: var(--background-color);
+  bottom: 0;
+  height: 80px;
+  left: -15px;
+  margin-bottom: 0px;
+  position: fixed;
+  text-align: center;
+  transition: background-color var(--dark-transition-duration);
+  width: 100%;
+}
+
+.footer-icon {
+  vertical-align: middle;
+}
+
+.love-icon {
+  margin-top: -6px;
+}
+
+.footer-buffer {
+  background-color: var(--background-color);
+  height: 100px;
+  transition: background-color var(--dark-transition-duration);
+}

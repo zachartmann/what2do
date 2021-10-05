@@ -5,10 +5,10 @@ import Comment from "./Comment";
 const Comments = ({ comments, deleteComment }) => {
   return (
     <>
-      {comments.map((comment) => {
+      {comments.map((comment, index) => {
         return (
           <Comment
-            key={comment.commentInput}
+            key={index}
             user={comment.user}
             commentInput={comment.commentInput}
             deleteComment={deleteComment}
