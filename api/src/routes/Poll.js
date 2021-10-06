@@ -6,7 +6,7 @@ import { isEmpty } from "lodash";
 const router = Router();
 
 /**
- * GET /polls
+ * GET /polls - retrieve polls
  */
 
 router.get("/polls", async (req, res) => {
@@ -14,6 +14,10 @@ router.get("/polls", async (req, res) => {
 
   return res.status(StatusCodes.OK).json(polls);
 });
+
+/**
+ * GET /poll - retrieve poll
+ */
 
 router.get("/poll/:id", async (req, res) => {
   const pollId = req.params.id;
@@ -28,7 +32,7 @@ router.get("/poll/:id", async (req, res) => {
 });
 
 /**
- * POST /poll
+ * POST /poll - create a poll
  */
 
 router.post("/poll", async (req, res) => {
@@ -55,7 +59,7 @@ router.post("/poll", async (req, res) => {
 });
 
 /**
- * DELETE: /poll/:id
+ * DELETE: /poll/:id - delete a poll
  */
 
 router.delete("/poll/:id", async (req, res) => {

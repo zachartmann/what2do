@@ -4,17 +4,20 @@ import { OK } from "http-status-codes";
 const router = Router();
 
 /**
- * GET: /template TODO
+ * GET: /template - retrieve templates
  */
 
+// TODO
 router.get("/template", async (req, res) => {
   const items = await getItems();
   return res.status(OK).json(items).end();
 });
 
 /**
- * POST: /template TODO
+ * POST: /template - create a template
  */
+
+// TODO
 router.post("/template", async (req, res) => {});
 
 export default router;
