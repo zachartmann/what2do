@@ -54,7 +54,11 @@ const IdeaSubmission = ({ poll }) => {
   }, [timeLeft]);
 
   const handleIdeaSubmission = () => {
-    if (idea) postIdea(poll._id, idea, 0, 0, false);
+    if (idea) {
+      postIdea(poll._id, idea, 0, 0, false);
+    } else {
+      postIdea(poll._id, placeholder, 0, 0, false);
+    }
   };
 
   return (
