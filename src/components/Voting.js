@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { postIdea } from "../common/requests/Idea";
 
 const getCurrentUserVote = (idea, currentUser) => {
@@ -20,15 +20,49 @@ const getCurrentUserVote = (idea, currentUser) => {
   return 0;
 };
 
-const VotingMechanism = ({ idea, user }) => {
+const VotingMechanism = ({ idea, user, postIdeaToDb }) => {
   const [userVote, setUserVote] = useState(getCurrentUserVote(idea, user.name));
+  const [upVoters, setUpVoters] = useState(idea.upVoters);
+  const [downVoters, setDownVoters] = useState(idea.downVoters);
   const [upVotes, setUpVotes] = useState(idea.upVotes);
   const [downVotes, setDownVotes] = useState(idea.downVotes);
+  const didMount = useRef(true);
+
+  const removeUserVoteFromIdea = () => {
+    let newUpVotersList = upVoters.filter((upVoteUser) => {
+      return upVoteUser.name !== user.name;
+    });
+    setUpVoters(newUpVotersList);
+
+    const newDownVotersList = downVoters.filter((downVoteUser) => {
+      return downVoteUser.name !== user.name;
+    });
+    setDownVoters(newDownVotersList);
+  };
+
+  const addUserToVote = (vote) => {
+    if (vote == 1) {
+      setUpVoters([...upVoters, user]);
+    } else if (vote == -1) {
+      setDownVoters([...downVoters, user]);
+    }
+  };
+
+  useEffect(() => {
+    removeUserVoteFromIdea();
+    addUserToVote(userVote);
+  }, [userVote]);
+
+  useEffect(() => {
+    if (didMount.current) {
+      postIdeaToDb((upVoters = upVoters), (downVoters = downVoters));
+    } else {
+      didMount.current = true;
+    }
+  }, [downVoters, upVoters]);
 
   const handleVoteChange = (vote) => {
     setUserVote(vote);
-    //removeUserVoteFromIdea();
-    //setUserVoteOnIdea();
   };
 
   const incrementUpVotes = () => {
