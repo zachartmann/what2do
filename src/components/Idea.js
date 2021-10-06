@@ -18,12 +18,6 @@ const Idea = ({ idea }) => {
     _id: "615689f3c7568fc6aeff8074",
   };
 
-  const postIdeaToDb = ({ props }) => {
-    alert(
-      `Updated upvoterList ${props.upVoters}\n Updated downvoterList ${props.downVoters}`
-    );
-  };
-
   const [hidden, setHidden] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
   const {
@@ -77,11 +71,7 @@ const Idea = ({ idea }) => {
           <div className="flex-component flex-70">
             <h3>{content}</h3>
           </div>
-          <VotingMechanism
-            idea={idea}
-            user={dummyUser}
-            postIdeaToDb={postIdeaToDb()}
-          />
+          <VotingMechanism idea={idea} user={dummyUser} />
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-between">

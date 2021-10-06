@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef, useLayoutEffect } from "react";
-import { postIdea } from "../common/requests/Idea";
 
 const getCurrentUserVote = (idea, currentUser) => {
   if ((idea.upVoters.length === 0) | (idea.downVoters.length === 0)) {
@@ -20,7 +19,7 @@ const getCurrentUserVote = (idea, currentUser) => {
   return 0;
 };
 
-const VotingMechanism = ({ idea, user, postIdeaToDb }) => {
+const VotingMechanism = ({ idea, user }) => {
   const [userVote, setUserVote] = useState(getCurrentUserVote(idea, user.name));
   const [upVoters, setUpVoters] = useState(idea.upVoters);
   const [downVoters, setDownVoters] = useState(idea.downVoters);
@@ -55,7 +54,8 @@ const VotingMechanism = ({ idea, user, postIdeaToDb }) => {
 
   useEffect(() => {
     if (didMount.current) {
-      postIdeaToDb((upVoters = upVoters), (downVoters = downVoters));
+      console.log("Posting to db rn");
+      //postIdeaToDb((upVoters = upVoters), (downVoters = downVoters));
     } else {
       didMount.current = true;
     }
