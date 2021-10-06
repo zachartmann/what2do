@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
 
-import "./Idea.css";
-
 import CommentBox from "./CommentBox";
 
 const Idea = ({ idea }) => {

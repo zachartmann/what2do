@@ -1,51 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+
+// This component contains the logic to sort the ideas by two parameters which are createdAt and upVotes (date in which the idea was created, and the number of upVotes)
+// This component also contains the logic for the idea pinning functionality
+
+import "./Ideas.css";
 
 import Idea from "./Idea";
 
 const Ideas = ({ ideas }) => {
-  // const ideas = [
-  //   {
-  //     content: "Let's play vidya gam",
-  //     upVotes: 1,
-  //     downVotes: 2,
-  //     upVoters: [
-  //       {
-  //         name: "Zac",
-  //         password: "",
-  //       },
-  //     ],
-  //     downVoters: [
-  //       {
-  //         name: "Sean",
-  //         password: "1234",
-  //       },
-  //       {
-  //         name: "Mikael",
-  //         password: "",
-  //       },
-  //     ],
-  //     pinned: false,
-  //     user: "Zac",
-  //   },
-  //   {
-  //     content: "Let's go to the zoo",
-  //     upVotes: 90,
-  //     downVotes: 23,
-  //     upVoters: [
-  //       // All anonymous
-  //     ],
-  //     downVoters: [
-  //       {
-  //         name: "Zoo-hater",
-  //         password: "",
-  //       },
-  //     ],
-  //     pinned: true,
-  //     user: "",
-  //   },
-  // ];
+  const [sortType, setSortType] = useState("");
 
-  let sortIdeas = (ideas) => {
+  const sortPinnedIdeas = (ideas) => {
     var pinnedIdeas = [];
     var unpinnedIdeas = [];
     ideas.forEach((idea) => {
@@ -58,8 +23,38 @@ const Ideas = ({ ideas }) => {
     return pinnedIdeas.concat(unpinnedIdeas);
   };
 
+  const sortIdeas = (ideas) => {
+    // Some sorting - Popularity(upVotes - downVotes) / Recency(createdAt)
+
+    let tmpIdeas = ideas;
+
+    if (sortType == "createdAt") {
+      // Sort dates by lexigraphic compare
+      tmpIdeas = [...ideas].sort((a, b) =>
+        b[sortType] < a[sortType] ? -1 : b[sortType] > a[sortType] ? 1 : 0
+      );
+    } else if (sortType == "upVotes") {
+      // Sort upvotes numerically
+      tmpIdeas = [...ideas].sort((a, b) => {
+        let bValue = b["upVotes"] - b["downVotes"];
+        let aValue = a["upVotes"] - a["downVotes"];
+        return bValue - aValue;
+      });
+    }
+
+    return sortPinnedIdeas(tmpIdeas);
+  };
+
   return (
     <>
+      <div className="content sort-box">
+        <div className="flex-container flex-end">
+          <select onChange={(e) => setSortType(e.target.value)}>
+            <option value="upVotes">Upvotes</option>
+            <option value="createdAt">Created At</option>
+          </select>
+        </div>
+      </div>
       {sortIdeas(ideas).map((idea, index) => {
         return <Idea key={index} idea={idea} />;
       })}

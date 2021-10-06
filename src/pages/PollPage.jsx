@@ -42,7 +42,6 @@ const PollPage = () => {
     <div className="App">
       <Header pollId={pollId} />
       {poll && <IdeaSubmission poll={poll} />}
-      {/* Sorting */}
       {ideas && <Ideas ideas={ideas} />}
       {!poll && !ideas && (
         <div className="content-container">
