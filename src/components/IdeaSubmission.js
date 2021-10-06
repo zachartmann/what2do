@@ -47,7 +47,6 @@ const IdeaSubmission = ({ poll }) => {
 
   async function fetchSuggestions() {
     const fetchedSuggestions = await getSuggestions();
-    console.log(fetchedSuggestions.data);
     setSuggestions(fetchedSuggestions.data);
   }
 
