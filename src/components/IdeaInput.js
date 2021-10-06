@@ -1,25 +1,24 @@
 import { useState } from "react";
-import Suggestions from "./Suggestions";
 
-const IdeaInput = ({ setIdea, setPlaceholder }) => {
+const IdeaInput = ({ setIdea, setPlaceholder, suggestions }) => {
   const [counter, setCounter] = useState(0);
 
-  setPlaceholder(Suggestions[counter].suggestion);
+  setPlaceholder(suggestions[counter].suggestion);
 
   const iterateSuggestions = () => {
-    if (counter >= Suggestions.length - 1) {
+    if (counter >= suggestions.length - 1) {
       setCounter(0);
     } else {
       setCounter(counter + 1);
     }
-    setPlaceholder(Suggestions[counter].suggestion);
+    setPlaceholder(suggestions[counter].suggestion);
   };
 
   return (
     <>
       <div className="flex-compoment flex-70">
         <input
-          placeholder={Suggestions[counter].suggestion}
+          placeholder={suggestions[counter].suggestion}
           onChange={(e) => setIdea(e.target.value)}
         />
       </div>

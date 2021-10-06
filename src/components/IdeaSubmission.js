@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
 import IncludeName from "./IncludeName";
 import Info from "./Info";
 import IdeaInput from "./IdeaInput";
@@ -9,6 +8,7 @@ import {
   differenceInHours,
   differenceInMinutes,
 } from "date-fns";
+import { getSuggestions } from "../common/requests/Suggestion";
 
 function getTimeLeft(endDate, currentDate) {
   let timeLeft;
@@ -43,6 +43,17 @@ const IdeaSubmission = ({ poll }) => {
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
+  const [suggestions, setSuggestions] = useState([{ suggestion: "" }]);
+
+  async function fetchSuggestions() {
+    const fetchedSuggestions = await getSuggestions();
+    console.log(fetchedSuggestions.data);
+    setSuggestions(fetchedSuggestions.data);
+  }
+
+  useEffect(() => {
+    fetchSuggestions();
+  }, []);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -69,7 +80,11 @@ const IdeaSubmission = ({ poll }) => {
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
-            <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder} />
+            <IdeaInput
+              setIdea={setIdea}
+              setPlaceholder={setPlaceholder}
+              suggestions={suggestions}
+            />
           </div>
           <div className="flex-component flex-30 flex-end">
             <button onClick={handleSendIdea}>Send</button>
