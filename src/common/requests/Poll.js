@@ -29,7 +29,6 @@ export async function postPollIdea(pollId, ideaId) {
       pollId,
       ideaId,
     });
-    console.log(response);
     return response;
   } catch (err) {
     throw err;
