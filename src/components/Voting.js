@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const getCurrentUserVote = (idea, currentUser) => {
   if ((idea.upVoters.length === 0) | (idea.downVoters.length === 0)) {
@@ -54,8 +54,9 @@ const VotingMechanism = ({ idea, user }) => {
 
   useEffect(() => {
     if (didMount.current) {
-      console.log("Posting to db rn");
-      //postIdeaToDb((upVoters = upVoters), (downVoters = downVoters));
+      if ((idea.upVotes != upVotes) | (idea.downVotes != downVotes)) {
+        console.log("Posting to db rn");
+      }
     } else {
       didMount.current = true;
     }
