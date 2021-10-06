@@ -10,6 +10,7 @@ import {
   differenceInMinutes,
 } from "date-fns";
 
+// Get the time left from current time to poll end date and format it
 function getTimeLeft(endDate, currentDate) {
   let timeLeft;
   const seconds = differenceInSeconds(endDate, currentDate);

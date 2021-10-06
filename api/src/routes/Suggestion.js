@@ -6,7 +6,7 @@ import { isEmpty } from "lodash";
 const router = Router();
 
 /**
- * GET: /suggestions
+ * GET: /suggestions - retrieve suggestions, optionally filtering via category
  */
 
 router.get("/suggestions", async (req, res) => {
@@ -22,7 +22,7 @@ router.get("/suggestions", async (req, res) => {
 });
 
 /**
- * POST: /suggestions
+ * POST: /suggestions - create a suggestion
  */
 
 router.post("/suggestion", async (req, res) => {

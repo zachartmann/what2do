@@ -70,3 +70,76 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Feature Assignment
+
+## Poll creation and ID/Link
+
+Zac
+Components:
+
+- LoginPopup.js
+- PollPage.jsx
+
+## Idea creation
+
+Michael
+
+## Idea voting
+
+Yash
+
+## Idea sorting
+
+Juanita
+Components:
+
+- Ideas.js
+
+## Idea Pinning
+
+Sean
+Components:
+
+- Idea.js
+
+## User Management
+
+Sean
+
+## Idea comments
+
+Juanita
+Components:
+
+- CommentBox
+- Comments
+- Comment.js
+- CommentBox.css
+
+## Time limit + poll closure
+
+Kevin
+
+## Idea suggestions
+
+Yash
+
+## User Feedback
+
+Michael
+
+## Dark mode
+
+Zac
+Components:
+
+- Idea.css
+- Header.js
+- Header.css
+- Footer.js
+- Footer.css
+
+## Template polls
+
+Sean

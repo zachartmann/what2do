@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
 
-import "./Idea.css";
-
 import CommentBox from "./CommentBox";
 import VotingMechanism from "./Voting.js";
 
@@ -33,6 +31,7 @@ const Idea = ({ idea }) => {
   } = idea;
   let metaLabel;
 
+  // Create the 'edited/created at' tag that shows when last edited/created
   if (lastModified) {
     const lastModifiedDate = new Date(lastModified);
     metaLabel = `Edited ${formatDistanceStrict(
