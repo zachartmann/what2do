@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Popups.css";
+
 const AccountPopup = ({ hidden }) => {
   let topClasses = "content popup account-popup";
   if (hidden) {

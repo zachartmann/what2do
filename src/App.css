@@ -1,21 +1,46 @@
-/* .App {
-} */
+:root {
+  --background-color: #ffffff;
+  --box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  --button-background-color: rgb(0, 150, 255);
+  --content-background: rgb(240, 240, 240);
+  --input-background: rgb(225, 225, 225);
+  --text-color: #000000;
+  --dark-transition-duration: 0.5s;
+}
+
+[data-theme="dark"] {
+  --background-color: #1f1f1f;
+  --box-shadow: 0 0 16px 0 rgba(255, 255, 255, 0.24),
+    0 0 50px 0 rgba(255, 255, 255, 0.19);
+  --button-background-color: rgb(0, 125, 200);
+  --content-background: #3f3f3f;
+  --input-background: rgb(190, 190, 190);
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color var(--dark-transition-duration),
+    color var(--dark-transition-duration);
+}
 
 button {
-  background-color: rgb(0, 150, 255);
+  background-color: var(--button-background-color);
   border-radius: 5px;
   border: none;
   color: white;
   font-weight: bold;
   height: 40px;
-  transition-duration: 0.2s;
+  transition: background-color var(--dark-transition-duration);
   width: 100px;
 }
 
 button:hover,
 svg.button-icon:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--box-shadow);
+  transition: box-shadow var(--dark-transition-duration);
 }
 
 div.trimmed {
@@ -25,42 +50,8 @@ div.trimmed {
   padding-bottom: 0px;
 }
 
-input {
-  background-color: rgb(225, 225, 225);
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 90%;
-}
-
-p.big {
-  font-size: large;
-}
-
-p.small {
-  font-size: small;
-}
-
-p.x-small {
-  font-size: x-small;
-}
-
-select {
-  background-color: rgb(225, 225, 225);
-  border: none;
-  border-radius: 5px;
-  padding: 7px;
-  padding-right: 20px;
-}
-
-svg.blue-icon {
-  stroke: rgb(80, 80, 255);
-}
-
-svg.small {
-  height: 25px;
-  width: 25px;
-  margin-left: 5px;
+.button-icon {
+  border-radius: 100%;
 }
 
 .centered {
@@ -69,15 +60,12 @@ svg.small {
   text-align: center;
 }
 
-.comment-icon {
-  margin-top: -12px;
-}
-
 .content {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--content-background);
   border-radius: 10px;
   margin: auto;
   width: 30%;
+  transition: background-color var(--dark-transition-duration);
 }
 
 .content-container {
@@ -85,20 +73,6 @@ svg.small {
   padding: 5px;
   padding-top: 1px;
   margin: 5px;
-}
-
-.footer {
-  background-color: white;
-  bottom: 0;
-  height: 80px;
-  left: -15px;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-}
-
-.footer-icon {
-  vertical-align: middle;
 }
 
 .flex-container {
@@ -140,28 +114,6 @@ svg.small {
   justify-content: flex-start;
 }
 
-.header {
-  align-items: center;
-  background-color: rgb(75, 180, 255);
-  color: black;
-  display: grid;
-  place-items: center;
-  margin-bottom: 30px;
-  padding: 10px;
-  width: 100%;
-}
-
-.header > p > * {
-  margin-left: 15px;
-}
-
-.header-icon {
-  background-color: rgb(255, 255, 200);
-  border-radius: 100%;
-  padding: 2px;
-  vertical-align: middle;
-}
-
 .hidden {
   overflow: hidden;
   opacity: 0;
@@ -174,32 +126,17 @@ svg.small {
   margin-left: 10px;
 }
 
-.idea {
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.info {
-  padding-top: 3px;
-}
-
 .inline {
   display: inline;
 }
 
-.love-icon {
-  margin-top: -6px;
-}
-
-.top {
-  padding-top: 0px;
-  margin-top: 0px;
-}
-
-.idea-small-details {
-  margin-top: -40px;
+input {
+  background-color: var(--input-background);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color var(--dark-transition-duration);
+  width: 90%;
 }
 
 .idea-meta-label {
@@ -209,75 +146,33 @@ svg.small {
 
 .inverted-button {
   background-color: white;
-  color: rgb(0, 150, 255);
+  color: var(--button-background-color);
+  transition: background-color var(--dark-transition-duration),
+    color var(--dark-transition-duration);
 }
 
-.popup {
-  position: absolute;
-  border: 1px solid black;
-  transition: all 150ms linear;
-}
-
-.account-popup {
-  left: 44%;
-}
-
-.login-popup {
-  left: 12%;
+p.big {
+  font-size: large;
 }
 
 .feedback-popup {
 }
 
-.info-popup {
+p.small {
   font-size: small;
-  transform: translate(35%, 0%);
 }
 
-.commentbox {
-  width: 600px;
-  border: 2px solid rgb(240, 240, 240);
-  padding: auto;
-  margin: 10px;
-  /*trying to make the comments not exceed the width*/
-  inline-size: min-content;
-  overflow-wrap: break-word;
+p.x-small {
+  font-size: x-small;
 }
 
-.comment {
-  /* make the border colour red so can see where the box padding is when testing */
-  border: 1px solid rgb(240, 240, 240);
-  border-radius: 10px;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.hidden {
-  overflow: hidden;
-  opacity: 0;
-}
-
-.Card {
-  background-color: rgb(225, 225, 225);
-  border: none;
-  color: black;
-  height: fit-content;
-  border-radius: 5px;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 10px;
-  margin: 10px;
-  width: auto;
-  margin-bottom: 5px;
-}
-
-#stylecomment {
-  resize: none;
-  background-color: rgb(225, 225, 225);
+select {
+  background-color: var(--input-background);
   border: none;
   border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
+  padding: 7px;
+  padding-right: 20px;
+  transition: background-color var(--dark-transition-duration);
 }
 
 #returnToHome {
@@ -285,29 +180,17 @@ svg.small {
   font-size: medium;
 }
 
-.makinganewclass {
-  padding: auto;
-  margin: 10px;
-  margin-left: 5;
-  margin-bottom: -5px;
+svg.blue-icon {
+  stroke: rgb(80, 80, 255);
 }
 
-.Cardstyling {
-  margin: 5px;
+svg.small {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
 }
 
-#buttonid {
-  height: 40px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  background-color: green;
-  font-weight: bold;
-  transition-duration: 0.2s;
-  width: 100px;
-  margin-bottom: -5px;
-}
-
-.Commentoverall {
-  width: 450px;
+.top {
+  padding-top: 0px;
+  margin-top: 0px;
 }
