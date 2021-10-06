@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 const router = Router();
 
 /**
- * GET: /idea
+ * GET: /ideas - retrieve idea(s)
  */
 
 router.get("/ideas", async (req, res) => {
@@ -31,7 +31,7 @@ router.get("/ideas", async (req, res) => {
 });
 
 /**
- * POST: /idea
+ * POST: /idea - create or update an idea
  */
 
 router.post("/idea", async (req, res) => {
@@ -94,7 +94,7 @@ router.post("/idea", async (req, res) => {
 });
 
 /**
- * DELETE: /idea/:id
+ * DELETE: /idea/:id - delete an idea
  */
 
 router.delete("/idea/:id", async (req, res) => {

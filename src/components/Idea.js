@@ -35,6 +35,7 @@ const Idea = ({ idea }) => {
   } = idea;
   let metaLabel;
 
+  // Create the 'edited/created at' tag that shows when last edited/created
   if (lastModified) {
     const lastModifiedDate = new Date(lastModified);
     metaLabel = `Edited ${formatDistanceStrict(
