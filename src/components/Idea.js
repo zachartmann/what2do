@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { formatDistanceStrict } from "date-fns";
 
-import "./Idea.css";
-
 import CommentBox from "./CommentBox";
 
 const Idea = ({ idea }) => {
@@ -66,25 +64,6 @@ const Idea = ({ idea }) => {
   };
 
   const commentFill = hidden ? "white" : "lightskyblue";
-
-  //const [data, setData] = useState([]);
-  //const [sortType, setSortType] = useState("upVotes");
-
-  //useEffect(() => {
-  //const sortArray = (type) => {
-  //const types = {
-  //upVotes: "upVotes",
-  //createdAtDate: "createdAtDate",
-  //};
-  //const sortProperty = types[type];
-  //const sorted = [...Idea].sort(
-  //(a, b) => b[sortProperty] - a[sortProperty]
-  //);
-  //setData(sorted);
-  //};
-
-  //sortArray(sortType);
-  //}, [sortType]);
 
   return (
     <div className="content">
@@ -184,20 +163,6 @@ const Idea = ({ idea }) => {
           />
         </div>
       </div>
-      {/*<div className="centered">
-      <select onChange={(e) => setSortType(e.target.value)}>
-        <option value="upvotes">Upvotes</option>
-        <option value="formed">Formed in</option>
-      </select>
-
-      {data.map((popularity) => (
-        <div key={popularity.id} style={{ margin: "30px" }}>
-          <div>{`Idea: ${popularity.idea}`}</div>
-          <div>{`upVotes: ${popularity.upVotes}`}</div>
-          <div>{`createdAtDate: ${popularity.createdAtDate}`}</div>
-        </div>
-      ))}
-      </div>*/}
     </div>
   );
 };

@@ -5,7 +5,6 @@ import Header from "../components/Header";
 import IdeaSubmission from "../components/IdeaSubmission";
 import Ideas from "../components/Ideas";
 import Footer from "../components/Footer";
-import IdeaSort from "../components/IdeaSort";
 import { getPoll } from "../common/requests/Poll";
 import { getIdeas } from "../common/requests/Idea";
 
@@ -43,8 +42,6 @@ const PollPage = () => {
     <div className="App">
       <Header pollId={pollId} />
       {poll && <IdeaSubmission poll={poll} />}
-      {/* Sorting */}
-      <IdeaSort />
       {ideas && <Ideas ideas={ideas} />}
       {!poll && !ideas && (
         <div className="content-container">
