@@ -29,12 +29,14 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
   };
 
   let classes = "content-container";
+  let commentBoxStyle = {};
   if (hidden) {
     classes += " hidden";
+    commentBoxStyle["height"] = 0;
   }
 
   return (
-    <div className={classes}>
+    <div className={classes} style={commentBoxStyle}>
       <CommentSubmission handleComment={handleComment} />
       <Comments comments={comments} deleteComment={deleteComment} />
     </div>
