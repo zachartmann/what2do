@@ -2,26 +2,17 @@ import { useEffect, useState, useRef } from "react";
 import { postIdea } from "../common/requests/Idea";
 
 const getCurrentUserVote = (idea, currentUser) => {
-  console.log(`Searching for user in idea ${idea.content}`);
   if (idea.upVoters.length === 0 && idea.downVoters.length === 0) {
     return 0;
   } else if (currentUser) {
     var i;
-    console.log(
-      `length of upvoters in idea ${idea.content} is ${idea.upVoters.length}`
-    );
     for (i = 0; i < idea.upVoters.length; i++) {
       if (idea.upVoters[i].name === currentUser) {
-        console.log(`User found as upvote in idea ${idea.content}`);
         return 1;
       }
     }
-    console.log(
-      `length of upvoters in idea ${idea.content} is ${idea.downVoters.length}`
-    );
     for (i = 0; i < idea.downVoters.length; i++) {
       if (idea.downVoters[i].name === currentUser) {
-        console.log(`User found as downvote in idea ${idea.content}`);
         return -1;
       }
     }
