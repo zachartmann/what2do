@@ -7,7 +7,7 @@ describe("Comments endpoint", () => {
   });
 });
 
-describe("Comment endpoint", () => {
+describe("Comments endpoint", () => {
   it("Should post a comment with valid input", () => {
     expect(1 + 1).toBe(2); // TODO
   });
