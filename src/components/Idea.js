@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
+import { updateIdea } from "../common/requests/Idea";
 
 import CommentBox from "./CommentBox";
 
@@ -23,6 +24,7 @@ const Idea = ({ idea }) => {
   const [hidden, setHidden] = useState(true);
   const [commentCount, setCommentCount] = useState(0);
   const {
+    _id,
     content,
     upVotes,
     downVotes,
@@ -34,6 +36,7 @@ const Idea = ({ idea }) => {
     createdAt,
   } = idea;
   let metaLabel;
+  const [pinHidden, setPinHidden] = useState(!pinned);
 
   // Create the 'edited/created at' tag that shows when last edited/created
   if (lastModified) {
@@ -64,11 +67,47 @@ const Idea = ({ idea }) => {
     setHidden(!hidden);
   };
 
+  const handleMouseEnter = () => {
+    setPinHidden(false);
+  };
+
+  const handleMouseLeave = () => {
+    if (!pinned) setPinHidden(true);
+  };
+
+  const handlePinClick = (id) => {
+    updateIdea(id, undefined, undefined, undefined, !pinned);
+    window.location.reload();
+  };
+
   const commentFill = hidden ? "white" : "lightskyblue";
+  const pinFill = pinned ? "yellow" : "white";
 
   return (
     <div className="content">
-      <div className="content-container idea">
+      <div
+        className="content-container idea"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {!pinHidden && (
+          <div style={{ height: 0 }} onClick={() => handlePinClick(_id)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon blue-icon pin-icon"
+              fill={pinFill}
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              />
+            </svg>
+          </div>
+        )}
         <div
           className="content-container flex-container"
           style={{ paddingBottom: "0px" }}
@@ -122,20 +161,6 @@ const Idea = ({ idea }) => {
             </p>
           </div>
           <div className="flex-component flex-70 flex-end">
-            {pinned ? (
-              <svg
-                className="h-6 w-6 icon blue-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="lightskyblue"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : null}
             <svg
               onClick={toggleComments}
               className="h-6 w-6 icon blue-icon comment-icon button-icon"

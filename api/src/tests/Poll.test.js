@@ -63,10 +63,20 @@ describe("/poll endpoint", () => {
     expect(res.status).toEqual(404);
   });
 
-  it("POSTing valid data returns 201", async () => {
+  it("POSTing valid data with ID updates poll and returns 200", async () => {
     mockingoose(Poll).toReturn(dummyPolls[0], "save");
 
     const res = await request(server).post("/api/poll").send(dummyPolls[0]);
+
+    expect(res.status).toEqual(200);
+  });
+
+  it("POSTing valid data for new poll returns 201", async () => {
+    const dummy = JSON.parse(JSON.stringify(dummyPolls[0])); // Clone
+    delete dummy._id;
+    mockingoose(Poll).toReturn(dummy, "save");
+
+    const res = await request(server).post("/api/poll").send(dummy);
 
     expect(res.status).toEqual(201);
   });
