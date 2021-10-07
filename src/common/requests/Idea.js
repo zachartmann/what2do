@@ -60,10 +60,11 @@ export async function postIdea(
   upVotes,
   downVotes,
   pinned,
-  user = "Anonymous"
+  user
 ) {
   try {
     // Create idea record in database
+    user = user ? user : "Anonymous";
     const ideaResponse = await axios.post(ideaEndpoint, {
       content,
       upVotes,
@@ -73,6 +74,8 @@ export async function postIdea(
       pinned,
       user,
     });
+    console.log(`Idea created by: ${user}`);
+
     // Link created idea to poll
     await postPollIdea(poll_id, ideaResponse.data._id);
     return ideaResponse;

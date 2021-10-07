@@ -12,6 +12,7 @@
   border-radius: 5px;
   resize: none;
   padding: 10px;
+  width: -webkit-fill-available;
   transition: background-color var(--dark-transition-duration);
 }
 

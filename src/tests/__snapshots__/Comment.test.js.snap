@@ -24,7 +24,8 @@ exports[`Comment component should render correctly with given comment 1`] = `
     <p
       className="small comment-small-details"
     >
-      Juanita
+      Anonymous
+       
     </p>
   </div>
   <br />
