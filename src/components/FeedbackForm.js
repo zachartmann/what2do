@@ -7,7 +7,7 @@ const FeedbackForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting form with this feedback`);
+    alert(`Thank you for your feedback!`);
     postFeedback(feedbackContent);
   };
   return (
