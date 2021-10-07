@@ -23,3 +23,7 @@
   height: 100px;
   transition: background-color var(--dark-transition-duration);
 }
+
+a {
+  color: inherit;
+}
