@@ -49,7 +49,7 @@ export async function postIdea(
       user,
     });
     // Link created idea to poll
-    postPollIdea(poll_id, ideaResponse.data._id);
+    await postPollIdea(poll_id, ideaResponse.data._id);
     return ideaResponse;
   } catch (err) {
     throw err;
