@@ -1,15 +1,14 @@
-import { shallow } from "enzyme";
-import Comment from "../components/Comment";
+import supertest from "supertest";
+import server from "../server";
 
-const dummyComment = {
-  commentInput: "Testingcomment",
-  user: "juanitaj",
-};
+describe("Comments endpoint", () => {
+  it("Should return all suggestions", () => {
+    expect(1 + 1).toBe(2); // TODO
+  });
+});
 
-describe("Comment component", () => {
-  it("should render correctly with given comment", () => {
-    const component = shallow(<Comment key={0} comment={dummyComment} />);
-
-    expect(component).toMatchSnapshot();
+describe("Comments endpoint", () => {
+  it("Should post a suggestion with valid input", () => {
+    expect(1 + 1).toBe(2); // TODO
   });
 });
