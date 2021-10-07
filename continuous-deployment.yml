@@ -52,5 +52,5 @@ steps:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
+      targetPath: "$(System.DefaultWorkingDirectory)"
       artifactName: WebApp
