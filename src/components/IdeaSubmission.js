@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { postIdea } from "../common/requests/Idea";
 import IncludeName from "./IncludeName";
 import Info from "./Info";
@@ -68,12 +67,15 @@ const IdeaSubmission = ({ poll }) => {
   }, [timeLeft]);
 
   const handleIdeaSubmission = async () => {
+    const user = localStorage.getItem("user");
+    
     if (idea) {
-      await postIdea(poll._id, idea, 0, 0, false);
+      await postIdea(poll._id, idea, 0, 0, false, user);
     } else {
-      await postIdea(poll._id, placeholder, 0, 0, false);
+      await postIdea(poll._id, placeholder, 0, 0, false, user);
     }
     window.location.reload();
+    console.log(`Idea submitted by user: ${user}`);
   };
 
   return (

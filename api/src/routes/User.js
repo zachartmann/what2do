@@ -1,23 +1,32 @@
 import { Router } from "express";
-import { OK } from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
+import UserModel from "../models/userSchema";
+import { isEmpty } from "lodash";
 
 const router = Router();
-
-/**
- * GET: /user - retrieve users
- */
-
-// TODO
-router.get("/users", async (req, res) => {
-  const items = await getItems();
-  return res.status(OK).json(items).end();
-});
 
 /**
  * POST: /user - create a user
  */
 
-// TODO
-router.post("/user", async (req, res) => {});
+router.post("/user", async (req, res) => {
+  if (!isEmpty(req.body)) {
+    const { name, password } = req.body;
+    const userToCreate = new UserModel({
+      name,
+      password,
+    });
+
+    try {
+      await userToCreate.save();
+
+      return res.status(StatusCodes.CREATED).json(userToCreate);
+    } catch (err) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    }
+  } else {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
 
 export default router;
