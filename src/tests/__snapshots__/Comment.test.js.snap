@@ -7,20 +7,20 @@ exports[`Comment component should render correctly with given comment 1`] = `
   <div
     className="content-container"
   >
-    Comment: {commentInput}
+    Comment:
     <br />
     User Account: Juanita
   </div>
-  <div 
+   <div 
     className="content-container trimmed"
   >
     <button
       className="delete-button"
-      onClick={() => deleteComment(commentInput)}
+      onClick={[Function]}
     >
       Delete
     </button>
-   </div>
+      </div>
   <br />
 </div>
 `;
