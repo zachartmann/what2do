@@ -1,17 +1,18 @@
 import { useState } from "react";
 
 const IdeaInput = ({ setIdea, setPlaceholder, suggestions }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0); //Counter to be used for suggestion iteration
 
-  setPlaceholder(suggestions[counter].suggestion);
+  setPlaceholder(suggestions[counter].suggestion); //Informs idea of inital placeholder
 
   const iterateSuggestions = () => {
+    //Iterates through all the suggestions when pressing reload button.
     if (counter >= suggestions.length - 1) {
       setCounter(0);
     } else {
       setCounter(counter + 1);
     }
-    setPlaceholder(suggestions[counter].suggestion);
+    setPlaceholder(suggestions[counter].suggestion); //Informs idea of current placeholder for submission purposes
   };
 
   return (
