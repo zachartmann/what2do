@@ -45,6 +45,15 @@ steps:
       yarn build
     displayName: "Build React & API"
 
+  - task: DownloadSecureFile@1
+    name: environmentFile
+    inputs:
+      secureFile: ".env"
+
+  - script: |
+      sudo mv $(environmentFile.secureFilePath) api/
+    displayName: "Move .env to API directory"
+
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
