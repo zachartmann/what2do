@@ -36,15 +36,20 @@ steps:
     displayName: "Run unit tests - Sean"
 
   - script: |
+      cd api
+      yarn test:yash
+    displayName: "Run unit tests - Yash"
+
+  - script: |
+      cd api
+      yarn test:kevin
+    displayName: "Run unit tests - Kevin"
+
+  - script: |
       yarn test:ci
       cd api
       yarn test:ci
     displayName: "Run unit tests"
-
-  - script: |
-      cd api
-      yarn test:yash
-    displayName: "Run unit tests - Yash"
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
