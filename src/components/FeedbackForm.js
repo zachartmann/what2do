@@ -5,10 +5,10 @@ import "./FeedbackForm.css";
 const FeedbackForm = (props) => {
   const [feedbackContent, setFeedback] = useState("");
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     alert(`Thank you for your feedback!`);
-    postFeedback(feedbackContent);
+    await postFeedback(feedbackContent);
   };
   return (
     <div className="content feedback-box">
