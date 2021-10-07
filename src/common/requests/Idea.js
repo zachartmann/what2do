@@ -29,7 +29,16 @@ export async function getIdeas(ids = null) {
   }
 }
 
-export async function updateIdea(_id, content, upVotes, downVotes, pinned) {
+export async function updateIdea(
+  _id,
+  content,
+  upVotes,
+  downVotes,
+  upVoters,
+  downVoters,
+  pinned,
+  user
+) {
   try {
     const response = await axios.post(ideaEndpoint, {
       _id,

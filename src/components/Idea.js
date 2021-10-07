@@ -84,7 +84,16 @@ const Idea = ({ idea }) => {
   };
 
   const handlePinClick = (id) => {
-    updateIdea(id, undefined, undefined, undefined, !pinned);
+    updateIdea(
+      id,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      !pinned,
+      undefined
+    );
     window.location.reload();
   };
 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { postIdea } from "../common/requests/Idea";
+import { updateIdea } from "../common/requests/Idea";
 
 const getCurrentUserVote = (idea, currentUser) => {
   if (idea.upVoters.length === 0 && idea.downVoters.length === 0) {
@@ -53,10 +53,10 @@ const VotingMechanism = ({ idea, user }) => {
     addUserToVote(userVote);
   }, [userVote]);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (didMount.current) {
       if ((idea.upVotes != upVotes) | (idea.downVotes != downVotes)) {
-        postIdea(
+        await updateIdea(
           idea._id,
           idea.content,
           upVotes,
