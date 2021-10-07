@@ -41,10 +41,9 @@ router.get("/comment/:id", async (req, res) => {
 
 router.post("/comment", async (req, res) => {
   if (!isEmpty(req.body)) {
-    const { commentId, comment, user } = req.body;
+    const { comment, user } = req.body;
 
     const commentToCreate = new CommentModel({
-      commentId,
       comment,
       user,
     });
