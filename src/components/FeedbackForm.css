@@ -1,0 +1,38 @@
+.feedback-box {
+  box-shadow: var(--box-shadow);
+  margin-top: 100px;
+  width: 65%;
+}
+
+.feedback-contact,
+a {
+  background-color: var(--button-background-color);
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  color: var(--background-color);
+}
+
+.feedback {
+  width: 90%;
+}
+
+.feedback-message {
+  background-color: var(--input-background-color);
+  border: none;
+  border-bottom: 2px solid black;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  resize: none;
+  transition: border-bottom 0.2s linear;
+  width: 100%;
+}
+
+.feedback-message:focus {
+  outline: none;
+  border-bottom: 2px solid var(--button-background-color);
+}
+
+.submit-feedback {
+  width: 90%;
+  margin-bottom: 50px;
+}
