@@ -47,7 +47,39 @@ exports[`Idea component should render correctly with given idea 1`] = `
           content
         </h3>
       </div>
-      <VotingMechanism idea={idea} user={dummyUser} />
+      <VotingMechanism
+        idea={
+          Object {
+            "_id": "507f191e810c19729de860ea",
+            "content": "content",
+            "downVoters": Array [
+              Object {
+                "_id": "507f191e810c19729de860ec",
+                "name": "Kevin",
+                "password": "Password",
+              },
+            ],
+            "downVotes": 3,
+            "pinned": true,
+            "upVoters": Array [
+              Object {
+                "_id": "507f191e810c19729de860eb",
+                "name": "Kevin",
+                "password": "Password",
+              },
+            ],
+            "upVotes": 2,
+            "user": "Kevin",
+          }
+        }
+        user={
+          Object {
+            "_id": "615689f3c7568fc6aeff8074",
+            "name": "Kevin",
+            "password": "B",
+          }
+        }
+      />
     </div>
     <div
       className="content-container flex-container"
