@@ -26,7 +26,7 @@ const dummyIdea = {
 
 describe("Idea component", () => {
   it("should render correctly with given idea", () => {
-    const component = shallow(<Idea key={dummyIdea._id} idea={dummyIdea} />);
+    const component = shallow(<Idea key={0} idea={dummyIdea} />);
 
     expect(component).toMatchSnapshot();
   });
