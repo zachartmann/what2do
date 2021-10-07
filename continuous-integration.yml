@@ -44,6 +44,7 @@ steps:
     displayName: "Run unit tests"
 
   - script: |
+      cd api
       yarn test:yash
     displayName: "Run unit tests - Yash"
 
