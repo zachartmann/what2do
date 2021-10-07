@@ -74,9 +74,9 @@ exports[`Idea component should render correctly with given idea 1`] = `
         }
         user={
           Object {
-            "_id": "615689f3c7568fc6aeff8074",
-            "name": "Kevin",
-            "password": "B",
+            "_id": "615689f3c7568fc6aeff9000",
+            "name": null,
+            "password": "",
           }
         }
       />
