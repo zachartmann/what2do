@@ -2,8 +2,8 @@ import { shallow } from "enzyme";
 import Comment from "../components/Comment";
 
 const dummyComment = {
-  Comment: "Testingcomment",
-  UserAccount: "juanitaj",
+  commentInput: "Testingcomment",
+  user: "juanitaj",
 };
 
 describe("Comment component", () => {

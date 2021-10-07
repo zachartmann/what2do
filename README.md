@@ -113,8 +113,8 @@ Sean
 Juanita
 Components:
 
-- CommentBox
-- Comments
+- CommentBox.js
+- Comments.js
 - Comment.js
 - CommentBox.css
 - Idea.js
