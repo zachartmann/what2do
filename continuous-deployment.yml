@@ -50,8 +50,7 @@ steps:
       rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
       includeRootFolder: false
 
-  - task: AzureWebApp@1
+  - task: PublishPipelineArtifact@1
     inputs:
-      azureSubscription: "<Azure service connections>"
-      appName: "what2Do"
-      package: "$(System.DefaultWorkingDirectory)"
+      targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
+      artifactName: WebApp
