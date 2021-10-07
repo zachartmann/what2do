@@ -61,7 +61,7 @@ steps:
 
   - script: |
       cd api 
-      yarn test:zac
+      yarn test:mike
     displayName: "Run unit tests - Mike"
 
   - script: |
