@@ -16,7 +16,7 @@ router.get("/polls", async (req, res) => {
 });
 
 /**
- * GET /poll - retrieve poll
+ * GET /poll/:id - retrieve poll
  */
 
 router.get("/poll/:id", async (req, res) => {
