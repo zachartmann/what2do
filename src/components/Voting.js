@@ -56,7 +56,6 @@ const VotingMechanism = ({ idea, user }) => {
   useEffect(() => {
     if (didMount.current) {
       if ((idea.upVotes != upVotes) | (idea.downVotes != downVotes)) {
-        alert(`voted for ${idea.content}`);
         postIdea(
           idea._id,
           idea.content,
@@ -67,6 +66,7 @@ const VotingMechanism = ({ idea, user }) => {
           idea.pinned,
           user.name
         );
+        window.location.reload();
       }
     } else {
       didMount.current = true;
