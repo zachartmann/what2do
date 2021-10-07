@@ -23,6 +23,18 @@ export async function getPoll(pollId) {
   }
 }
 
+export async function postPollIdea(pollId, ideaId) {
+  try {
+    const response = await axios.post(`${pollEndpoint}/idea`, {
+      pollId,
+      ideaId,
+    });
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function postPoll(pollId, title, endDate, timeLimit, ideaIds) {
   try {
     const response = await axios.post(pollEndpoint, {

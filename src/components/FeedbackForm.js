@@ -21,13 +21,17 @@ const FeedbackForm = (props) => {
             <div className="content-container">
               <p>
                 <span>Email: </span>
-                <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                <a className="feedback-links" href="mailto:info@yoursite.com">
+                  info@yoursite.com
+                </a>
               </p>
             </div>
             <div className="content-container">
               <p>
                 <span>Website: </span>
-                <a href="#">what2do.com</a>
+                <a href="#" className="feedback-links">
+                  what2do.com
+                </a>
               </p>
             </div>
           </div>
