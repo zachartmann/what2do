@@ -29,6 +29,7 @@ const VotingMechanism = ({ idea, user }) => {
   const didMount = useRef(true);
 
   const removeUserVoteFromIdea = () => {
+    //Removes any current user vote from idea
     let newUpVotersList = upVoters.filter((upVoteUser) => {
       return upVoteUser.name !== user.name;
     });
@@ -41,6 +42,7 @@ const VotingMechanism = ({ idea, user }) => {
   };
 
   const addUserToVote = (vote) => {
+    //Adds user as a voter to the idea
     if (vote == 1) {
       setUpVoters([...upVoters, user]);
     } else if (vote == -1) {
@@ -54,6 +56,7 @@ const VotingMechanism = ({ idea, user }) => {
   }, [userVote]);
 
   useEffect(async () => {
+    //Posts once the upVoters or downVoters list has been updated
     if (didMount.current) {
       if ((idea.upVotes != upVotes) | (idea.downVotes != downVotes)) {
         await updateIdea(
@@ -78,6 +81,7 @@ const VotingMechanism = ({ idea, user }) => {
   };
 
   const incrementUpVotes = () => {
+    //Increments upvotes
     if (userVote === -1) {
       setUpVotes(upVotes + 1);
       setDownVotes(downVotes - 1);
@@ -92,6 +96,7 @@ const VotingMechanism = ({ idea, user }) => {
   };
 
   const incrementDownVotes = () => {
+    //Increments downvotes
     if (userVote === 1) {
       setDownVotes(downVotes + 1);
       setUpVotes(upVotes - 1);
@@ -105,7 +110,7 @@ const VotingMechanism = ({ idea, user }) => {
     }
   };
 
-  const upVoteButtonColor = userVote == 1 ? "lime" : "none";
+  const upVoteButtonColor = userVote == 1 ? "lime" : "none"; //Sets colour of buttons based on userVote
   const downVoteButtonColor = userVote == -1 ? "orangered" : "none";
   return (
     <div className="flex-component flex-30 flex-end flex-container">
