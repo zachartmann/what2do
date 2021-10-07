@@ -68,7 +68,7 @@ const IdeaSubmission = ({ poll }) => {
 
   const handleIdeaSubmission = async () => {
     const user = localStorage.getItem("user");
-    
+
     if (idea) {
       await postIdea(poll._id, idea, 0, 0, false, user);
     } else {

@@ -96,6 +96,7 @@ const PollSubmission = () => {
         template.data.ideaIds
       );
     }
+    window.location.href = `http://localhost:3000/poll/${pollId}`;
   };
 
   return (

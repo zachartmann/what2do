@@ -13,10 +13,10 @@ const Header = ({ pollId }) => {
     setTheme(newTheme);
   };
 
-  const handleClick =() => {
+  const handleClick = () => {
     navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
     alert("Link copied!");
-  }
+  };
 
   if (pollId === "") {
     // Show the create-poll UI since there's no ID

@@ -92,7 +92,6 @@ router.post("/poll/idea", async (req, res) => {
         );
         return res.sendStatus(StatusCodes.OK);
       } catch (err) {
-        
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
       }
     }

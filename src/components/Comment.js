@@ -21,7 +21,12 @@ const Comment = ({ commentInput, deleteComment }) => {
       </svg>
       <div className="content-container comment-details">
         <h3>{commentInput}</h3>
-        <p className="small comment-small-details">{localStorage.getItem("user") ? localStorage.getItem("user") : "Anonymous"} {/* TODO: fix */}</p>
+        <p className="small comment-small-details">
+          {localStorage.getItem("user")
+            ? localStorage.getItem("user")
+            : "Anonymous"}{" "}
+          {/* TODO: fix */}
+        </p>
       </div>
       <br />
     </div>
