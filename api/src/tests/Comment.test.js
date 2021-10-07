@@ -57,7 +57,7 @@ describe("Comment endpoint", () => {
     expect(res.status).toEqual(500);
   });
 
-  it("POSTing a valid suggestion creates a suggestion with 201", async () => {
+  it("POSTing a valid comment creates a comment with 201", async () => {
     mockingoose(CommentModel).toReturn(dummyComments[0], "save");
 
     const dummy = JSON.parse(JSON.stringify(dummyComments[0]));
