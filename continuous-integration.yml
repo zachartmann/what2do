@@ -28,15 +28,24 @@ steps:
     displayName: "Run Prettier check"
 
   - script: |
+      yarn test:juanita
+      cd api
+      yarn test:juanita
+    displayName: "Run unit tests - Juanita"
+
+  - script: |
+      yarn test:sean
+    displayName: "Run unit tests - Sean"
+
+  - script: |
       yarn test:ci
       cd api
       yarn test:ci
     displayName: "Run unit tests"
 
   - script: |
-      cd api
-      yarn test:juanita
-    displayName: "Run unit tests - Juanita"
+      yarn test:yash
+    displayName: "Run unit tests - Yash"
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()

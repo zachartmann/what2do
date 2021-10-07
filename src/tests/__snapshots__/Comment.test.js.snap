@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment component should render correctly with given comment 1`] = `
+<div
+  className="content-container comment"
+>
+  <div
+    className="content-container"
+  >
+    Comment: 
+    <br />
+    User Account: Juanita
+  </div>
+  <div
+    className="content-container trimmed"
+  >
+    <button
+      className="delete-button"
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+  </div>
+  <br />
+</div>
+`;
