@@ -14,6 +14,7 @@ const LoginPopup = ({ hidden, toggleHidden }) => {
       await postUser(name, password);
       localStorage.setItem("user", name);
       console.log(`User created: ${name}`);
+      window.location.reload();
     }
     toggleHidden();
   };
