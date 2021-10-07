@@ -13,6 +13,11 @@ const Header = ({ pollId }) => {
     setTheme(newTheme);
   };
 
+  const handleClick = () => {
+    navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
+    alert("Link copied!");
+  };
+
   if (pollId === "") {
     // Show the create-poll UI since there's no ID
     return (
@@ -43,7 +48,7 @@ const Header = ({ pollId }) => {
       <div className="header">
         <div className="inline">
           <b>what2do.com/{pollId} </b>
-          <button>Copy Link</button>
+          <button onClick={handleClick}>Copy Link</button>
           <svg
             className="h-6 w-6 icon blue-icon header-icon button-icon"
             xmlns="http://www.w3.org/2000/svg"

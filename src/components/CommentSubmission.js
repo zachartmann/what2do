@@ -19,9 +19,7 @@ const CommentSubmission = ({ handleComment }) => {
       <textarea
         className="comment-textarea"
         rows="3"
-        cols="50"
         placeholder="Enter your comment for the idea"
-        maxLength="145"
         value={commentText}
         onChange={handleChange}
       />
