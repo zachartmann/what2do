@@ -7,11 +7,11 @@ exports[`Comment component should render correctly with given comment 1`] = `
   <div
     className="content-container"
   >
-    Comment:
+    Comment: 
     <br />
     User Account: Juanita
   </div>
-  <div 
+  <div
     className="content-container trimmed"
   >
     <button
