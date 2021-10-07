@@ -38,6 +38,11 @@ steps:
       cd api
       yarn test:juanita
     displayName: "Run unit tests - Juanita"
+    
+  - script: |
+      cd api
+      yarn test:kevin
+    displayName: "Run unit tests - Kevin"
 
   - script: |
       yarn test:sean
@@ -53,6 +58,12 @@ steps:
       cd api
       yarn test:zac
     displayName: "Run unit tests - Zac"
+
+  - script: |
+      yarn test:ci
+      cd api
+      yarn test:ci
+    displayName: "Run unit tests"
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
