@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import IncludeName from "../components/IncludeName";
 import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
+import { getTemplate } from "../common/requests/Template";
 
-const PollSubmission = (props) => {
+const PollSubmission = () => {
   const [question, setQuestion] = useState("");
-  const [selectedTemplate, setSelectedTemplate] = useState("what2do");
+  const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
-  const templates = ["what2do", "what2play", "where2go"];
+  const templates = ["None", "what2do", "what2play", "where2go"];
   const times = [
     "10 min",
     "30 min",
@@ -26,9 +27,16 @@ const PollSubmission = (props) => {
   ];
   const timesTemp = ["10", "30", "60"];
   const placeholders = {
+    None: "Enter a question!",
     what2do: "What should we do?",
     what2play: "What should we play?",
     where2go: "Where should we go?",
+  };
+  // TODO: Need to search by category?
+  const ids = {
+    what2do: "615e38fee095d931404280f8",
+    what2play: "",
+    where2go: "",
   };
 
   const changeTemplate = (event) => {
@@ -37,28 +45,57 @@ const PollSubmission = (props) => {
 
   function generatePollId() {
     let pollId = "";
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
       pollId += String.fromCharCode(65 + Math.floor(Math.random() * 26));
     }
     // TODO: check if poll ID already exists
     return pollId;
   }
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
+
+    if (question === "" && selectedTemplate === "None") {
+      alert("Please enter a question for the poll.");
+      return;
+    }
+
     const pollId = generatePollId();
-    alert(
-      `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
-        new Date().getTime() + selectedDuration * 60000
-      )}`
-    );
-    postPoll(
-      pollId,
-      question,
-      new Date().getTime() + selectedDuration * 60000,
-      selectedDuration,
-      "ideaId" /*TODO: initial ideas from template*/
-    );
+
+    if (selectedTemplate === "None") {
+      // Create a normal poll as usual
+      alert(
+        `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
+          new Date().getTime() + selectedDuration * 60000
+        )}`
+      );
+
+      postPoll(
+        pollId,
+        question,
+        new Date().getTime() + selectedDuration * 60000,
+        selectedDuration
+      );
+    } else {
+      // Create a poll with details from the template
+      const template = await getTemplate(ids[selectedTemplate]);
+      console.log(template);
+      const tmpQuestion = question === "" ? template.data.title : question;
+
+      alert(
+        `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${tmpQuestion}\nDuration: ${selectedDuration}\nEnd: ${new Date(
+          new Date().getTime() + selectedDuration * 60000
+        )}`
+      );
+
+      postPoll(
+        pollId,
+        tmpQuestion,
+        new Date().getTime() + selectedDuration * 60000,
+        selectedDuration,
+        template.data.ideaIds
+      );
+    }
   };
 
   return (
@@ -66,6 +103,9 @@ const PollSubmission = (props) => {
       <div className="content-container">
         <div className="content-container">
           <h3>What do you want to ask?</h3>
+        </div>
+        <div className="content-container">
+          <p>Template</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="content-container">
