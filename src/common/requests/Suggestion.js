@@ -6,12 +6,24 @@ import { suggestionsEndpoint, suggestionEndpoint } from "./Endpoints";
  */
 
 export async function getSuggestions(category = null) {
-  //Categories to be fleshed out in R2
-  try {
-    const response = await axios.get(suggestionsEndpoint);
-    return response;
-  } catch (err) {
-    throw err;
+  if (category) {
+    try {
+      const response = await axios.get(suggestionsEndpoint, {
+        params: {
+          category: category,
+        },
+      });
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  } else {
+    try {
+      const response = await axios.get(suggestionsEndpoint);
+      return response;
+    } catch (err) {
+      throw err;
+    }
   }
 }
 
