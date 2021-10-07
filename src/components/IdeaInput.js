@@ -3,7 +3,12 @@ import { useState } from "react";
 const IdeaInput = ({ setIdea, setPlaceholder, suggestions }) => {
   const [counter, setCounter] = useState(0); //Counter to be used for suggestion iteration
 
-  setPlaceholder(suggestions[counter].suggestion); //Informs idea of inital placeholder
+  if (suggestions) {
+    //Informs idea of inital placeholder if it's been fetched.
+    setPlaceholder(suggestions[counter].suggestion);
+  } else {
+    setPlaceholder("");
+  }
 
   const iterateSuggestions = () => {
     //Iterates through all the suggestions when pressing reload button.
@@ -15,11 +20,13 @@ const IdeaInput = ({ setIdea, setPlaceholder, suggestions }) => {
     setPlaceholder(suggestions[counter].suggestion); //Informs idea of current placeholder for submission purposes
   };
 
+  const placeholder =
+    suggestions == null ? "" : suggestions[counter].suggestion;
   return (
     <>
       <div className="flex-compoment flex-70">
         <input
-          placeholder={suggestions[counter].suggestion}
+          placeholder={placeholder}
           onChange={(e) => setIdea(e.target.value)}
         />
       </div>

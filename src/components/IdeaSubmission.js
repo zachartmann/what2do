@@ -43,7 +43,7 @@ const IdeaSubmission = ({ poll }) => {
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
-  const [suggestions, setSuggestions] = useState([{ suggestion: "" }]); //Sets dummy suggestion. To be changed later for a null check.
+  const [suggestions, setSuggestions] = useState(null);
 
   async function fetchSuggestions() {
     //Fetches all suggestions that will be passed to the placeholder
