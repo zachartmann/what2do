@@ -28,12 +28,6 @@ steps:
     displayName: "Run Prettier check"
 
   - script: |
-      yarn test:ci
-      cd api
-      yarn test:ci
-    displayName: "Run unit tests"
-
-  - script: |
       yarn test:juanita
       cd api
       yarn test:juanita
@@ -58,6 +52,11 @@ steps:
       cd api
       yarn test:zac
     displayName: "Run unit tests - Zac"
+
+  - script: |
+      cd api 
+      yarn test:mike
+    displayName: "Run unit tests - Mike"
 
   - script: |
       yarn test:ci

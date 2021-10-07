@@ -13,7 +13,8 @@
     "test:juanita": "jest ./src/tests/Comment.test.js --reporters=default --reporters=jest-junit",
     "test:kevin": "jest ./src/tests/Idea.test.js ./src/tests/Poll.test.js --reporters=default --reporters=jest-junit",
     "test:yash": "jest ./src/tests/Suggestion.test.js --reporters=default --reporters=jest-junit",
-    "test:zac": "jest ./src/tests/Template.test.js --reporters=default --reporters=jest-junit"
+    "test:zac": "jest ./src/tests/Template.test.js --reporters=default --reporters=jest-junit",
+    "test:mike": "jest ./src/tests/Feedback.test.js -- reporters=default --reporters=jest-junit"
   },
   "author": "",
   "license": "ISC",
