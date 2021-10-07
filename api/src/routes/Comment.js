@@ -56,6 +56,8 @@ router.post("/comment", async (req, res) => {
     } catch (err) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }
+  } else {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 });
 
