@@ -10,7 +10,8 @@
     "ci": "cross-env node ./build.js",
     "test": "jest",
     "test:ci": "jest --reporters=default --reporters=jest-junit",
-    "test:yash": "jest ./src/tests/Suggestion.test.js --reporters=default --reporters=jest-junit"
+    "test:yash": "jest ./src/tests/Suggestion.test.js --reporters=default --reporters=jest-junit",
+    "test:zac": "jest ./src/tests/Templates.test.js --reporters=default --reporters=jest-junit"
   },
   "author": "",
   "license": "ISC",

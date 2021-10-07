@@ -5,7 +5,7 @@ const mockingoose = require("mockingoose");
 
 const dummyTemplates = [
   {
-    _id: "507f1ao328x0c19729de80ea",
+    _id: "615eef012bfa7954bb11d48a",
     title: "What2Do",
     category: "what2do",
     theme: "",
@@ -13,7 +13,7 @@ const dummyTemplates = [
     ideaIds: ["0", "1"],
   },
   {
-    _id: "507f1ao328x0c19729de80eb",
+    _id: "615eef012bfa7954bb11d48b",
     title: "Where2Go",
     category: "where2go",
     theme: "",
@@ -37,14 +37,14 @@ describe("/templates endpoint", () => {
 describe("/template/:id endpoint", () => {
   it("GET valid template returns 200", async () => {
     mockingoose(Template).toReturn(dummyTemplates[0], "findOne");
-    const expectedDummyPoll = JSON.parse(JSON.stringify(dummyTemplates[0]));
+    const expectedDummyTemplate = JSON.parse(JSON.stringify(dummyTemplates[0]));
 
     const res = await request(server).get(
       `/api/template/${dummyTemplates[0]._id}`
     );
 
     expect(res.status).toEqual(200);
-    expect(res.body).toEqual(expectedDummyPoll);
+    expect(res.body).toEqual(expectedDummyTemplate);
   });
 
   it("GET invalid template returns 404", async () => {
