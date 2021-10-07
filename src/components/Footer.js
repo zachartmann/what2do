@@ -26,7 +26,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="content-container trimmed">
-            <p className="centered small">Send us feedback</p>
+            <a href="/feedback">Send us feedback</a>
           </div>
         </div>
       </div>
