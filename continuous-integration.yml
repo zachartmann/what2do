@@ -35,6 +35,8 @@ steps:
 
   - script: |
       yarn test:juanita
+      cd api
+      yarn test:juanita
     displayName: "Run unit tests - Juanita"
 
   - script: |
