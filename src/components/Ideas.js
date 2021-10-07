@@ -55,8 +55,8 @@ const Ideas = ({ ideas }) => {
           </select>
         </div>
       </div>
-      {sortIdeas(ideas).map((idea, index) => {
-        return <Idea key={index} idea={idea} />;
+      {sortIdeas(ideas).map((idea) => {
+        return <Idea key={idea._id} idea={idea} />;
       })}
     </>
   );
