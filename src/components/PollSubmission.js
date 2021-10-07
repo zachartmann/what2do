@@ -45,6 +45,7 @@ const PollSubmission = () => {
   };
 
   function generatePollId() {
+    // Generate a random id for the new poll
     let pollId = "";
     for (let i = 0; i < 6; i++) {
       pollId += String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -54,6 +55,7 @@ const PollSubmission = () => {
   }
 
   const handleSubmit = async (evt) => {
+    // Handle poll submission functionality based on template selection
     evt.preventDefault();
 
     const alertMessage = (question) => {

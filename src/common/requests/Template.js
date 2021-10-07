@@ -5,6 +5,10 @@ import { templateEndpoint, templatesEndpoint } from "./Endpoints";
  * Templates
  */
 
+/**
+ * Get all templates
+ */
+
 export async function getTemplates() {
   try {
     const response = await axios.get(templatesEndpoint);
@@ -14,6 +18,10 @@ export async function getTemplates() {
   }
 }
 
+/**
+ * Get a template by id
+ */
+
 export async function getTemplate(templateId) {
   try {
     const response = await axios.get(`${templateEndpoint}/${templateId}`);
@@ -22,6 +30,10 @@ export async function getTemplate(templateId) {
     throw err;
   }
 }
+
+/**
+ * Create a template
+ */
 
 export async function postTemplate(title, category, theme, timeLimit, ideaIds) {
   try {
