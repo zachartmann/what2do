@@ -8,7 +8,7 @@ const PollSubmission = () => {
   const [question, setQuestion] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
-  const templates = ["None", "what2do", "what2play", "where2go"];
+  const templates = ["None", "what2do", "what2play", "where2go", "what2eat"];
   const times = [
     "10 min",
     "30 min",
@@ -31,12 +31,14 @@ const PollSubmission = () => {
     what2do: "What should we do?",
     what2play: "What should we play?",
     where2go: "Where should we go?",
+    what2eat: "What should we eat?",
   };
   // TODO: Need to search by category?
   const ids = {
     what2do: "615e38fee095d931404280f8",
     what2play: "615e4448bb366e7565cb7331",
-    where2go: "",
+    where2go: "615e4c2586336bc8129da5ad",
+    what2eat: "615e4cbc86336bc8129da5b5",
   };
 
   const changeTemplate = (event) => {
