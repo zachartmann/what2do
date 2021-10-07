@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IncludeName from "../components/IncludeName";
 import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
-import { getTemplate } from "../common/requests/Template";
+import { getTemplate, getTemplates } from "../common/requests/Template";
 
 const PollSubmission = () => {
   const [question, setQuestion] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
-  const templates = ["None", "what2do", "what2play", "where2go", "what2eat"];
+  const [templates, setTemplates] = useState([]);
+
+  // Fetch data from the API
+  useEffect(async () => {
+    const templates = await getTemplates();
+    setTemplates(templates.data);
+  }, []);
+
   const times = [
     "10 min",
     "30 min",
@@ -26,20 +33,12 @@ const PollSubmission = () => {
     "2 weeks",
   ];
   const timesTemp = ["10", "30", "60"];
-  const placeholders = {
-    None: "Enter a question!",
-    what2do: "What should we do?",
-    what2play: "What should we play?",
-    where2go: "Where should we go?",
-    what2eat: "What should we eat?",
-  };
-  // TODO: Need to search by category?
-  const ids = {
-    what2do: "615e38fee095d931404280f8",
-    what2play: "615e4448bb366e7565cb7331",
-    where2go: "615e4c2586336bc8129da5ad",
-    what2eat: "615e4cbc86336bc8129da5b5",
-  };
+  let placeholders = { None: "Enter a question!" };
+  let ids = {};
+  templates.forEach((template) => {
+    placeholders[template.category] = template.title;
+    ids[template.category] = template._id;
+  });
 
   const changeTemplate = (event) => {
     setSelectedTemplate(event.target.value);
@@ -116,10 +115,10 @@ const PollSubmission = () => {
               value={selectedTemplate}
               onChange={changeTemplate}
             >
-              {templates.map((template) => {
+              {Object.keys(placeholders).map((category) => {
                 return (
-                  <option key={template} value={template}>
-                    {template}
+                  <option key={category} value={category}>
+                    {category}
                   </option>
                 );
               })}
