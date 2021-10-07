@@ -2,22 +2,34 @@ import { useEffect, useState, useRef } from "react";
 import { updateIdea } from "../common/requests/Idea";
 
 const getCurrentUserVote = (idea, currentUser) => {
-  if (idea.upVoters.length === 0 && idea.downVoters.length === 0) {
-    return 0;
-  } else if (currentUser) {
-    var i;
-    for (i = 0; i < idea.upVoters.length; i++) {
-      if (idea.upVoters[i].name === currentUser) {
-        return 1;
+  if (currentUser) {
+    //Checks if user is logged in
+    if (idea.upVoters.length === 0 && idea.downVoters.length === 0) {
+      return 0;
+    } else {
+      var i;
+      for (i = 0; i < idea.upVoters.length; i++) {
+        if (idea.upVoters[i].name === currentUser) {
+          return 1;
+        }
+      }
+      for (i = 0; i < idea.downVoters.length; i++) {
+        if (idea.downVoters[i].name === currentUser) {
+          return -1;
+        }
       }
     }
-    for (i = 0; i < idea.downVoters.length; i++) {
-      if (idea.downVoters[i].name === currentUser) {
-        return -1;
-      }
+    return 0;
+  } else {
+    //Creates a new localstorage if user is not logged in
+    if (localStorage.getItem(`${idea._id}`)) {
+      console.log(`getting known values`);
+      return localStorage.getItem(`${idea._id}`);
+    } else {
+      localStorage.setItem(`${idea._id}`, 0);
+      return 0;
     }
   }
-  return 0;
 };
 
 const VotingMechanism = ({ idea, user }) => {
@@ -29,7 +41,7 @@ const VotingMechanism = ({ idea, user }) => {
   const didMount = useRef(true);
 
   const removeUserVoteFromIdea = () => {
-    //Removes any current user vote from idea
+    //Removes any current user vote from idea voters list
     let newUpVotersList = upVoters.filter((upVoteUser) => {
       return upVoteUser.name !== user.name;
     });
@@ -42,7 +54,7 @@ const VotingMechanism = ({ idea, user }) => {
   };
 
   const addUserToVote = (vote) => {
-    //Adds user as a voter to the idea
+    //Adds user as a voter to the idea voters list
     if (vote == 1) {
       setUpVoters([...upVoters, user]);
     } else if (vote == -1) {
@@ -50,15 +62,11 @@ const VotingMechanism = ({ idea, user }) => {
     }
   };
 
-  useEffect(() => {
-    removeUserVoteFromIdea();
-    addUserToVote(userVote);
-  }, [userVote]);
-
   useEffect(async () => {
-    //Posts once the upVoters or downVoters list has been updated
+    //Posts once the upvotes or downvotes list has been updated
     if (didMount.current) {
       if ((idea.upVotes != upVotes) | (idea.downVotes != downVotes)) {
+        console.log("sending to db");
         await updateIdea(
           idea._id,
           idea.content,
@@ -67,44 +75,57 @@ const VotingMechanism = ({ idea, user }) => {
           upVoters,
           downVoters,
           idea.pinned,
-          user.name
+          idea.user
         );
         window.location.reload();
       }
     } else {
       didMount.current = true;
     }
-  }, [downVoters, upVoters]);
+  }, [upVotes, downVotes]);
 
   const handleVoteChange = (vote) => {
     setUserVote(vote);
+    if (user.name) {
+      //Removes user from voters list and adds to new ones if user exists
+      removeUserVoteFromIdea();
+      addUserToVote(vote);
+    } else {
+      //Updates local storage if user does not exist
+      console.log(`${user.name} has voted for ${idea._id} with a ${vote}`);
+      localStorage.setItem(`${idea._id}`, vote);
+    }
   };
 
   const incrementUpVotes = () => {
+    console.log("Clicked increment");
     //Increments upvotes
-    if (userVote === -1) {
+    if (userVote == -1) {
       setUpVotes(upVotes + 1);
       setDownVotes(downVotes - 1);
       handleVoteChange(1);
-    } else if (userVote === 0) {
+    } else if (userVote == 0) {
       setUpVotes(upVotes + 1);
       handleVoteChange(1);
     } else {
+      console.log(`${userVote} value`);
       setUpVotes(upVotes - 1);
       handleVoteChange(0);
     }
   };
 
   const incrementDownVotes = () => {
+    console.log("Clicked decrement");
     //Increments downvotes
-    if (userVote === 1) {
+    if (userVote == 1) {
       setDownVotes(downVotes + 1);
       setUpVotes(upVotes - 1);
       handleVoteChange(-1);
-    } else if (userVote === 0) {
+    } else if (userVote == 0) {
       setDownVotes(downVotes + 1);
       handleVoteChange(-1);
     } else {
+      console.log(`${userVote} value`);
       setDownVotes(downVotes - 1);
       handleVoteChange(0);
     }

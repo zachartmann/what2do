@@ -24,9 +24,9 @@ const Idea = ({ idea }) => {
 
   const dummyUser = {
     //Dummy user for testing voting mechanism
-    name: "Kevin",
-    password: "B",
-    _id: "615689f3c7568fc6aeff8074",
+    name: localStorage.getItem("user"),
+    password: "",
+    _id: "615689f3c7568fc6aeff9000",
   };
 
   const [hidden, setHidden] = useState(true);
