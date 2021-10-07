@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:sean": "react-scripts test ./src/tests/Idea.test.js --watchAll=false",
-    "test:ci": "react-scripts test --watchAll=false",
+    "test:ci": "react-scripts test --testResultsProcessor=jest-junit --watchAll=false",
     "eject": "react-scripts eject",
     "prettier:run": "yarn prettier --write .",
     "prettier:ci": "npx prettier --check .",
@@ -61,6 +61,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
     "husky": "^7.0.0",
+    "jest-junit": "^12.3.0",
     "prettier": "2.4.1",
     "pretty-quick": "^3.1.1"
   }
