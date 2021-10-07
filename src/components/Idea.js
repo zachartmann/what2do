@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
 import { updateIdea } from "../common/requests/Idea";
 
+import Modal from "./Modal";
 import CommentBox from "./CommentBox";
 
 const Idea = ({ idea }) => {
@@ -37,7 +38,8 @@ const Idea = ({ idea }) => {
   } = idea;
   let metaLabel;
   const [pinHidden, setPinHidden] = useState(!pinned);
-
+  const [showEdit, setShowEdit] = useState(false);
+  const [newIdeaText, setNewIdeaText] = useState("");
   // Create the 'edited/created at' tag that shows when last edited/created
   if (lastModified) {
     const lastModifiedDate = new Date(lastModified);
@@ -162,6 +164,25 @@ const Idea = ({ idea }) => {
           </div>
           <div className="flex-component flex-70 flex-end">
             <svg
+              style={{ paddingRight: "7px", paddingBottom: "15px" }}
+              onClick={() => {
+                setShowEdit(!showEdit);
+              }}
+              class="w-6 h-6"
+              fill="none"
+              width="24px"
+              height="24px"
+              stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              ></path>
+            </svg>
+            <svg
               onClick={toggleComments}
               className="h-6 w-6 icon blue-icon comment-icon button-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -187,6 +208,26 @@ const Idea = ({ idea }) => {
             increment={incrementCommentCount}
             decrement={decrementCommentCount}
           />
+          <Modal
+            idea={idea}
+            title="Edit Your Idea?"
+            onClose={() => setShowEdit(false)}
+            onSubmit={async () => {
+              await updateIdea(_id, newIdeaText, upVotes, downVotes, pinned);
+              window.location.reload();
+            }}
+            show={showEdit}
+          >
+            <textarea
+              className="comment-textarea"
+              rows="3"
+              cols="50"
+              placeholder="Enter your new idea"
+              maxLength="145"
+              value={newIdeaText}
+              onChange={(event) => setNewIdeaText(event.target.value)}
+            />
+          </Modal>
         </div>
       </div>
     </div>
