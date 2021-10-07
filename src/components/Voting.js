@@ -23,7 +23,6 @@ const getCurrentUserVote = (idea, currentUser) => {
   } else {
     //Creates a new localstorage if user is not logged in
     if (localStorage.getItem(`${idea._id}`)) {
-      console.log(`getting known values`);
       return localStorage.getItem(`${idea._id}`);
     } else {
       localStorage.setItem(`${idea._id}`, 0);
@@ -66,7 +65,6 @@ const VotingMechanism = ({ idea, user }) => {
     //Posts once the upvotes or downvotes list has been updated
     if (didMount.current) {
       if ((idea.upVotes != upVotes) | (idea.downVotes != downVotes)) {
-        console.log("sending to db");
         await updateIdea(
           idea._id,
           idea.content,
