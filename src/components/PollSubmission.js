@@ -58,10 +58,8 @@ const PollSubmission = () => {
     // Handle poll submission functionality based on template selection
     evt.preventDefault();
 
-    const alertMessage = (question) => {
-      return `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
-        new Date().getTime() + selectedDuration * 60000
-      )}`;
+    const alertMessage = () => {
+      return `Poll link copied to clipboard!`;
     };
 
     if (question === "" && selectedTemplate === "None") {
@@ -73,6 +71,7 @@ const PollSubmission = () => {
 
     if (selectedTemplate === "None") {
       // Create a normal poll as usual
+      navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
       alert(alertMessage(question));
 
       postPoll(
@@ -86,6 +85,7 @@ const PollSubmission = () => {
       const template = await getTemplate(ids[selectedTemplate]);
       const tmpQuestion = question === "" ? template.data.title : question;
 
+      navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
       alert(alertMessage(tmpQuestion));
 
       postPoll(
