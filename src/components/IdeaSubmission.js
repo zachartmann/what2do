@@ -9,7 +9,9 @@ import {
   differenceInHours,
   differenceInMinutes,
 } from "date-fns";
+import { getSuggestions } from "../common/requests/Suggestion";
 
+// Get the time left from current time to poll end date and format it
 function getTimeLeft(endDate, currentDate) {
   let timeLeft;
   const seconds = differenceInSeconds(endDate, currentDate);
@@ -43,6 +45,18 @@ const IdeaSubmission = ({ poll }) => {
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
+  const [suggestions, setSuggestions] = useState(null);
+
+  async function fetchSuggestions() {
+    //Fetches all suggestions that will be passed to the placeholder
+    const fetchedSuggestions = await getSuggestions();
+    setSuggestions(fetchedSuggestions.data);
+  }
+
+  useEffect(() => {
+    //Triggers on page load
+    fetchSuggestions();
+  }, []);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -66,11 +80,15 @@ const IdeaSubmission = ({ poll }) => {
     <div className="content">
       <div className="content-container">
         <div className="content-container">
-          <h3>What do you want to do?</h3>
+          <h3>{poll.title}</h3>
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
-            <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder} />
+            <IdeaInput
+              setIdea={setIdea}
+              setPlaceholder={setPlaceholder}
+              suggestions={suggestions}
+            />
           </div>
           <div className="flex-component flex-30 flex-end">
             <button onClick={handleIdeaSubmission}>Send</button>

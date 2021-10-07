@@ -15,11 +15,13 @@ const PollPage = () => {
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
 
+  // Fetch data from the API poll endpoint using our poll ID
   async function fetchData(pollId) {
     const poll = await getPoll(pollId);
     console.log(poll.data); // Chrome/FF inspector to see console
     setPoll(poll.data);
     if (poll.data && poll.data.ideaIds && poll.data.ideaIds.length > 0) {
+      // Fetch ideas from the API poll endpoint using our fetched poll
       const ideas = await getIdeas(poll.data.ideaIds);
       console.log(ideas.data); // Chrome/FF inspector to see console
       setIdeas(ideas.data);
@@ -42,7 +44,6 @@ const PollPage = () => {
     <div className="App">
       <Header pollId={pollId} />
       {poll && <IdeaSubmission poll={poll} />}
-      {/* Sorting */}
       {ideas && <Ideas ideas={ideas} />}
       {!poll && !ideas && (
         <div className="content-container">

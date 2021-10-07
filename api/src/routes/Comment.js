@@ -6,7 +6,7 @@ import { isEmpty } from "lodash";
 const router = Router();
 
 /**
- * GET: /comments
+ * GET: /comments - retrieve comments
  */
 
 router.get("/comments", async (req, res) => {
@@ -15,7 +15,11 @@ router.get("/comments", async (req, res) => {
   return res.status(StatusCodes.OK).json(comments);
 });
 
-router.get("/comments/:id", async (req, res) => {
+/**
+ * GET: /comment - retrieve comment
+ */
+
+router.get("/comment/:id", async (req, res) => {
   const _id = Number(req.params.id);
 
   if (!_id) {
@@ -32,7 +36,7 @@ router.get("/comments/:id", async (req, res) => {
 });
 
 /**
- * POST: /comments
+ * POST: /comments - create a comment
  */
 
 router.post("/comment", async (req, res) => {
