@@ -11,7 +11,7 @@ exports[`Comment component should render correctly with given comment 1`] = `
     <br />
     User Account: Juanita
   </div>
-   <div 
+  <div 
     className="content-container trimmed"
   >
     <button
@@ -20,7 +20,7 @@ exports[`Comment component should render correctly with given comment 1`] = `
     >
       Delete
     </button>
-      </div>
+  </div>
   <br />
 </div>
 `;
