@@ -2,6 +2,7 @@
   box-shadow: var(--box-shadow);
   margin-top: 100px;
   width: 65%;
+  max-width: 100%;
 }
 
 .feedback-contact,
