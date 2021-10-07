@@ -23,7 +23,7 @@ router.get("/template/:id", async (req, res) => {
   const templateId = req.params.id;
 
   try {
-    const template = await TemplateModel.findOne({ templateId }).exec();
+    const template = await TemplateModel.findOne({ _id: templateId }).exec();
 
     return res.status(StatusCodes.OK).json(template);
   } catch (err) {

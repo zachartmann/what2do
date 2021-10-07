@@ -35,7 +35,7 @@ const PollSubmission = () => {
   // TODO: Need to search by category?
   const ids = {
     what2do: "615e38fee095d931404280f8",
-    what2play: "",
+    what2play: "615e4448bb366e7565cb7331",
     where2go: "",
   };
 
@@ -79,7 +79,6 @@ const PollSubmission = () => {
     } else {
       // Create a poll with details from the template
       const template = await getTemplate(ids[selectedTemplate]);
-      console.log(template);
       const tmpQuestion = question === "" ? template.data.title : question;
 
       alert(
