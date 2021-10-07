@@ -16,7 +16,7 @@ router.get("/polls", async (req, res) => {
 });
 
 /**
- * GET /poll - retrieve poll
+ * GET /poll/:id - retrieve poll
  */
 
 router.get("/poll/:id", async (req, res) => {
@@ -37,7 +37,7 @@ router.get("/poll/:id", async (req, res) => {
 
 router.post("/poll", async (req, res) => {
   if (!isEmpty(req.body)) {
-    const { pollId, title, endDate, timeLimit, ideaIds } = req.body;
+    const { _id, pollId, title, endDate, timeLimit, ideaIds } = req.body;
     const pollToCreate = new PollModel({
       pollId,
       title,
@@ -45,6 +45,24 @@ router.post("/poll", async (req, res) => {
       timeLimit,
       ideaIds,
     });
+
+    if (_id) {
+      // edit the poll if it already exists
+      const updatedModel = {
+        pollId,
+        title,
+        endDate,
+        timeLimit,
+        ideaIds,
+      };
+
+      try {
+        await PollModel.findOneAndUpdate({ pollId }, updatedModel).exec();
+        return res.sendStatus(StatusCodes.OK);
+      } catch (err) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+      }
+    }
 
     try {
       await pollToCreate.save();
@@ -59,7 +77,31 @@ router.post("/poll", async (req, res) => {
 });
 
 /**
- * DELETE: /poll/:id - delete a poll
+ * POST /poll/idea
+ * Appends given ideaId to existing poll ideaIds array
+ */
+
+router.post("/poll/idea", async (req, res) => {
+  if (!isEmpty(req.body)) {
+    const { pollId, ideaId } = req.body;
+    if (pollId && ideaId) {
+      try {
+        await PollModel.findOneAndUpdate(
+          { _id: pollId },
+          { $push: { ideaIds: ideaId } }
+        );
+        return res.sendStatus(StatusCodes.OK);
+      } catch (err) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+      }
+    }
+  } else {
+    return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
+
+/**
+ * DELETE: /poll/:id
  */
 
 router.delete("/poll/:id", async (req, res) => {

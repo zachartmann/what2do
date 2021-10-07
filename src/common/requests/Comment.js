@@ -14,10 +14,9 @@ export async function getComments() {
   }
 }
 
-export async function postComment(commentId, comment, user) {
+export async function postComment(comment, user) {
   try {
     const response = await axios.post(commentEndpoint, {
-      commentId,
       comment,
       user,
     });
@@ -26,3 +25,6 @@ export async function postComment(commentId, comment, user) {
     throw err;
   }
 }
+
+//commentID was present before maybe should be replaced with _id
+//or look at the async function to getIdeas to include the id and ids

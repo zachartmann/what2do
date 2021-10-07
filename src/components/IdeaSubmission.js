@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
+import { postIdea } from "../common/requests/Idea";
 import IncludeName from "./IncludeName";
 import Info from "./Info";
 import IdeaInput from "./IdeaInput";
@@ -9,6 +9,7 @@ import {
   differenceInHours,
   differenceInMinutes,
 } from "date-fns";
+import { getSuggestions } from "../common/requests/Suggestion";
 
 // Get the time left from current time to poll end date and format it
 function getTimeLeft(endDate, currentDate) {
@@ -44,6 +45,18 @@ const IdeaSubmission = ({ poll }) => {
   const [idea, setIdea] = useState("");
   const [placeholder, setPlaceholder] = useState("");
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
+  const [suggestions, setSuggestions] = useState(null);
+
+  async function fetchSuggestions() {
+    //Fetches all suggestions that will be passed to the placeholder
+    const fetchedSuggestions = await getSuggestions();
+    setSuggestions(fetchedSuggestions.data);
+  }
+
+  useEffect(() => {
+    //Triggers on page load
+    fetchSuggestions();
+  }, []);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -54,26 +67,31 @@ const IdeaSubmission = ({ poll }) => {
     };
   }, [timeLeft]);
 
-  const handleSendIdea = () => {
+  const handleIdeaSubmission = async () => {
     if (idea) {
-      alert(idea);
+      await postIdea(poll._id, idea, 0, 0, false);
     } else {
-      alert(placeholder);
+      await postIdea(poll._id, placeholder, 0, 0, false);
     }
+    window.location.reload();
   };
 
   return (
     <div className="content">
       <div className="content-container">
         <div className="content-container">
-          <h3>What do you want to do?</h3>
+          <h3>{poll.title}</h3>
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
-            <IdeaInput setIdea={setIdea} setPlaceholder={setPlaceholder} />
+            <IdeaInput
+              setIdea={setIdea}
+              setPlaceholder={setPlaceholder}
+              suggestions={suggestions}
+            />
           </div>
           <div className="flex-component flex-30 flex-end">
-            <button onClick={handleSendIdea}>Send</button>
+            <button onClick={handleIdeaSubmission}>Send</button>
           </div>
         </div>
         <div className="content-container flex-container">
