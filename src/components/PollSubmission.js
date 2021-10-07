@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IncludeName from "../components/IncludeName";
 import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
+import { getTemplate, getTemplates } from "../common/requests/Template";
 
-const PollSubmission = (props) => {
+const PollSubmission = () => {
   const [question, setQuestion] = useState("");
-  const [selectedTemplate, setSelectedTemplate] = useState("what2do");
+  const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
-  const templates = ["what2do", "what2play", "where2go"];
+  const [templates, setTemplates] = useState([]);
+
+  // Fetch data from the API
+  useEffect(async () => {
+    const templates = await getTemplates();
+    setTemplates(templates.data);
+  }, []);
+
   const times = [
     "10 min",
     "30 min",
@@ -25,40 +33,69 @@ const PollSubmission = (props) => {
     "2 weeks",
   ];
   const timesTemp = ["10", "30", "60"];
-  const placeholders = {
-    what2do: "What should we do?",
-    what2play: "What should we play?",
-    where2go: "Where should we go?",
-  };
+  let placeholders = { None: "Enter a question!" };
+  let ids = {};
+  templates.forEach((template) => {
+    placeholders[template.category] = template.title;
+    ids[template.category] = template._id;
+  });
 
   const changeTemplate = (event) => {
     setSelectedTemplate(event.target.value);
   };
 
   function generatePollId() {
+    // Generate a random id for the new poll
     let pollId = "";
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
       pollId += String.fromCharCode(65 + Math.floor(Math.random() * 26));
     }
     // TODO: check if poll ID already exists
     return pollId;
   }
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
+    // Handle poll submission functionality based on template selection
     evt.preventDefault();
-    const pollId = generatePollId();
-    alert(
-      `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
+
+    const alertMessage = (question) => {
+      return `Submitting ${pollId}\nTemplate: ${selectedTemplate}\nQuestion: ${question}\nDuration: ${selectedDuration}\nEnd: ${new Date(
         new Date().getTime() + selectedDuration * 60000
-      )}`
-    );
-    postPoll(
-      pollId,
-      question,
-      new Date().getTime() + selectedDuration * 60000,
-      selectedDuration,
-      "ideaId" /*TODO: initial ideas from template*/
-    );
+      )}`;
+    };
+
+    if (question === "" && selectedTemplate === "None") {
+      alert("Please enter a question for the poll.");
+      return;
+    }
+
+    const pollId = generatePollId();
+
+    if (selectedTemplate === "None") {
+      // Create a normal poll as usual
+      alert(alertMessage(question));
+
+      postPoll(
+        pollId,
+        question,
+        new Date().getTime() + selectedDuration * 60000,
+        selectedDuration
+      );
+    } else {
+      // Create a poll with details from the template
+      const template = await getTemplate(ids[selectedTemplate]);
+      const tmpQuestion = question === "" ? template.data.title : question;
+
+      alert(alertMessage(tmpQuestion));
+
+      postPoll(
+        pollId,
+        tmpQuestion,
+        new Date().getTime() + selectedDuration * 60000,
+        selectedDuration,
+        template.data.ideaIds
+      );
+    }
   };
 
   return (
@@ -66,6 +103,9 @@ const PollSubmission = (props) => {
       <div className="content-container">
         <div className="content-container">
           <h3>What do you want to ask?</h3>
+        </div>
+        <div className="content-container">
+          <p>Template</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="content-container">
@@ -75,10 +115,10 @@ const PollSubmission = (props) => {
               value={selectedTemplate}
               onChange={changeTemplate}
             >
-              {templates.map((template) => {
+              {Object.keys(placeholders).map((category) => {
                 return (
-                  <option key={template} value={template}>
-                    {template}
+                  <option key={category} value={category}>
+                    {category}
                   </option>
                 );
               })}

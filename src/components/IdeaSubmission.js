@@ -66,7 +66,7 @@ const IdeaSubmission = ({ poll }) => {
     <div className="content">
       <div className="content-container">
         <div className="content-container">
-          <h3>What do you want to do?</h3>
+          <h3>{poll.title}</h3>
         </div>
         <div className="content-container flex-container">
           <div className="flex-component flex-70 flex-container">
