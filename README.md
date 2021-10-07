@@ -95,6 +95,7 @@ Juanita
 Components:
 
 - Ideas.js
+- Idea.js
 
 ## Idea Pinning
 
@@ -112,10 +113,12 @@ Sean
 Juanita
 Components:
 
-- CommentBox
-- Comments
+- CommentBox.js
+- Comments.js
 - Comment.js
 - CommentBox.css
+- Idea.js
+- CommnetSubmission.js
 
 ## Time limit + poll closure
 
@@ -124,6 +127,9 @@ Kevin
 ## Idea suggestions
 
 Yash
+Components:
+
+- IdeaSuggestion.js
 
 ## User Feedback
 

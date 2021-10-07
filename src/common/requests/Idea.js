@@ -29,6 +29,21 @@ export async function getIdeas(ids = null) {
   }
 }
 
+export async function updateIdea(_id, content, upVotes, downVotes, pinned) {
+  try {
+    const response = await axios.post(ideaEndpoint, {
+      _id,
+      content,
+      upVotes,
+      downVotes,
+      pinned,
+    });
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function postIdea(
   poll_id,
   content,
