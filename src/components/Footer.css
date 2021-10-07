@@ -24,6 +24,10 @@
   transition: background-color var(--dark-transition-duration);
 }
 
-a {
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
   color: inherit;
 }
