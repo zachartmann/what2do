@@ -28,6 +28,10 @@ steps:
     displayName: "Run Prettier check"
 
   - script: |
+      yarn test:juanita
+    displayName: "Run unit tests - Juanita"
+
+  - script: |
       yarn test:ci
       cd api
       yarn test:ci
