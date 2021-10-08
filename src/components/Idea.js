@@ -66,14 +66,17 @@ const Idea = ({ idea }) => {
     metaLabel = "Unknown time created";
   }
 
+  // setting the increment commentCount for comment box functionality
   const incrementCommentCount = () => {
     setCommentCount(commentCount + 1);
   };
 
+  // setting the decrement commentCount for comment box functionality
   const decrementCommentCount = () => {
     setCommentCount(commentCount - 1);
   };
 
+  // Setting the hidden parameter, hiding the comment box
   const toggleComments = () => {
     setHidden(!hidden);
   };
@@ -105,6 +108,7 @@ const Idea = ({ idea }) => {
     window.location.reload();
   };
 
+  // changing the comment fill colour when it is selected
   const commentFill = hidden ? "white" : "lightskyblue";
   const pinFill = pinned ? "yellow" : "white";
 
