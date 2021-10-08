@@ -8,7 +8,7 @@ import "./Ideas.css";
 import Idea from "./Idea";
 
 const Ideas = ({ ideas }) => {
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState("upVotes");
 
   const sortPinnedIdeas = (ideas) => {
     var pinnedIdeas = [];
