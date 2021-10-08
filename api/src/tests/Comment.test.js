@@ -31,7 +31,7 @@ describe("Comments endpoint", () => {
     expect(res.body).toEqual(dummyComments);
   });
 
-  it("Get with comments should return comments ideas with 200", async () => {
+  it("Get with comment should return comments ideas with 200", async () => {
     mockingoose(CommentModel).toReturn(dummyComments[0], "find");
 
     const res = await request(server).get("/api/comments").query({
