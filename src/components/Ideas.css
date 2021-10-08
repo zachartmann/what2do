@@ -4,8 +4,10 @@
 }
 
 .idea {
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 5px solid var(--background-color);
+  transition: background-color var(--dark-transition-duration);
+  border-radius: 20px;
+  box-shadow: 0 4px 25px -5px rgb(0 0 0 / 18%);
   margin-left: 0;
   margin-right: 0;
 }
@@ -16,4 +18,8 @@
 
 .comment-icon {
   margin-top: -12px;
+}
+
+.upvote-icon {
+  margin-left: 40px;
 }

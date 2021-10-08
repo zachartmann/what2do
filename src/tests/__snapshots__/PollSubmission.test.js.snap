@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PollSubmission component should render correctly with given idea 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="content-container"
+    >
+      <h3>
+        What do you want to ask?
+      </h3>
+    </div>
+    <div
+      className="content-container"
+    >
+      <p>
+        Template
+      </p>
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="content-container"
+      >
+        <select
+          id="template"
+          name="template"
+          onChange={[Function]}
+          value="None"
+        >
+          <option
+            key="None"
+            value="None"
+          >
+            None
+          </option>
+        </select>
+      </div>
+      <div
+        className="content-container"
+      >
+        <p>
+          Question
+        </p>
+      </div>
+      <div
+        className="content-container"
+      >
+        <input
+          onChange={[Function]}
+          placeholder="Enter a question!"
+        />
+      </div>
+      <div
+        className="content-container"
+      >
+        <select
+          id="template"
+          name="template"
+          onChange={[Function]}
+          value="60"
+        >
+          <option
+            key="10"
+            value="10"
+          >
+            10
+          </option>
+          <option
+            key="30"
+            value="30"
+          >
+            30
+          </option>
+          <option
+            key="60"
+            value="60"
+          >
+            60
+          </option>
+        </select>
+      </div>
+      <div
+        className="content-container flex-container"
+      >
+        <div
+          className="flex-component flex-70"
+        >
+          <IncludeName />
+          <Info
+            text="Give us your details."
+          />
+        </div>
+        <div
+          className="flex-component flex-30 flex-end"
+        >
+          <button
+            type="submit"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

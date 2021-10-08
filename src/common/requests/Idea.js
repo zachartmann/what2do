@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ideasEndpoint, ideaEndpoint } from "./Endpoints";
+import { postPollIdea } from "./Poll";
 
 /**
  * Ideas
@@ -28,15 +29,68 @@ export async function getIdeas(ids = null) {
   }
 }
 
-export async function postIdea(content, upVotes, downVotes, pinned) {
+export async function updateIdea(
+  _id,
+  content,
+  upVotes,
+  downVotes,
+  upVoters,
+  downVoters,
+  pinned,
+  user
+) {
   try {
     const response = await axios.post(ideaEndpoint, {
+      _id,
       content,
       upVotes,
       downVotes,
+      upVoters,
+      downVoters,
       pinned,
+      user,
     });
     return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function deleteIdea(_id) {
+  try {
+    const response = await axios.delete(`${ideaEndpoint}/${_id}`);
+
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function postIdea(
+  poll_id,
+  content,
+  upVotes,
+  downVotes,
+  pinned,
+  user
+) {
+  try {
+    // Create idea record in database
+    user = user ? user : "Anonymous";
+    const ideaResponse = await axios.post(ideaEndpoint, {
+      content,
+      upVotes,
+      downVotes,
+      upVoters: [],
+      downVoters: [],
+      pinned,
+      user,
+    });
+    console.log(`Idea created by: ${user}`);
+
+    // Link created idea to poll
+    await postPollIdea(poll_id, ideaResponse.data._id);
+    return ideaResponse;
   } catch (err) {
     throw err;
   }

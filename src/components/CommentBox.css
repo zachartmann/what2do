@@ -12,6 +12,7 @@
   border-radius: 5px;
   resize: none;
   padding: 10px;
+  width: -webkit-fill-available;
   transition: background-color var(--dark-transition-duration);
 }
 
@@ -20,13 +21,35 @@
   color: #000000;
   border-radius: 5px;
   margin: 10px;
+  margin-top: 15px;
   margin-bottom: 0px;
   padding: 10px;
+  position: relative;
   transition: background-color var(--dark-transition-duration),
     color var(--dark-transition-duration);
 }
 
-.delete-button {
-  background-color: green;
+.delete-icon {
+  fill: var(--background-color);
+  opacity: 0;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  transition: all 0.3s linear;
+  visibility: hidden;
+}
+
+.comment:hover .delete-icon {
+  opacity: 1;
+  transition: all 0.3s linear;
+  visibility: visible;
+}
+
+.comment-small-details {
+  margin-top: -15px;
+}
+
+.comment-details {
+  margin-top: -10px;
   margin-bottom: -10px;
 }
