@@ -6,6 +6,7 @@ import { isEmpty } from "lodash";
 const router = Router();
 
 /**
+ * This is the Comment Route Code and loads in the CommentModel which has been defined in the commentSchema
  * GET: /comments - retrieve comments
  */
 

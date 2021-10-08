@@ -239,7 +239,16 @@ const Idea = ({ idea }) => {
             title="Edit Your Idea?"
             onClose={() => setShowEdit(false)}
             onSubmit={async () => {
-              await updateIdea(_id, newIdeaText, upVotes, downVotes, pinned);
+              await updateIdea(
+                _id,
+                newIdeaText,
+                upVotes,
+                downVotes,
+                upVoters,
+                downVoters,
+                pinned,
+                user
+              );
               window.location.reload();
             }}
             show={showEdit}

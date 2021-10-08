@@ -1,75 +1,15 @@
 # ASD
 
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## To run this project (development)
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- You will need a .env file in the api folder containing the MongoDB connection key. Due to security reasons, please contact us for this.
+- Run yarn on the parent level directory
+- Run yarn build on the parent level directory
+- Run yarn on the api folder directory
+- Run yarn dev on the api folder directory
+- Navigate to localhost:3000
 
 # Feature Assignment
 
@@ -80,49 +20,85 @@ Components:
 
 - LoginPopup.js
 - PollPage.jsx
+- api/src/models/PollSchema.js
+- api/src/routes/Poll.js
 
 ## Idea creation
 
 Michael
+Components:
+
+- api/src/routes/Poll.js
+- api/src/tests/Poll.tests.js
+- src/common/requests/Idea.js
+- src/components/IdeaSubmission.js
+- api/src/models/ideaSchema.js
 
 ## Idea voting
 
 Yash
+Components:
+
+- src/components/Idea.js
+- src/components/Voting.js
 
 ## Idea sorting
 
 Juanita
 Components:
 
-- Ideas.js
-- Idea.js
+- src/components/Ideas.js
+- src/components/Idea.js
+- src/components/Idea.css
+- src/components/PollPage.jsx
 
 ## Idea Pinning
 
 Sean
 Components:
 
-- Idea.js
+- src/components/Idea.js
+- src/components/Ideas.js
+- api/src/models/ideaSchema.js
 
 ## User Management
 
 Sean
+Components:
+
+- src/components/AccountPopup.js
+- src/components/LoginPopup.js
+- api/src/userSchema.js
 
 ## Idea comments
 
 Juanita
 Components:
 
-- CommentBox.js
-- Comments.js
-- Comment.js
-- CommentBox.css
-- Idea.js
-- CommnetSubmission.js
+- src/components/CommentBox.js
+- src/components/Comments.js
+- src/components/Comment.js
+- src/components/CommentBox.css
+- src/components/Idea.js
+- src/components/CommentSubmission.js
+- api/src/commentSchema.js
+- api/routes/Comment.js
+- api/src/Comment.test.js
+- common/requests/Comment.js
 
-## Time limit + poll closure
+## Time limit + poll closure + idea editing/deletion
 
 Kevin
+Components:
+
+- src/components/Modal.js
+- src/components/Modal.css
+- src/components/Idea.js
+- src/components/Ideas.js
+- src/components/PollSubmission.js
+- Worked on all models and routes but mainly below two
+- api/routes/Poll.js
+- api/routes/Idea.js
 
 ## Idea suggestions
 
@@ -130,22 +106,40 @@ Yash
 Components:
 
 - IdeaSuggestion.js
+- api/src/suggestionSchema.js
+- api/src/tests/Suggestions.test.js
 
 ## User Feedback
 
 Michael
+
+Components:
+
+- src/components/FeedbackForm.js
+- api/src/models/feedbackSchema.js
+- api/src/routes/Feedback.js
+- src/common/requests/Feedback.js
+- src/components/FeedbackForm.css
 
 ## Dark mode
 
 Zac
 Components:
 
-- Idea.css
-- Header.js
-- Header.css
-- Footer.js
-- Footer.css
+- src/components/Idea.css
+- src/components/Header.js
+- src/components/Header.css
+- src/components/Footer.js
+- src/components/Footer.css
+- src/components/AccountPopup.js
+- src/components/LoginPopup.js
+- src/componnts/Popup.css
+- src/pages/PollPage.jsx
 
 ## Template polls
 
 Sean
+Components:
+
+- api/src/templateSchema.js
+- src/pages/PollPage.jsx
