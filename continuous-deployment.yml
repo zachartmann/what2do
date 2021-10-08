@@ -14,7 +14,7 @@ pool:
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: "14.17.6"
+      versionSpec: LTS_VERSION
     displayName: "Install Node.js"
 
   - script: |
@@ -70,7 +70,7 @@ steps:
     inputs:
       azureSubscription: "Azure for Students (e8a9055c-d984-4ad3-ae8b-c14693b851a3)"
       appType: webAppLinux
-      WebAppName: "what2douts"
+      WebAppName: what2douts
       packageForLinux: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
       RuntimeStack: "NODE|14-lts"
       StartupCommand: "yarn start"
