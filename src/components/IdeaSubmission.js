@@ -81,7 +81,6 @@ const IdeaSubmission = ({ poll }) => {
   return (
     <div className="content">
       <div className="content-container idea">
-        {" "}
         {/* TODO: fix idea class name */}
         <div className="content-container">
           <h3>{poll.title}</h3>
