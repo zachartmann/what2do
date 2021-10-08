@@ -105,7 +105,8 @@ Components:
 Yash
 Components:
 
-- IdeaSuggestion.js
+- src/components/IdeaSubmission.js
+- src/components/IdeaInput.js
 - api/src/suggestionSchema.js
 - api/src/tests/Suggestions.test.js
 
