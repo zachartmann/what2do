@@ -25,7 +25,7 @@
   "scripts": {
     "dev": "yarn build && cd api && yarn dev",
     "local": "react-scripts start",
-    "start": "cd api && yarn start",
+    "start": "cd api && yarn && yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:juanita": "react-scripts test ./src/tests/Comment.test.js --watchAll=false",
