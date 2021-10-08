@@ -52,7 +52,8 @@ steps:
 
   - script: |
       sudo mv $(environmentFile.secureFilePath) api/
-    displayName: "Move .env to API directory"
+      sudo rm -r api/node_modules
+    displayName: "Move .env to API directory and remove node modules"
 
   - task: ArchiveFiles@2
     inputs:
