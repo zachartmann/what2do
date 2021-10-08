@@ -61,9 +61,16 @@ Components:
 - CommnetSubmission.js
 - commentSchema.js
 
-## Time limit + poll closure
+## Time limit + poll closure + idea editing/deletion
 
 Kevin
+Components:
+
+- Modal.js
+- Modal.css
+- Idea.js
+- Ideas.js
+- PollSubmission.js
 
 ## Idea suggestions
 
