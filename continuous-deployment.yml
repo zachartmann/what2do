@@ -74,7 +74,7 @@ steps:
       WebAppName: what2douts
       packageForLinux: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
       RuntimeStack: "NODE|14-lts"
-      StartupCommand: "yarn start"
+      StartupCommand: "benv node=14 yarn start"
       ScriptType: "Inline Script"
       InlineScript: |
-        yarn install
+        benv node=14 yarn install
