@@ -45,6 +45,7 @@ router.post("/idea", async (req, res) => {
       downVoters,
       pinned,
       user,
+      commentIds,
     } = req.body;
 
     if (_id) {
@@ -58,6 +59,7 @@ router.post("/idea", async (req, res) => {
         downVoters,
         pinned,
         user,
+        commentIds,
         lastModified: new Date(),
       };
 
@@ -78,6 +80,7 @@ router.post("/idea", async (req, res) => {
       downVoters,
       pinned,
       user,
+      commentIds,
       createdAt: new Date(),
     });
 

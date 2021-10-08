@@ -21,7 +21,7 @@ router.get("/comments", async (req, res) => {
  */
 
 router.get("/comment/:id", async (req, res) => {
-  const _id = Number(req.params.id);
+  const _id = req.params.id;
 
   if (!_id) {
     return res.sendStatus(StatusCodes.BAD_REQUEST);

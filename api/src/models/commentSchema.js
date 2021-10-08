@@ -6,7 +6,7 @@ import mongoose from "mongoose";
  * Both of these Schema components are required
  */
 
-const Comment = new mongoose.Schema({
+export const Comment = new mongoose.Schema({
   comment: { required: true, type: String },
   user: { required: true, type: String },
 });

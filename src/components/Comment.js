@@ -4,13 +4,13 @@ import React from "react";
 // Component  also has the commentInput parsed in which is what is the contents that are intputed into the textbox
 // local storage is used to get the user
 
-const Comment = ({ commentInput, deleteComment }) => {
+const Comment = ({ commentText, deleteComment, id, user }) => {
   return (
     <div className="content-container comment">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6 icon blue-icon button-icon icon-circle delete-icon"
-        onClick={() => deleteComment(commentInput)}
+        onClick={() => deleteComment(id)}
         viewBox="0 0 24 24"
       >
         <path
@@ -21,7 +21,7 @@ const Comment = ({ commentInput, deleteComment }) => {
         />
       </svg>
       <div className="content-container comment-details">
-        <h3>{commentInput}</h3>
+        <h3>{commentText}</h3>
         <p className="small comment-small-details">
           {localStorage.getItem("user")
             ? localStorage.getItem("user")
