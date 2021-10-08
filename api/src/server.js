@@ -32,7 +32,16 @@ if (env.node_env === "development") {
 
 // Production only settings
 if (env.node_env === "production") {
-  app.use(helmet()); // Security
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+          "script-src": ["'self'", "'unsafe-inline'"],
+        },
+      },
+    })
+  ); // Security
 }
 
 // Add APIs
@@ -42,7 +51,7 @@ app.use("/api", BaseRouter);
  *                              Serve front-end content
  ***********************************************************************************/
 
-const staticDir = path.join(__dirname, "../../build/");
+const staticDir = path.join(__dirname, "../dist/");
 app.use(express.static(staticDir));
 app.get("*", (req, res) => {
   if (req.url.startsWith("/api")) {

@@ -6,7 +6,7 @@
 trigger:
   branches:
     include:
-      - master
+      - main
 
 pool:
   vmImage: ubuntu-latest
@@ -14,7 +14,8 @@ pool:
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: "14.17.6"
+      versionSpec: "14.x"
+      checkLatest: true
     displayName: "Install Node.js"
 
   - script: |
@@ -52,14 +53,24 @@ steps:
 
   - script: |
       sudo mv $(environmentFile.secureFilePath) api/
-    displayName: "Move .env to API directory"
+      sudo rm -r api/node_modules
+    displayName: "Move .env to API directory and remove node modules"
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+      rootFolderOrFile: "$(System.DefaultWorkingDirectory)/api"
       includeRootFolder: false
 
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
       artifactName: WebApp
+
+  - task: AzureRmWebAppDeployment@4
+    displayName: "Azure App Service Deploy"
+    inputs:
+      azureSubscription: "Azure for Students (e8a9055c-d984-4ad3-ae8b-c14693b851a3)"
+      appType: webAppLinux
+      WebAppName: what2douts
+      packageForLinux: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
+      RuntimeStack: "NODE|14-lts"
