@@ -56,6 +56,16 @@ export async function updateIdea(
   }
 }
 
+export async function deleteIdea(_id) {
+  try {
+    const response = await axios.delete(`${ideaEndpoint}/${_id}`);
+
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function postIdea(
   poll_id,
   content,

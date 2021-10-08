@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
 import VotingMechanism from "./Voting";
-import { updateIdea } from "../common/requests/Idea";
+import { updateIdea, deleteIdea } from "../common/requests/Idea";
 
+import Modal from "./Modal";
 import CommentBox from "./CommentBox";
 
 const Idea = ({ idea }) => {
@@ -45,7 +46,9 @@ const Idea = ({ idea }) => {
   } = idea;
   let metaLabel;
   const [pinHidden, setPinHidden] = useState(!pinned);
-
+  const [deleteHidden, setDeleteHidden] = useState(true);
+  const [showEdit, setShowEdit] = useState(false);
+  const [newIdeaText, setNewIdeaText] = useState("");
   // Create the 'edited/created at' tag that shows when last edited/created
   if (lastModified) {
     const lastModifiedDate = new Date(lastModified);
@@ -77,10 +80,15 @@ const Idea = ({ idea }) => {
 
   const handleMouseEnter = () => {
     setPinHidden(false);
+    setDeleteHidden(false);
   };
 
   const handleMouseLeave = () => {
-    if (!pinned) setPinHidden(true);
+    if (!pinned) {
+      setPinHidden(true);
+    }
+
+    setDeleteHidden(true);
   };
 
   const handlePinClick = (id) => {
@@ -125,6 +133,38 @@ const Idea = ({ idea }) => {
             </svg>
           </div>
         )}
+        {!deleteHidden &&
+          localStorage.getItem("user") &&
+          localStorage.getItem("user") == user && (
+            <div
+              style={{ height: 0, display: "flex", justifyContent: "flex-end" }}
+              onClick={async () => {
+                if (
+                  window.confirm("Are you sure you want to delete this idea?")
+                ) {
+                  await deleteIdea(_id);
+                  window.location.reload();
+                }
+              }}
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                width="24px"
+                height="24px"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                ></path>
+              </svg>
+            </div>
+          )}
         <div
           className="content-container flex-container"
           style={{ paddingBottom: "0px" }}
@@ -142,6 +182,28 @@ const Idea = ({ idea }) => {
             </p>
           </div>
           <div className="flex-component flex-70 flex-end">
+            {localStorage.getItem("user") &&
+              localStorage.getItem("user") == user && (
+                <svg
+                  style={{ paddingRight: "7px", paddingBottom: "15px" }}
+                  onClick={() => {
+                    setShowEdit(!showEdit);
+                  }}
+                  class="w-6 h-6"
+                  fill="none"
+                  width="24px"
+                  height="24px"
+                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  ></path>
+                </svg>
+              )}
             <svg
               onClick={toggleComments}
               className="h-6 w-6 icon blue-icon comment-icon button-icon"
@@ -168,6 +230,26 @@ const Idea = ({ idea }) => {
             increment={incrementCommentCount}
             decrement={decrementCommentCount}
           />
+          <Modal
+            idea={idea}
+            title="Edit Your Idea?"
+            onClose={() => setShowEdit(false)}
+            onSubmit={async () => {
+              await updateIdea(_id, newIdeaText, upVotes, downVotes, pinned);
+              window.location.reload();
+            }}
+            show={showEdit}
+          >
+            <textarea
+              className="comment-textarea"
+              rows="3"
+              cols="50"
+              placeholder="Enter your new idea"
+              maxLength="145"
+              value={newIdeaText}
+              onChange={(event) => setNewIdeaText(event.target.value)}
+            />
+          </Modal>
         </div>
       </div>
     </div>
