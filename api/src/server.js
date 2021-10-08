@@ -32,7 +32,16 @@ if (env.node_env === "development") {
 
 // Production only settings
 if (env.node_env === "production") {
-  app.use(helmet()); // Security
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+          "script-src": ["'self'", "'unsafe-inline'"],
+        },
+      },
+    })
+  ); // Security
 }
 
 // Add APIs
