@@ -96,6 +96,9 @@ Components:
 - src/components/Idea.js
 - src/components/Ideas.js
 - src/components/PollSubmission.js
+- Worked on all models and routes but mainly below two
+- api/routes/Poll.js
+- api/routes/Idea.js
 
 ## Idea suggestions
 
