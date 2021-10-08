@@ -14,7 +14,9 @@ const Header = ({ pollId }) => {
   };
 
   const handleClick = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
+    navigator.clipboard.writeText(
+      `https://what2douts.azurewebsites.net/poll/${pollId}`
+    );
     alert("Link copied!");
   };
 

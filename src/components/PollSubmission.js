@@ -64,12 +64,14 @@ const PollSubmission = () => {
     }
 
     const pollId = generatePollId();
+    navigator.clipboard.writeText(
+      `https://what2douts.azurewebsites.net/poll/${pollId}`
+    );
 
     if (selectedTemplate === "None") {
       // Create a normal poll as usual
-      navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
 
-      postPoll(
+      await postPoll(
         pollId,
         question,
         new Date().getTime() + selectedDuration * 60000,
@@ -80,9 +82,7 @@ const PollSubmission = () => {
       const template = await getTemplate(ids[selectedTemplate]);
       const tmpQuestion = question === "" ? template.data.title : question;
 
-      navigator.clipboard.writeText(`http://localhost:3000/poll/${pollId}`);
-
-      postPoll(
+      await postPoll(
         pollId,
         tmpQuestion,
         new Date().getTime() + selectedDuration * 60000,
@@ -90,7 +90,7 @@ const PollSubmission = () => {
         template.data.ideaIds
       );
     }
-    window.location.href = `http://localhost:3000/poll/${pollId}`;
+    window.location.href = `https://what2douts.azurewebsites.net/poll/${pollId}`;
   };
 
   return (
