@@ -76,4 +76,4 @@ steps:
       RuntimeStack: "NODE|14-lts"
       ScriptType: "Inline Script"
       InlineScript: |
-        yarn && yarn start
+        benv yarn && yarn start
