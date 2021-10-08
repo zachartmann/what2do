@@ -3,6 +3,8 @@ import { commentsEndpoint, commentEndpoint } from "./Endpoints";
 
 /**
  * Comments
+ * This is for the Comment Requests and is exporting the getComment and postComment functions
+ * It also imports the commentsEndpoint and commentEndpoint
  */
 
 export async function getComments() {
@@ -25,6 +27,3 @@ export async function postComment(comment, user) {
     throw err;
   }
 }
-
-//commentID was present before maybe should be replaced with _id
-//or look at the async function to getIdeas to include the id and ids

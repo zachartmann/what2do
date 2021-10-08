@@ -58,10 +58,11 @@ Components:
 - Comment.js
 - CommentBox.css
 - Idea.js
-- CommnetSubmission.js
+- CommentSubmission.js
 - commentSchema.js
 - api/routes/Comment.js
 - api/src/Comment.test.js
+- common\requests\Comment.js
 
 ## Time limit + poll closure + idea editing/deletion
 
