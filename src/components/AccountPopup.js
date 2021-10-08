@@ -11,6 +11,7 @@ const AccountPopup = ({ hidden, toggleHidden }) => {
   const handleAnonClick = () => {
     localStorage.removeItem("user");
     toggleHidden();
+    window.location.reload();
   };
 
   return (
