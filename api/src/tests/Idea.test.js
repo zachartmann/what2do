@@ -25,6 +25,7 @@ const dummyIdeas = [
     ],
     pinned: true,
     user: "Kevin",
+    commentIds: ["0"],
   },
   {
     _id: "507f191e810c19729de860ed",
@@ -47,6 +48,7 @@ const dummyIdeas = [
     ],
     pinned: true,
     user: "Kevin",
+    commentIds: ["1"],
   },
 ];
 

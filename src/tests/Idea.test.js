@@ -22,6 +22,7 @@ const dummyIdea = {
   ],
   pinned: true,
   user: "Kevin",
+  commentIds: ["0"],
 };
 
 describe("Idea component", () => {
