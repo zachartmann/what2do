@@ -23,12 +23,15 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
     increment();
   };
 
-  const deleteComment = (commentText) => {
-    const newComments = comments.filter((comment) => {
-      return comment.commentInput !== commentText;
+  const handleDelete = async (commentId) => {
+    await deleteComment(commentId);
+
+    const newCommentIds = commentIds.filter((id) => {
+      return id !== commentId;
     });
 
-    setComments(newComments);
+    updateIdeaCommentIds(newCommentIds);
+    setCommentIds(newCommentIds);
     decrement();
   };
 

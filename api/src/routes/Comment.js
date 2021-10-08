@@ -61,4 +61,20 @@ router.post("/comment", async (req, res) => {
   }
 });
 
+/**
+ * DELETE: /comment/:id - delete a comment
+ */
+
+router.delete("/comment/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  try {
+    await CommentModel.deleteOne({ _id }).exec();
+
+    return res.sendStatus(StatusCodes.OK);
+  } catch (err) {
+    return res.status(StatusCodes.NOT_FOUND).json(err);
+  }
+});
+
 export default router;
