@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 /**
- * Schema definition
+ * Schema definition This is the Comment Schema includes two components the comment which is a string type
+ * And also contains the user which is a String type
+ * Both of these Schema components are required
  */
 
 const Comment = new mongoose.Schema({

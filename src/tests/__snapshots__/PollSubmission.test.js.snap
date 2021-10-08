@@ -5,7 +5,7 @@ exports[`PollSubmission component should render correctly with given idea 1`] = 
   className="content"
 >
   <div
-    className="content-container"
+    className="content-container idea"
   >
     <div
       className="content-container"
