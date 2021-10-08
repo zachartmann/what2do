@@ -152,6 +152,46 @@ exports[`Idea component should render correctly with given idea 1`] = `
         hidden={true}
         increment={[Function]}
       />
+      <Modal
+        idea={
+          Object {
+            "_id": "507f191e810c19729de860ea",
+            "content": "content",
+            "downVoters": Array [
+              Object {
+                "_id": "507f191e810c19729de860ec",
+                "name": "Kevin",
+                "password": "Password",
+              },
+            ],
+            "downVotes": 3,
+            "pinned": true,
+            "upVoters": Array [
+              Object {
+                "_id": "507f191e810c19729de860eb",
+                "name": "Kevin",
+                "password": "Password",
+              },
+            ],
+            "upVotes": 2,
+            "user": "Kevin",
+          }
+        }
+        onClose={[Function]}
+        onSubmit={[Function]}
+        show={false}
+        title="Edit Your Idea?"
+      >
+        <textarea
+          className="comment-textarea"
+          cols="50"
+          maxLength="145"
+          onChange={[Function]}
+          placeholder="Enter your new idea"
+          rows="3"
+          value=""
+        />
+      </Modal>
     </div>
   </div>
 </div>

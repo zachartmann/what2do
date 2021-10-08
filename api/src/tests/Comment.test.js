@@ -31,7 +31,7 @@ describe("Comments endpoint", () => {
     expect(res.body).toEqual(dummyComments);
   });
 
-  it("Get with comments should return comments ideas with 200", async () => {
+  it("Get with comment should return comments ideas with 200", async () => {
     mockingoose(CommentModel).toReturn(dummyComments[0], "find");
 
     const res = await request(server).get("/api/comments").query({
@@ -57,7 +57,7 @@ describe("Comment endpoint", () => {
     expect(res.status).toEqual(500);
   });
 
-  it("POSTing a valid suggestion creates a suggestion with 201", async () => {
+  it("POSTing a valid comment creates a comment with 201", async () => {
     mockingoose(CommentModel).toReturn(dummyComments[0], "save");
 
     const dummy = JSON.parse(JSON.stringify(dummyComments[0]));
