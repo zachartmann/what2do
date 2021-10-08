@@ -73,4 +73,7 @@ steps:
       WebAppName: "what2douts"
       packageForLinux: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
       RuntimeStack: "NODE|14-lts"
-      StartupCommand: "NODE_ENV=production node ./build/index.js"
+      StartupCommand: "yarn start"
+      ScriptType: "Inline Script"
+      InlineScript: |
+        yarn install
