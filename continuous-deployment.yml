@@ -67,7 +67,7 @@ steps:
   - task: AzureRmWebAppDeployment@4
     displayName: "Azure App Service Deploy"
     inputs:
-      azureSubscription: "e8a9055c-d984-4ad3-ae8b-c14693b851a3"
+      azureSubscription: "Azure for Students (e8a9055c-d984-4ad3-ae8b-c14693b851a3)"
       appType: webAppLinux
       WebAppName: "what2douts"
       packageForLinux: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
