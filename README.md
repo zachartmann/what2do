@@ -59,6 +59,7 @@ Components:
 - CommentBox.css
 - Idea.js
 - CommnetSubmission.js
+- commentSchema.js
 
 ## Time limit + poll closure
 
