@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
-import { updateIdea, deleteIdea } from "../common/requests/Idea";
 import VotingMechanism from "./Voting";
+import { updateIdea, deleteIdea } from "../common/requests/Idea";
+>>>>>>>>> Temporary merge branch 2
 
 import Modal from "./Modal";
 import CommentBox from "./CommentBox";
