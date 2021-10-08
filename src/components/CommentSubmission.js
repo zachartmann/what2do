@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+// This is the Comment Submission component runs the handle change functions for the Comment Text and setting the target value which is the user input
+
 const CommentSubmission = ({ handleComment }) => {
   const [commentText, setCommentText] = useState("");
 
