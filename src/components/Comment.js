@@ -23,10 +23,7 @@ const Comment = ({ commentText, deleteComment, id, user }) => {
       <div className="content-container comment-details">
         <h3>{commentText}</h3>
         <p className="small comment-small-details">
-          {localStorage.getItem("user")
-            ? localStorage.getItem("user")
-            : "Anonymous"}{" "}
-          {/* TODO: fix */}
+          {user ? user : "Anonymous"}{" "}
         </p>
       </div>
       <br />

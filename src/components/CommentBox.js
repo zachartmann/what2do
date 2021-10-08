@@ -31,8 +31,6 @@ const CommentBox = ({
   };
 
   const handleDelete = async (commentId) => {
-    await deleteComment(commentId);
-
     const newCommentIds = commentIds.filter((id) => {
       return id !== commentId;
     });
@@ -42,7 +40,6 @@ const CommentBox = ({
   };
 
   const handleSubmit = (id) => {
-    console.log("Submit id:", id);
     updateIdeaCommentIds([...commentIds, id]);
     setCommentIds([...commentIds, id]);
     increment();

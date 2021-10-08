@@ -37,7 +37,8 @@ export async function updateIdea(
   upVoters,
   downVoters,
   pinned,
-  user
+  user,
+  commentIds
 ) {
   try {
     const response = await axios.post(ideaEndpoint, {
@@ -49,6 +50,7 @@ export async function updateIdea(
       downVoters,
       pinned,
       user,
+      commentIds,
     });
     return response;
   } catch (err) {
@@ -85,6 +87,7 @@ export async function postIdea(
       downVoters: [],
       pinned,
       user,
+      commentIds: [],
     });
     console.log(`Idea created by: ${user}`);
 
