@@ -60,6 +60,8 @@ Components:
 - Idea.js
 - CommnetSubmission.js
 - commentSchema.js
+- api/routes/Comment.js
+- api/src/Comment.test.js
 
 ## Time limit + poll closure
 
