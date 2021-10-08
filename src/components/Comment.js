@@ -2,6 +2,7 @@ import React from "react";
 
 // This comment component includes the delete Comment button which is used to delete the comment
 // Component  also has the commentInput parsed in which is what is the contents that are intputed into the textbox
+// local storage is used to get the user
 
 const Comment = ({ commentInput, deleteComment }) => {
   return (

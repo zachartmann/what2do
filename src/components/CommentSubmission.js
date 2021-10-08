@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+// This is the Comment Submission component runs the handle change functions for the Comment Text and setting the target value which is the user input
+// Furthemmore returns the comment container text box that has the placeholder that signifies to the user to enter a comment for the idea
+// Following this when the Add comment button is clicked then the new comment is added to the idea
+
 const CommentSubmission = ({ handleComment }) => {
   const [commentText, setCommentText] = useState("");
 
