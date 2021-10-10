@@ -21,7 +21,7 @@ router.get("/comments", async (req, res) => {
  */
 
 router.get("/comment/:id", async (req, res) => {
-  const _id = Number(req.params.id);
+  const _id = req.params.id;
 
   if (!_id) {
     return res.sendStatus(StatusCodes.BAD_REQUEST);
@@ -58,6 +58,22 @@ router.post("/comment", async (req, res) => {
     }
   } else {
     return res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+});
+
+/**
+ * DELETE: /comment/:id - delete a comment
+ */
+
+router.delete("/comment/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  try {
+    await CommentModel.deleteOne({ _id }).exec();
+
+    return res.sendStatus(StatusCodes.OK);
+  } catch (err) {
+    return res.status(StatusCodes.NOT_FOUND).json(err);
   }
 });
 

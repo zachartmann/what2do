@@ -16,6 +16,15 @@ export async function getComments() {
   }
 }
 
+export async function getComment(commentId) {
+  try {
+    const response = await axios.get(`${commentEndpoint}/${commentId}`);
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function postComment(comment, user) {
   try {
     const response = await axios.post(commentEndpoint, {
@@ -27,3 +36,14 @@ export async function postComment(comment, user) {
     throw err;
   }
 }
+export async function deleteComment(commentId) {
+  try {
+    const response = await axios.delete(`${commentEndpoint}/${commentId}`);
+    return response;
+  } catch (err) {
+    throw err;
+  }
+}
+
+//commentID was present before maybe should be replaced with _id
+//or look at the async function to getIdeas to include the id and ids

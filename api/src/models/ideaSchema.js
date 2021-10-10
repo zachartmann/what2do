@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Comment } from "./commentSchema";
 import { User } from "./userSchema";
 /**
  * Schema definition
@@ -12,6 +13,7 @@ const Idea = new mongoose.Schema({
   downVoters: { required: true, type: [User] },
   pinned: { required: true, type: Boolean },
   user: { required: true, type: String },
+  commentIds: { required: true, type: [String] },
   lastModified: Date,
   createdAt: { required: true, type: Date },
 });

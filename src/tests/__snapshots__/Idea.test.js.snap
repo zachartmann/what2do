@@ -51,6 +51,9 @@ exports[`Idea component should render correctly with given idea 1`] = `
         idea={
           Object {
             "_id": "507f191e810c19729de860ea",
+            "commentIds": Array [
+              "0",
+            ],
             "content": "content",
             "downVoters": Array [
               Object {
@@ -123,7 +126,7 @@ exports[`Idea component should render correctly with given idea 1`] = `
             }
           }
         >
-          0
+          1
         </p>
       </div>
     </div>
@@ -131,15 +134,23 @@ exports[`Idea component should render correctly with given idea 1`] = `
       className="content-container"
     >
       <CommentBox
-        commentCount={0}
         decrement={[Function]}
         hidden={true}
         increment={[Function]}
+        initialCommentIds={
+          Array [
+            "0",
+          ]
+        }
+        updateIdeaCommentIds={[Function]}
       />
       <Modal
         idea={
           Object {
             "_id": "507f191e810c19729de860ea",
+            "commentIds": Array [
+              "0",
+            ],
             "content": "content",
             "downVoters": Array [
               Object {

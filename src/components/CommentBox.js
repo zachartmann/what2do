@@ -6,30 +6,44 @@ import React, { useState } from "react";
 
 import "./CommentBox.css";
 
+import { deleteComment } from "../common/requests/Comment";
+
 import CommentSubmission from "../components/CommentSubmission";
 import Comments from "../components/Comments.js";
 
-const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
-  // const [count, setCount] = useState(0);
+const CommentBox = ({
+  hidden,
+  initialCommentIds,
+  increment,
+  decrement,
+  updateIdeaCommentIds,
+}) => {
+  const [commentIds, setCommentIds] = useState(initialCommentIds);
   const [comments, setComments] = useState([]);
 
-  const handleComment = (commentInput) => {
-    const tmpComment = {
-      commentInput: commentInput,
-      user: "Juanitaa",
+  const handleComment = (commentText, user) => {
+    let tmpComment = {
+      comment: commentText,
+      user: user,
     };
 
     setComments(comments.concat(tmpComment));
-    increment();
   };
 
-  const deleteComment = (commentText) => {
-    const newComments = comments.filter((comment) => {
-      return comment.commentInput !== commentText;
+  const handleDelete = async (commentId) => {
+    const newCommentIds = commentIds.filter((id) => {
+      return id !== commentId;
     });
 
-    setComments(newComments);
-    decrement();
+    updateIdeaCommentIds(newCommentIds);
+    setCommentIds(newCommentIds);
+  };
+
+  const handleSubmit = (id) => {
+    updateIdeaCommentIds([...commentIds, id]);
+    setCommentIds([...commentIds, id]);
+    increment();
+    window.location.reload();
   };
 
   let classes = "content-container";
@@ -41,8 +55,11 @@ const CommentBox = ({ hidden, commentCount, increment, decrement }) => {
 
   return (
     <div className={classes} style={commentBoxStyle}>
-      <CommentSubmission handleComment={handleComment} />
-      <Comments comments={comments} deleteComment={deleteComment} />
+      <CommentSubmission
+        handleComment={handleComment}
+        handleSubmit={handleSubmit}
+      />
+      <Comments commentIds={commentIds} deleteComment={handleDelete} />
     </div>
   );
 };

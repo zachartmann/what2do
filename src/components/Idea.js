@@ -31,7 +31,6 @@ const Idea = ({ idea }) => {
   };
 
   const [hidden, setHidden] = useState(true);
-  const [commentCount, setCommentCount] = useState(0);
   const {
     _id,
     content,
@@ -41,10 +40,12 @@ const Idea = ({ idea }) => {
     downVoters,
     pinned,
     user,
+    commentIds,
     lastModified,
     createdAt,
   } = idea;
   let metaLabel;
+  const [commentCount, setCommentCount] = useState(commentIds.length);
   const [pinHidden, setPinHidden] = useState(!pinned);
   const [deleteHidden, setDeleteHidden] = useState(true);
   const [showEdit, setShowEdit] = useState(false);
@@ -103,12 +104,27 @@ const Idea = ({ idea }) => {
       undefined,
       undefined,
       !pinned,
+      undefined,
       undefined
     );
     window.location.reload();
   };
 
-  // changing the comment fill colour when it is selected
+  const updateIdeaCommentIds = (commentIds) => {
+    updateIdea(
+      _id,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      commentIds
+    );
+    window.location.reload();
+  };
+
   const commentFill = hidden ? "white" : "lightskyblue";
   const pinFill = pinned ? "yellow" : "white";
 
@@ -230,9 +246,10 @@ const Idea = ({ idea }) => {
         <div className="content-container">
           <CommentBox
             hidden={hidden}
-            commentCount={commentCount}
+            initialCommentIds={commentIds}
             increment={incrementCommentCount}
             decrement={decrementCommentCount}
+            updateIdeaCommentIds={updateIdeaCommentIds}
           />
           <Modal
             idea={idea}
@@ -247,7 +264,8 @@ const Idea = ({ idea }) => {
                 upVoters,
                 downVoters,
                 pinned,
-                user
+                user,
+                commentIds
               );
               window.location.reload();
             }}
