@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import IncludeName from "../components/IncludeName";
 import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
 import { getTemplate, getTemplates } from "../common/requests/Template";
+import { EnvironmentContext } from "../App";
 
 const PollSubmission = () => {
   const [question, setQuestion] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
   const [templates, setTemplates] = useState([]);
+  const environmentUrl = useContext(EnvironmentContext);
 
   // Fetch data from the API
   useEffect(async () => {
@@ -64,9 +66,7 @@ const PollSubmission = () => {
     }
 
     const pollId = generatePollId();
-    navigator.clipboard.writeText(
-      `https://what2douts.azurewebsites.net/poll/${pollId}`
-    );
+    navigator.clipboard.writeText(`${environmentUrl}/poll/${pollId}`);
 
     if (selectedTemplate === "None") {
       // Create a normal poll as usual
@@ -90,7 +90,7 @@ const PollSubmission = () => {
         template.data.ideaIds
       );
     }
-    window.location.href = `https://what2douts.azurewebsites.net/poll/${pollId}`;
+    window.location.href = `${environmentUrl}/poll/${pollId}`;
   };
 
   return (

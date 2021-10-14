@@ -14,3 +14,4 @@ export const userEndpoint = "/api/user";
 export const suggestionsEndpoint = "/api/suggestions";
 export const suggestionEndpoint = "/api/suggestion";
 export const feedbackEndpoint = "/api/feedback";
+export const environmentEndpoint = "/api/environment";

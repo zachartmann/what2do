@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import Account from "../components/Account";
+import { EnvironmentContext } from "../App";
 
 const Header = ({ pollId }) => {
   const [theme, setTheme] = useState("light");
+  const environmentUrl = useContext(EnvironmentContext);
   const iconFill = theme === "dark" ? "mediumslateblue" : "none";
 
   const switchTheme = () => {
@@ -14,9 +16,7 @@ const Header = ({ pollId }) => {
   };
 
   const handleClick = () => {
-    navigator.clipboard.writeText(
-      `https://what2douts.azurewebsites.net/poll/${pollId}`
-    );
+    navigator.clipboard.writeText(`${environmentUrl}/poll/${pollId}`);
     alert("Link copied!");
   };
 
