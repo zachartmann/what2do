@@ -28,7 +28,9 @@ const Footer = () => {
             </a>
           </div>
           <div className="content-container trimmed">
-            <a href="/feedback">Send us feedback</a>
+            <a href="/feedback">
+              <p className="small">Send us feedback</p>
+            </a>
           </div>
         </div>
       </div>
