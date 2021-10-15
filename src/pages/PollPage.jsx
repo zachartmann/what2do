@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Header from "../components/Header";
@@ -7,6 +7,7 @@ import Ideas from "../components/Ideas";
 import Footer from "../components/Footer";
 import { getPoll } from "../common/requests/Poll";
 import { getIdeas } from "../common/requests/Idea";
+import { Context } from "../App";
 
 const PollPage = () => {
   // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
@@ -14,6 +15,7 @@ const PollPage = () => {
   const [poll, setPoll] = useState(null);
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
+  const { socket } = useContext(Context);
 
   // Fetch data from the API poll endpoint using our poll ID
   async function fetchData(pollId) {
