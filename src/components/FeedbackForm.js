@@ -9,7 +9,7 @@ const FeedbackForm = (props) => {
     evt.preventDefault();
     alert(`Thank you for your feedback!`);
     await postFeedback(feedbackContent);
-    window.location.reload();
+    window.history.back();
   };
   return (
     <div className="content feedback-box">
