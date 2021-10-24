@@ -25,6 +25,10 @@ body {
   zoom: 1.1;
 }
 
+body.preload {
+  transition-duration: 0s !important;
+}
+
 button {
   background-color: var(--button-background-color);
   border-radius: 5px;

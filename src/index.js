@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "data-theme",
     localStorage.getItem("theme")
   );
+  setTimeout(() => {
+    document.body.className = "";
+  }, 200);
 });
 
 ReactDOM.render(
