@@ -4,7 +4,7 @@ import Account from "../components/Account";
 import { EnvironmentContext } from "../App";
 
 const Header = ({ pollId }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
   const environmentUrl = useContext(EnvironmentContext);
   const iconFill = theme === "dark" ? "mediumslateblue" : "none";
 
@@ -12,6 +12,7 @@ const Header = ({ pollId }) => {
     var current = document.documentElement.getAttribute("data-theme");
     var newTheme = current === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
   };
 
