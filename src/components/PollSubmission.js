@@ -10,7 +10,7 @@ const PollSubmission = () => {
   const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
   const [templates, setTemplates] = useState([]);
-  const { environmentUrl } = useContext(Context);
+  const { environmentUrl, socket } = useContext(Context);
 
   // Fetch data from the API
   useEffect(async () => {
@@ -77,6 +77,7 @@ const PollSubmission = () => {
         new Date().getTime() + selectedDuration * 60000,
         selectedDuration
       );
+      socket.emit("refresh");
     } else {
       // Create a poll with details from the template
       const template = await getTemplate(ids[selectedTemplate]);

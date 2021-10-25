@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { formatDistanceStrict } from "date-fns";
 import VotingMechanism from "./Voting";
 import { updateIdea, deleteIdea } from "../common/requests/Idea";
+import { Context } from "../App";
 
 import Modal from "./Modal";
 import CommentBox from "./CommentBox";
@@ -23,6 +24,7 @@ const Idea = ({ idea }) => {
   //   make it lime filled
   // }
 
+  const { socket } = useContext(Context);
   const dummyUser = {
     //Dummy user for testing voting mechanism
     name: localStorage.getItem("user"),
@@ -107,7 +109,7 @@ const Idea = ({ idea }) => {
       undefined,
       undefined
     );
-    window.location.reload();
+    socket.emit("refresh");
   };
 
   const updateIdeaCommentIds = (commentIds) => {
@@ -163,7 +165,7 @@ const Idea = ({ idea }) => {
                   window.confirm("Are you sure you want to delete this idea?")
                 ) {
                   await deleteIdea(_id);
-                  window.location.reload();
+                  socket.emit("refresh");
                 }
               }}
             >
@@ -267,7 +269,7 @@ const Idea = ({ idea }) => {
                 user,
                 commentIds
               );
-              window.location.reload();
+              socket.emit("refresh");
             }}
             show={showEdit}
           >

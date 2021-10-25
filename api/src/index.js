@@ -14,6 +14,10 @@ const io = new Server(httpServer);
 
 io.on("connection", (socket) => {
   console.log(`Connected with client: ${socket.id}`);
+
+  socket.on("refresh", () => {
+    io.emit("refresh");
+  });
 });
 
 httpServer.listen(port, () => {

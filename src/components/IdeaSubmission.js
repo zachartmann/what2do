@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { postIdea } from "../common/requests/Idea";
 import IncludeName from "./IncludeName";
 import Info from "./Info";
@@ -9,6 +9,7 @@ import {
   differenceInMinutes,
 } from "date-fns";
 import { getSuggestions } from "../common/requests/Suggestion";
+import { Context } from "../App";
 
 // Get the time left from current time to poll end date and format it
 function getTimeLeft(endDate, currentDate) {
@@ -45,6 +46,7 @@ const IdeaSubmission = ({ poll }) => {
   const [placeholder, setPlaceholder] = useState("");
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
   const [suggestions, setSuggestions] = useState(null);
+  const { socket } = useContext(Context);
 
   async function fetchSuggestions() {
     //Fetches all suggestions that will be passed to the placeholder
@@ -74,7 +76,7 @@ const IdeaSubmission = ({ poll }) => {
     } else {
       await postIdea(poll._id, placeholder, 0, 0, false, user);
     }
-    window.location.reload();
+    socket.emit("refresh");
     console.log(`Idea submitted by user: ${user}`);
   };
 
