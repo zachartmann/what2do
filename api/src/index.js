@@ -21,8 +21,3 @@ io.on("connection", (socket) => {
 httpServer.listen(app.get("port"), () => {
   console.info("Socket server started on port: " + app.get("port"));
 });
-
-// app.listen(port, () => {
-//   console.info("Express server started on port: " + port);
-//   console.info(`Running on ${env.node_env} environment`);
-// });
