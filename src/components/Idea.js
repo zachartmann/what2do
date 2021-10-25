@@ -3,7 +3,7 @@ import { formatDistanceStrict } from "date-fns";
 import VotingMechanism from "./Voting";
 import { updateIdea, deleteIdea } from "../common/requests/Idea";
 import { Context } from "../App";
-
+import { Socket } from "../App";
 import Modal from "./Modal";
 import CommentBox from "./CommentBox";
 
@@ -24,7 +24,7 @@ const Idea = ({ idea }) => {
   //   make it lime filled
   // }
 
-  const { socket } = useContext(Context);
+  // const { socket } = useContext(Context);
   const dummyUser = {
     //Dummy user for testing voting mechanism
     name: localStorage.getItem("user"),
@@ -109,7 +109,7 @@ const Idea = ({ idea }) => {
       undefined,
       undefined
     );
-    socket.emit("refresh");
+    Socket.emit("refresh");
   };
 
   const updateIdeaCommentIds = (commentIds) => {
@@ -165,7 +165,7 @@ const Idea = ({ idea }) => {
                   window.confirm("Are you sure you want to delete this idea?")
                 ) {
                   await deleteIdea(_id);
-                  socket.emit("refresh");
+                  Socket.emit("refresh");
                 }
               }}
             >
@@ -269,7 +269,7 @@ const Idea = ({ idea }) => {
                 user,
                 commentIds
               );
-              socket.emit("refresh");
+              Socket.emit("refresh");
             }}
             show={showEdit}
           >

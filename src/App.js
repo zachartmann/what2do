@@ -9,18 +9,14 @@ import { io } from "socket.io-client";
 
 require("dotenv").config();
 
-const socket = io("/api");
-
-export const Context = createContext({
-  environmentUrl: "https://what2douts.azurewebsites.net",
-  socket: socket,
-});
+export const Socket = io({ path: "/socket.io" });
+export const Context = createContext({});
 
 const App = () => {
   const [context, setContext] = useState({});
 
   useEffect(async () => {
-    setContext({ socket, environmentUrl: (await getEnvironment()).data });
+    setContext({ environmentUrl: (await getEnvironment()).data });
   }, []);
 
   return (

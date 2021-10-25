@@ -10,6 +10,7 @@ import {
 } from "date-fns";
 import { getSuggestions } from "../common/requests/Suggestion";
 import { Context } from "../App";
+import { Socket } from "../App";
 
 // Get the time left from current time to poll end date and format it
 function getTimeLeft(endDate, currentDate) {
@@ -46,7 +47,7 @@ const IdeaSubmission = ({ poll }) => {
   const [placeholder, setPlaceholder] = useState("");
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(endDate, currentDate));
   const [suggestions, setSuggestions] = useState(null);
-  const { socket } = useContext(Context);
+  // const { socket } = useContext(Context);
 
   async function fetchSuggestions() {
     //Fetches all suggestions that will be passed to the placeholder
@@ -76,7 +77,7 @@ const IdeaSubmission = ({ poll }) => {
     } else {
       await postIdea(poll._id, placeholder, 0, 0, false, user);
     }
-    socket.emit("refresh");
+    Socket.emit("refresh");
     console.log(`Idea submitted by user: ${user}`);
   };
 

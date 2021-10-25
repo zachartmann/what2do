@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import { getPoll } from "../common/requests/Poll";
 import { getIdeas } from "../common/requests/Idea";
 import { Context } from "../App";
+import { Socket } from "../App";
 
 const PollPage = () => {
   // This gets the pollID from the URL and attempts to find a corresponding ID in the DB
@@ -16,22 +17,22 @@ const PollPage = () => {
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
   const context = useContext(Context);
-  const { socket } = context;
+  // const { socket } = context;
 
-  if (socket) {
-    console.log("Client is listening to socket");
-    console.log(socket);
+  // if (socket) {
+  console.log("Client is listening to socket");
+  console.log(Socket);
 
-    socket.on("refresh", async () => {
-      try {
-        const ideaIds = await getPoll(pollId).data.ideaIds;
-        const updatedIdeas = await getIdeas(ideaIds).data;
-        setIdeas(updatedIdeas);
-      } catch (err) {
-        console.log("Real time updates failed"); // Chrome/FF inspector to see console
-      }
-    });
-  }
+  Socket.on("refresh", async () => {
+    try {
+      const ideaIds = await getPoll(pollId).data.ideaIds;
+      const updatedIdeas = await getIdeas(ideaIds).data;
+      setIdeas(updatedIdeas);
+    } catch (err) {
+      console.log("Real time updates failed"); // Chrome/FF inspector to see console
+    }
+  });
+  // }
 
   // Fetch data from the API poll endpoint using our poll ID
   async function fetchData(pollId) {

@@ -4,13 +4,14 @@ import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
 import { getTemplate, getTemplates } from "../common/requests/Template";
 import { Context } from "../App";
+import { Socket } from "../App";
 
 const PollSubmission = () => {
   const [question, setQuestion] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
   const [templates, setTemplates] = useState([]);
-  const { environmentUrl, socket } = useContext(Context);
+  const { environmentUrl } = useContext(Context);
 
   // Fetch data from the API
   useEffect(async () => {
@@ -77,7 +78,7 @@ const PollSubmission = () => {
         new Date().getTime() + selectedDuration * 60000,
         selectedDuration
       );
-      socket.emit("refresh");
+      Socket.emit("refresh");
     } else {
       // Create a poll with details from the template
       const template = await getTemplate(ids[selectedTemplate]);
