@@ -35,6 +35,7 @@ const CommentBox = ({
       return id !== commentId;
     });
 
+    decrement();
     updateIdeaCommentIds(newCommentIds);
     setCommentIds(newCommentIds);
   };
