@@ -61,5 +61,7 @@ app.get("*", (req, res) => {
   }
 });
 
+app.set("port", Number(env.port));
+
 // Export express instance
 export default app;

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import "./Header.css";
 import Account from "../components/Account";
-import { EnvironmentContext } from "../App";
+import { Context } from "../App";
 
 const Header = ({ pollId }) => {
   const [theme, setTheme] = useState("light");
-  const environmentUrl = useContext(EnvironmentContext);
+  const { environmentUrl } = useContext(Context);
   const iconFill = theme === "dark" ? "mediumslateblue" : "none";
 
   const switchTheme = () => {

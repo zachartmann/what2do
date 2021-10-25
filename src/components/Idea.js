@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
 import VotingMechanism from "./Voting";
 import { updateIdea, deleteIdea } from "../common/requests/Idea";
-
+import { Socket } from "../App";
 import Modal from "./Modal";
 import CommentBox from "./CommentBox";
 
@@ -107,7 +107,7 @@ const Idea = ({ idea }) => {
       undefined,
       undefined
     );
-    window.location.reload();
+    Socket.emit("refresh");
   };
 
   const updateIdeaCommentIds = (commentIds) => {
@@ -122,7 +122,7 @@ const Idea = ({ idea }) => {
       undefined,
       commentIds
     );
-    window.location.reload();
+    Socket.emit("refresh");
   };
 
   const commentFill = hidden ? "white" : "lightskyblue";
@@ -163,7 +163,7 @@ const Idea = ({ idea }) => {
                   window.confirm("Are you sure you want to delete this idea?")
                 ) {
                   await deleteIdea(_id);
-                  window.location.reload();
+                  Socket.emit("refresh");
                 }
               }}
             >
@@ -267,7 +267,7 @@ const Idea = ({ idea }) => {
                 user,
                 commentIds
               );
-              window.location.reload();
+              Socket.emit("refresh");
             }}
             show={showEdit}
           >

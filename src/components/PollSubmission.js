@@ -3,14 +3,14 @@ import IncludeName from "../components/IncludeName";
 import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
 import { getTemplate, getTemplates } from "../common/requests/Template";
-import { EnvironmentContext } from "../App";
+import { Context } from "../App";
 
 const PollSubmission = () => {
   const [question, setQuestion] = useState("");
   const [selectedTemplate, setSelectedTemplate] = useState("None");
   const [selectedDuration, setSelectedDuration] = useState("60"); // in minutes
   const [templates, setTemplates] = useState([]);
-  const environmentUrl = useContext(EnvironmentContext);
+  const { environmentUrl } = useContext(Context);
 
   // Fetch data from the API
   useEffect(async () => {

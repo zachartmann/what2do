@@ -5,24 +5,24 @@ import CreatePollPage from "./pages/CreatePollPage";
 import PollPage from "./pages/PollPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import { getEnvironment } from "./common/requests/Environment";
+import { io } from "socket.io-client";
 
 require("dotenv").config();
 
-export const EnvironmentContext = createContext(
-  "https://what2douts.azurewebsites.net"
-);
+export const Socket = io({ path: "/api/socket.io" });
+export const Context = createContext({});
 
 const App = () => {
-  const [environment, setEnvironment] = useState("production");
+  const [context, setContext] = useState({});
 
   useEffect(async () => {
-    setEnvironment((await getEnvironment()).data);
+    setContext({ environmentUrl: (await getEnvironment()).data });
   }, []);
 
   return (
     <Router>
       <Switch>
-        <EnvironmentContext.Provider value={environment}>
+        <Context.Provider value={context}>
           <Route exact path="/">
             <CreatePollPage />
           </Route>
@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/feedback">
             <FeedbackPage />
           </Route>
-        </EnvironmentContext.Provider>
+        </Context.Provider>
       </Switch>
     </Router>
   );
