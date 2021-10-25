@@ -4,7 +4,6 @@ import Info from "../components/Info";
 import { postPoll } from "../common/requests/Poll";
 import { getTemplate, getTemplates } from "../common/requests/Template";
 import { Context } from "../App";
-import { Socket } from "../App";
 
 const PollSubmission = () => {
   const [question, setQuestion] = useState("");
