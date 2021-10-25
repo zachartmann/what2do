@@ -15,17 +15,23 @@ const PollPage = () => {
   const [poll, setPoll] = useState(null);
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
-  const { socket } = useContext(Context);
+  const context = useContext(Context);
+  const { socket } = context;
 
-  socket.on("refresh", async () => {
-    try {
-      const ideaIds = await getPoll(pollId).data.ideaIds;
-      const updatedIdeas = await getIdeas(ideaIds).data;
-      setIdeas(updatedIdeas);
-    } catch (err) {
-      console.log("Real time updates failed"); // Chrome/FF inspector to see console
-    }
-  });
+  if (socket) {
+    console.log("Client is listening to socket");
+    console.log(socket);
+
+    socket.on("refresh", async () => {
+      try {
+        const ideaIds = await getPoll(pollId).data.ideaIds;
+        const updatedIdeas = await getIdeas(ideaIds).data;
+        setIdeas(updatedIdeas);
+      } catch (err) {
+        console.log("Real time updates failed"); // Chrome/FF inspector to see console
+      }
+    });
+  }
 
   // Fetch data from the API poll endpoint using our poll ID
   async function fetchData(pollId) {
