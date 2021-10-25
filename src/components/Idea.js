@@ -124,7 +124,7 @@ const Idea = ({ idea }) => {
       undefined,
       commentIds
     );
-    window.location.reload();
+    Socket.emit("refresh");
   };
 
   const commentFill = hidden ? "white" : "lightskyblue";

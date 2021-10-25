@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Header from "../components/Header";
@@ -7,7 +7,6 @@ import Ideas from "../components/Ideas";
 import Footer from "../components/Footer";
 import { getPoll } from "../common/requests/Poll";
 import { getIdeas } from "../common/requests/Idea";
-import { Context } from "../App";
 import { Socket } from "../App";
 
 const PollPage = () => {
@@ -16,11 +15,7 @@ const PollPage = () => {
   const [poll, setPoll] = useState(null);
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
-  const context = useContext(Context);
-  // const { socket } = context;
 
-  // if (socket) {
-  console.log("Client is listening to socket");
   console.log(Socket);
 
   Socket.on("refresh", async () => {
@@ -32,7 +27,6 @@ const PollPage = () => {
       console.log("Real time updates failed"); // Chrome/FF inspector to see console
     }
   });
-  // }
 
   // Fetch data from the API poll endpoint using our poll ID
   async function fetchData(pollId) {

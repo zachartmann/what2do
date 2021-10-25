@@ -78,7 +78,6 @@ const PollSubmission = () => {
         new Date().getTime() + selectedDuration * 60000,
         selectedDuration
       );
-      Socket.emit("refresh");
     } else {
       // Create a poll with details from the template
       const template = await getTemplate(ids[selectedTemplate]);
