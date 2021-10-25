@@ -25,8 +25,8 @@ const PollPage = () => {
 
   Socket.on("refresh", async () => {
     try {
-      const ideaIds = await getPoll(pollId).data.ideaIds;
-      const updatedIdeas = await getIdeas(ideaIds).data;
+      const ideaIds = (await getPoll(pollId)).data.ideaIds;
+      const updatedIdeas = (await getIdeas(ideaIds)).data;
       setIdeas(updatedIdeas);
     } catch (err) {
       console.log("Real time updates failed"); // Chrome/FF inspector to see console

@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 
 require("dotenv").config();
 
-export const Socket = io({ path: "/socket.io" });
+export const Socket = io({ path: "/api/socket.io" });
 export const Context = createContext({});
 
 const App = () => {
