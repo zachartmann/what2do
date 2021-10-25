@@ -16,8 +16,6 @@ const PollPage = () => {
   const [ideas, setIdeas] = useState(null);
   const validPoll = pollId.length === 6;
 
-  console.log(Socket);
-
   Socket.on("refresh", async () => {
     try {
       const ideaIds = (await getPoll(pollId)).data.ideaIds;

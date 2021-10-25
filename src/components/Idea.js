@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { formatDistanceStrict } from "date-fns";
 import VotingMechanism from "./Voting";
 import { updateIdea, deleteIdea } from "../common/requests/Idea";
-import { Context } from "../App";
 import { Socket } from "../App";
 import Modal from "./Modal";
 import CommentBox from "./CommentBox";
@@ -24,7 +23,6 @@ const Idea = ({ idea }) => {
   //   make it lime filled
   // }
 
-  // const { socket } = useContext(Context);
   const dummyUser = {
     //Dummy user for testing voting mechanism
     name: localStorage.getItem("user"),
