@@ -74,3 +74,6 @@ steps:
       WebAppName: what2douts
       packageForLinux: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
       RuntimeStack: "NODE|14-lts"
+      ScriptType: "Inline Script"
+      InlineScript: |
+        yarn install --production
