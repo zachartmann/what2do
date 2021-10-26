@@ -76,4 +76,4 @@ steps:
       RuntimeStack: "NODE|14-lts"
       ScriptType: "Inline Script"
       InlineScript: |
-        yarn install --production
+        benv node=14 yarn install --production
