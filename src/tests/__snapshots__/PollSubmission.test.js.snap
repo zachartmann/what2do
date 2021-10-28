@@ -89,14 +89,6 @@ exports[`PollSubmission component should render correctly with given idea 1`] = 
         className="content-container flex-container"
       >
         <div
-          className="flex-component flex-70"
-        >
-          <IncludeName />
-          <Info
-            text="Give us your details."
-          />
-        </div>
-        <div
           className="flex-component flex-30 flex-end"
         >
           <button

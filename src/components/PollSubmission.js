@@ -146,10 +146,6 @@ const PollSubmission = () => {
             </select>
           </div>
           <div className="content-container flex-container">
-            <div className="flex-component flex-70">
-              <IncludeName />
-              <Info text="Give us your details." />
-            </div>
             <div className="flex-component flex-30 flex-end">
               <button type="submit">Send</button>
             </div>
