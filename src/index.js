@@ -6,7 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 
 // Set default as light theme - I think it looks better :P
 document.addEventListener("DOMContentLoaded", () => {
-  document.documentElement.setAttribute("data-theme", "light");
+  document.documentElement.setAttribute(
+    "data-theme",
+    localStorage.getItem("theme")
+  );
+  setTimeout(() => {
+    document.body.className = "";
+  }, 200);
 });
 
 ReactDOM.render(
