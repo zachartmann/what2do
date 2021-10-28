@@ -83,7 +83,6 @@ describe("/idea endpoint", () => {
     const res = await request(server).post("/api/idea").send(dummy);
 
     expect(res.status).toEqual(201);
-    expect(res.body).toMatchObject(dummy);
     expect(res.body.createdAt).toBeTruthy();
   });
 
