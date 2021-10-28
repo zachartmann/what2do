@@ -6,8 +6,6 @@ import React, { useState } from "react";
 
 import "./CommentBox.css";
 
-import { deleteComment } from "../common/requests/Comment";
-
 import CommentSubmission from "../components/CommentSubmission";
 import Comments from "../components/Comments.js";
 
@@ -40,8 +38,8 @@ const CommentBox = ({
     setCommentIds(newCommentIds);
   };
 
-  const handleSubmit = (id) => {
-    updateIdeaCommentIds([...commentIds, id]);
+  const handleSubmit = async (id) => {
+    await updateIdeaCommentIds([...commentIds, id]);
     setCommentIds([...commentIds, id]);
     increment();
     window.location.reload();
