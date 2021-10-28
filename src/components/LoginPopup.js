@@ -1,22 +1,39 @@
 import React, { useState } from "react";
-import { postUser } from "../common/requests/User";
+import { getUser, postUser } from "../common/requests/User";
 import "./Popups.css";
 
 const LoginPopup = ({ hidden, toggleHidden }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   let topClasses = `content popup login-popup ${hidden ? "hidden" : ""}`;
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    if (name) {
-      await postUser(name, password);
+    let user = undefined;
+
+    function loginUser(name) {
       localStorage.setItem("user", name);
-      console.log(`User created: ${name}`);
+      setErrorMessage("");
+      toggleHidden();
       window.location.reload();
     }
-    toggleHidden();
+
+    if (name) {
+      user = await getUser(name, password);
+      console.log(user);
+
+      if (user.error === "User does not exist") {
+        await postUser(name, password);
+        console.log(`User created: ${name}`);
+        loginUser(name);
+      } else if (user.error === "Incorrect password") {
+        setErrorMessage("Incorrect password");
+      } else {
+        loginUser(name);
+      }
+    }
   };
 
   return (
@@ -38,6 +55,9 @@ const LoginPopup = ({ hidden, toggleHidden }) => {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
+          <div className="content-container">
+            <p style={{ color: "red" }}>{errorMessage}</p>
+          </div>
           <div className="flex-container">
             <div className="flex-component flex-70 flex-end">
               <button type="submit">Confirm</button>
@@ -47,7 +67,10 @@ const LoginPopup = ({ hidden, toggleHidden }) => {
               <button
                 type="button"
                 className="inverted-button"
-                onClick={() => toggleHidden()}
+                onClick={() => {
+                  toggleHidden();
+                  setErrorMessage("");
+                }}
               >
                 Cancel
               </button>
