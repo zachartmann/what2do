@@ -110,8 +110,8 @@ const Idea = ({ idea }) => {
     Socket.emit("refresh");
   };
 
-  const updateIdeaCommentIds = (commentIds) => {
-    updateIdea(
+  const updateIdeaCommentIds = async (commentIds) => {
+    await updateIdea(
       _id,
       undefined,
       undefined,
