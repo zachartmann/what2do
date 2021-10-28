@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { updateIdea } from "../common/requests/Idea";
+import { Socket } from "../App";
 
 const getCurrentUserVote = (idea, currentUser) => {
   if (currentUser) {
@@ -75,7 +76,7 @@ const VotingMechanism = ({ idea, user }) => {
           idea.pinned,
           idea.user
         );
-        window.location.reload();
+        Socket.emit("refresh");
       }
     } else {
       didMount.current = true;
