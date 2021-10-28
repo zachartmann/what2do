@@ -267,6 +267,7 @@ const Idea = ({ idea }) => {
                 user,
                 commentIds
               );
+              setShowEdit(false);
               Socket.emit("refresh");
             }}
             show={showEdit}
